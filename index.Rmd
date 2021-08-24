@@ -7,10 +7,10 @@ output:
 
 # Hello
 
-### And hello again
+### Please excuse the mess.
 
 Welcome to **my website** and _data analysis portfolio._ 
 
 
 * Please use the `Menu Bar` above to look around.
-* Have fun!
+* I look forward to learning with you all.

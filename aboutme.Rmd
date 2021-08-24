@@ -6,5 +6,43 @@ output:
 ---
 
 
-Add some text and a figure describing myself.
+### **Background**
+
+
+
+### **Training**
+
+
+
+### **Research Interests**
+
+
+
+### **Statistics, Programming, Data Analysis Exp**
+
+
+
+### **Goals for the Course**
+
+
+
+### **Fun Fact**
+
+
+
+### **Link Out: Predatory Journals**
+
+I present to you all a fascinating paper:
+
+[What's the Deal With Birds?](http://www.chm.bris.ac.uk/sillymolecules/birds.pdf) 
+
+If you don't know what this paper is about it was "published" in the _Scientific Journal of Research and Reviews_ last year. If you read it, you can see that it is rather unusual.  
+If you haven't had experience yet, this journal is an example of a Predatory journal. These "journals" are a common scam in academic fields. Typically they work by soliciting manuscript submissions, charge authors with a fee, and "publish" skipping the typical quality checks and rigor of peer review. 
+Alas, the publisher has redirected the direct link of the paper to the [publisher's site](http://irispublishers.com/sjrr/pdf/SJRR.MS.ID.000540.pdf) once the message got out.
+
+TLDR?  
+This was published somewhere:
+
+
+
 
