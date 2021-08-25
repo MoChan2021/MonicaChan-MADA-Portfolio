@@ -4,7 +4,7 @@ output:
   html_document:
     toc: FALSE
 ---
-
+![]()
 
 ### **Background**
 
@@ -16,7 +16,10 @@ output:
 
 ### **Research Interests**
 
-
+* Improving environmental sampling methods 
+* Developing a work process for field sampling directly going into molecular workflows, including sequencing and identification
+* Developing approaches to enhance low-quality samples
+* Equating recovered gnomic copies to CFU.
 
 ### **Statistics, Programming, Data Analysis Exp**
 
@@ -24,7 +27,9 @@ output:
 
 ### **Goals for the Course**
 
-
+1. Force practice with programming and data analysis
+2. 
+3. Get better with data analysis and the modern approaches being used these days.
 
 ### **Fun Fact**
 
@@ -41,8 +46,8 @@ If you haven't had experience yet, this journal is an example of a Predatory jou
 Alas, the publisher has redirected the direct link of the paper to the [publisher's site](http://irispublishers.com/sjrr/pdf/SJRR.MS.ID.000540.pdf) once the message got out.
 
 TLDR?  
-This was published somewhere:
-
+This was published somewhere:  
+![birbs](/MonicaChan-MADA-portfolio/docs/2021.08.23_Birbs.PNG)
 
 
 
