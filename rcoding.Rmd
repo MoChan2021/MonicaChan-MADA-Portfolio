@@ -7,4 +7,107 @@ output:
 
 This will contain the future R coding exercise.
 
+Loading and checking data
+data from dslabs package and gapminder
+```{r}
+library(dslabs)
+#library(gapminder)
 
+#summary(data(gapminder))
+### above is what caused my weird data
+
+#look at help files for gapminder
+help(gapminder)
+#overview of data structure
+str(gapminder)
+#summary of data
+summary(gapminder)
+#determine type of object gapminder is
+class(gapminder)
+
+```
+Processing Data w/tidyverse 
+```{r}
+library(tidyverse)
+library(dplyr)
+```
+#making africadata from gapminder
+
+```{r}
+africadata<-gapminder%>%
+  filter(continent=="Africa")
+```
+#checking africadata
+```{r}
+str(africadata)
+summary(africadata)
+class(africadata)
+```
+#separate africadata into 2 new variables
+```{r}
+Ainfant_mortality<-africadata%>%
+  select(infant_mortality)
+str(Ainfant_mortality)
+summary(Ainfant_mortality)
+Alife_expectancy<-africadata%>%
+  select(life_expectancy)
+str(Alife_expectancy)
+summary(Alife_expectancy)
+```
+Plotting
+
+#Plotting infant_mortality
+```{r}
+africadata%>%
+  ggplot(aes(infant_mortality, population))+
+  geom_point(aes(color=year, shape=region))
+```
+#Plotting life expectancy
+```{r}
+africadata%>%
+  ggplot(aes(life_expectancy, population))+
+  geom_point(aes(shape=region, color=year))
+```
+Both plots appear to have merging dots scattered across the population and expectancy. This is likely due to not parsing out the countries within Africa, the year the data was taken from, or region... depends on what we want to look for.
+
+
+
+More data processing
+```{r}
+summary(africadata$year)
+```
+#filter missing values (NA) for infant mortality
+```{r}
+africadata%>%
+  select(year, infant_mortality)%>%
+  filter(is.na(infant_mortality))%>%
+  count(year)
+```
+
+#filter for year 2000
+```{r}
+AD2K<-africadata%>%
+  filter(year=="2000")
+
+summary(AD2K)
+str(AD2K)
+
+```
+More Plotting
+
+#Fit1 - life expectancy as outcome and infant mortality as predictor
+```{r}
+Fit1<- lm(AD2K$life_expectancy~AD2K$infant_mortality)
+summary(Fit1)
+```
+#Fit2 life expectancy as outcome, pop size as predictor
+```{r}
+Fit2<- lm(AD2K$life_expectancy~AD2K$population)
+summary(Fit2)
+
+```
+Thoughts on the p-values. Fit 1 is significantly different so there are effects between life expectancy and infant mortality in 2000.
+Fit 2 does not show a significant difference so no real effects on the life expectancy with the population in 2000.
+
+###############################
+###############################
