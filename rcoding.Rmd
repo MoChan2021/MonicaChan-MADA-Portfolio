@@ -111,3 +111,34 @@ Fit 2 does not show a significant difference so no real effects on the life expe
 
 ###############################
 ###############################
+
+
+#Additional analysis by Priyanka Gannavarapu
+
+
+
+# Relationship between region and life expectancy
+
+```{r}
+ 
+ggplot(AD2K, aes(x= region, y = life_expectancy)) +
+  geom_boxplot() 
+```
+
+
+
+# Fitting two Linear models .
+
+```{r}
+fit3 = lm(life_expectancy ~ gdp, data= AD2K)
+summary(fit3)
+```
+
+#The model is statistically significant. 
+
+```{r}
+fit4 = lm(life_expectancy~ infant_mortality + region , data = AD2K)
+summary(fit4)
+```
+
+#The model is statistically significant. With an R square of 72%.
