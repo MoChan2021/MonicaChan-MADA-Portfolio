@@ -8,13 +8,16 @@ output:
 # Original Graphic
 ```{r,  echo=FALSE, fig.align='center'}
 knitr::include_graphics("docs/InfectionConcernsUSA.PNG")
+
+knitr::include_graphics("https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/e398e02d90bf6741116cc568fb0df50f42e77b3e/docs/InfectionConcernsUSA.PNG?raw=true")
 ```
 Chart is frozen as of April 22, 2021
 
 
 # Replication attempt Graphic
 ```{r,  echo=FALSE, fig.align='center'}
-knitr::include_graphics("docs/ReplicatePlot.PNG")
+knitr::include_graphics("ReplicatePlot.PNG")
+knitr::include_graphics("https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/e398e02d90bf6741116cc568fb0df50f42e77b3e/docs/ReplicatePlot.png?raw=true")
 ```
 
 
@@ -76,7 +79,7 @@ Try using stat_summary to get means.
 ```{r warning=FALSE}
 Viz.Fig<-CovidConcern%>%
   select(end_date, very, somewhat, not_very, not_at_all)%>%
-  filter(end_date>"2020-03-01", end_date<"2021-04-01")%>%
+  filter(end_date>"2020-03-01", end_date<"2021-04-01", very<"50")%>%
   ggplot(aes(x=end_date))+
   geom_point(aes(y=very), color="red", alpha=1/10)+
   geom_point(aes(y=somewhat), color="orange", alpha=1/10)+
@@ -84,13 +87,14 @@ Viz.Fig<-CovidConcern%>%
   geom_point(aes(y=not_at_all), color="purple", alpha=1/10)+
   labs(title = "How worried are Americans about the Economy?", subtitle = "How concerned Americans say they are about the coronavirus's effect on the U.S. economy")+
   theme(axis.title.x= element_blank(), axis.title.y= element_blank())+
-  scale_y_continuous(breaks = c(0,25,50,75), labels = function(x) paste0(x * 1, '%'))+
+  scale_y_continuous(breaks = c(0,25,50), labels = function(x) paste0(x * 1, '%'))+
   scale_x_date(date_breaks = "1 month", date_labels = "%m/%d")+
   stat_summary(aes(y=very),fun="mean", color="red", geom="line", size=1)+
   stat_summary(aes(y=somewhat),fun="mean", color="orange", geom="line", size=1)+
   stat_summary(aes(y=not_very),fun="mean", color="blue", geom="line", size=1)+
   stat_summary(aes(y=not_at_all),fun="mean", color="purple", geom="line", size=1)
 
+print(Viz.Fig)
 ```
 
 Close!
