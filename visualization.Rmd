@@ -6,7 +6,7 @@ output:
 ---
 
 # Original Graphic
-![From Five Thirty Eight](InfectionConcernsUSA.png)
+![From Five Thirty Eight](docs/InfectionConcernsUSA.PNG)
 
 Chart is frozen as of April 22, 2021
 
@@ -32,7 +32,7 @@ summary(CovidConcern)
 
 ```
 ## Covid Concern Data
-Selected data. set end_date as x axis. Plot jittered points for each concern level
+Selected data. set end_date as x axis. Plot points for each concern level
 
 ```{r warning=FALSE}
 ConcernedDots<-CovidConcern%>%
