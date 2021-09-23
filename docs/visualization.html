@@ -13,8 +13,8 @@
 
 <title>Visualization</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -43,6 +43,100 @@
     </style>
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  { color: #cccccc; background-color: #303030; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ffcfaf; } /* Alert */
+code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #dca3a3; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #f0dfaf; } /* ControlFlow */
+code span.ch { color: #dca3a3; } /* Char */
+code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code span.co { color: #7f9f7f; } /* Comment */
+code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code span.do { color: #7f9f7f; } /* Documentation */
+code span.dt { color: #dfdfbf; } /* DataType */
+code span.dv { color: #dcdccc; } /* DecVal */
+code span.er { color: #c3bf9f; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #c0bed1; } /* Float */
+code span.fu { color: #efef8f; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+code span.kw { color: #f0dfaf; } /* Keyword */
+code span.op { color: #f0efd0; } /* Operator */
+code span.ot { color: #efef8f; } /* Other */
+code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code span.sc { color: #dca3a3; } /* SpecialChar */
+code span.ss { color: #cc9393; } /* SpecialString */
+code span.st { color: #cc9393; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #cc9393; } /* VerbatimString */
+code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -274,7 +368,131 @@ $(document).ready(function () {
 </div>
 
 
-<p>This will contain the future visualization exercise.</p>
+<div id="original-graphic" class="section level1">
+<h1>Original Graphic</h1>
+<div class="figure">
+<img src="InfectionConcernsUSA.png" alt="" />
+<p class="caption">From Five Thirty Eight</p>
+</div>
+<p>Chart is frozen as of April 22, 2021</p>
+</div>
+<div id="source-target-visualization-and-data" class="section level1">
+<h1>Source Target Visualization and Data</h1>
+<p>FiveThirtyEight’s Article: <a href="https://projects.fivethirtyeight.com/coronavirus-polls/">“How Americans View Biden’s Response To The Coronavirus Crisis”</a></p>
+<p>Data accessible from button below the graphic. <a href="https://github.com/fivethirtyeight/covid-19-polls/archive/master.zip">“HERE”</a></p>
+</div>
+<div id="data-wrangling-in-r" class="section level1">
+<h1>Data wrangling in R</h1>
+<div id="loading-libraries" class="section level2">
+<h2>Loading libraries:</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --</code></pre>
+<pre><code>## v ggplot2 3.3.5     v purrr   0.3.4
+## v tibble  3.1.4     v dplyr   1.0.7
+## v tidyr   1.1.3     v stringr 1.4.0
+## v readr   2.0.1     v forcats 0.5.1</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div>
+</div>
+<div id="import-csv-files-from-fivethirtyeight-and-make-into-objectes" class="section level2">
+<h2>Import CSV files from FiveThirtyEight and make into objectes:</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>CovidConcern<span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;docs/data/covid-19-polls-master/covid_concern_polls.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 678 Columns: 15</code></pre>
+<pre><code>## -- Column specification --------------------------------------------------------
+## Delimiter: &quot;,&quot;
+## chr  (7): pollster, sponsor, population, party, subject, text, url
+## dbl  (5): sample_size, very, somewhat, not_very, not_at_all
+## lgl  (1): tracking
+## date (2): start_date, end_date</code></pre>
+<pre><code>## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(CovidConcern)</span></code></pre></div>
+<pre><code>##    start_date            end_date            pollster        
+##  Min.   :2020-01-27   Min.   :2020-01-29   Length:678        
+##  1st Qu.:2020-04-13   1st Qu.:2020-04-16   Class :character  
+##  Median :2020-05-27   Median :2020-05-31   Mode  :character  
+##  Mean   :2020-07-01   Mean   :2020-07-04                     
+##  3rd Qu.:2020-09-02   3rd Qu.:2020-09-06                     
+##  Max.   :2021-04-17   Max.   :2021-04-20                     
+##                                                              
+##    sponsor           sample_size     population           party          
+##  Length:678         Min.   :  502   Length:678         Length:678        
+##  Class :character   1st Qu.: 1002   Class :character   Class :character  
+##  Mode  :character   Median : 1031   Mode  :character   Mode  :character  
+##                     Mean   : 2803                                        
+##                     3rd Qu.: 1959                                        
+##                     Max.   :91214                                        
+##                                                                          
+##    subject           tracking           text                very      
+##  Length:678         Mode :logical   Length:678         Min.   : 8.00  
+##  Class :character   FALSE:538       Class :character   1st Qu.:27.00  
+##  Mode  :character   TRUE :140       Mode  :character   Median :35.00  
+##                                                        Mean   :37.56  
+##                                                        3rd Qu.:47.00  
+##                                                        Max.   :73.00  
+##                                                                       
+##     somewhat        not_very       not_at_all         url           
+##  Min.   :19.00   Min.   : 2.00   Min.   : 1.000   Length:678        
+##  1st Qu.:32.00   1st Qu.:11.00   1st Qu.: 4.000   Class :character  
+##  Median :35.00   Median :17.49   Median : 8.320   Mode  :character  
+##  Mean   :34.73   Mean   :17.46   Mean   : 8.801                     
+##  3rd Qu.:38.00   3rd Qu.:23.00   3rd Qu.:12.100                     
+##  Max.   :48.00   Max.   :43.00   Max.   :29.000                     
+##  NA&#39;s   :1                       NA&#39;s   :7</code></pre>
+</div>
+<div id="covid-concern-data" class="section level2">
+<h2>Covid Concern Data</h2>
+<p>Selected data. set end_date as x axis. Plot jittered points for each concern level</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ConcernedDots<span class="ot">&lt;-</span>CovidConcern<span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(end_date, very, somewhat, not_very, not_at_all)<span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>end_date))<span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span>,<span class="st">&quot;25&quot;</span>,<span class="st">&quot;50&quot;</span>))<span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">y=</span>very), <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">y=</span>somewhat), <span class="at">color=</span><span class="st">&quot;orange&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_very), <span class="at">color=</span><span class="st">&quot;blue&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_at_all), <span class="at">color=</span><span class="st">&quot;purple&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span></code></pre></div>
+<p>Add lines? Try stat_smooth</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>CovidConcern<span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(end_date, very, somewhat, not_very, not_at_all)<span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>end_date))<span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>very), <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>somewhat), <span class="at">color=</span><span class="st">&quot;orange&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_very), <span class="at">color=</span><span class="st">&quot;blue&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_at_all), <span class="at">color=</span><span class="st">&quot;purple&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>very), <span class="at">color=</span><span class="st">&quot;red&quot;</span>,<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)<span class="sc">+</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>somewhat), <span class="at">color=</span><span class="st">&quot;orange&quot;</span>,<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)<span class="sc">+</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_very), <span class="at">color=</span><span class="st">&quot;blue&quot;</span>,<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)<span class="sc">+</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_at_all), <span class="at">color=</span><span class="st">&quot;purple&quot;</span>,<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;
+## `geom_smooth()` using formula &#39;y ~ x&#39;
+## `geom_smooth()` using formula &#39;y ~ x&#39;
+## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Not the right lines… Try adjusting axis scales and then mean lines? Try using stat_summary to get means.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>CovidConcern<span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(end_date, very, somewhat, not_very, not_at_all)<span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(end_date<span class="sc">&gt;</span><span class="st">&quot;2020-03-01&quot;</span>, end_date<span class="sc">&lt;</span><span class="st">&quot;2021-04-01&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>end_date))<span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>very), <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>somewhat), <span class="at">color=</span><span class="st">&quot;orange&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_very), <span class="at">color=</span><span class="st">&quot;blue&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_at_all), <span class="at">color=</span><span class="st">&quot;purple&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;How worried are Americans about the Economy?&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;How concerned Americans say they are about the coronavirus&#39;s effect on the U.S. economy&quot;</span>)<span class="sc">+</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x=</span> <span class="fu">element_blank</span>(), <span class="at">axis.title.y=</span> <span class="fu">element_blank</span>())<span class="sc">+</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">25</span>,<span class="dv">50</span>,<span class="dv">75</span>), <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(x <span class="sc">*</span> <span class="dv">1</span>, <span class="st">&#39;%&#39;</span>))<span class="sc">+</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">&quot;1 month&quot;</span>, <span class="at">date_labels =</span> <span class="st">&quot;%m/%d&quot;</span>)<span class="sc">+</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">y=</span>very),<span class="at">fun=</span><span class="st">&quot;mean&quot;</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">geom=</span><span class="st">&quot;line&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">y=</span>somewhat),<span class="at">fun=</span><span class="st">&quot;mean&quot;</span>, <span class="at">color=</span><span class="st">&quot;orange&quot;</span>, <span class="at">geom=</span><span class="st">&quot;line&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_very),<span class="at">fun=</span><span class="st">&quot;mean&quot;</span>, <span class="at">color=</span><span class="st">&quot;blue&quot;</span>, <span class="at">geom=</span><span class="st">&quot;line&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_at_all),<span class="at">fun=</span><span class="st">&quot;mean&quot;</span>, <span class="at">color=</span><span class="st">&quot;purple&quot;</span>, <span class="at">geom=</span><span class="st">&quot;line&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="visualization_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Close! But still not as clean as the original graphic. Also not clear on how to add a legend for the lines…</p>
+</div>
+</div>
 
 
 
