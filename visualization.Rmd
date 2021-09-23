@@ -6,9 +6,18 @@ output:
 ---
 
 # Original Graphic
-![From Five Thirty Eight](docs/InfectionConcernsUSA.PNG)
-
+```{r,  echo=FALSE, fig.align='center'}
+knitr::include_graphics("docs/InfectionConcernsUSA.PNG")
+```
 Chart is frozen as of April 22, 2021
+
+
+# Replication attempt Graphic
+```{r,  echo=FALSE, fig.align='center'}
+knitr::include_graphics("docs/ReplicatePlot.PNG")
+```
+
+
 
 # Source Target Visualization and Data
 
@@ -65,7 +74,7 @@ CovidConcern%>%
 Not the right lines... Try adjusting axis scales and then mean lines?
 Try using stat_summary to get means.
 ```{r warning=FALSE}
-CovidConcern%>%
+Viz.Fig<-CovidConcern%>%
   select(end_date, very, somewhat, not_very, not_at_all)%>%
   filter(end_date>"2020-03-01", end_date<"2021-04-01")%>%
   ggplot(aes(x=end_date))+
@@ -81,7 +90,6 @@ CovidConcern%>%
   stat_summary(aes(y=somewhat),fun="mean", color="orange", geom="line", size=1)+
   stat_summary(aes(y=not_very),fun="mean", color="blue", geom="line", size=1)+
   stat_summary(aes(y=not_at_all),fun="mean", color="purple", geom="line", size=1)
-
 
 ```
 

@@ -370,11 +370,11 @@ $(document).ready(function () {
 
 <div id="original-graphic" class="section level1">
 <h1>Original Graphic</h1>
-<div class="figure">
-<img src="docs/InfectionConcernsUSA.PNG" alt="" />
-<p class="caption">From Five Thirty Eight</p>
+<p><img src="docs/InfectionConcernsUSA.PNG" width="366" style="display: block; margin: auto;" /> Chart is frozen as of April 22, 2021</p>
 </div>
-<p>Chart is frozen as of April 22, 2021</p>
+<div id="replication-attempt-graphic" class="section level1">
+<h1>Replication attempt Graphic</h1>
+<p><img src="docs/ReplicatePlot.png" width="400" style="display: block; margin: auto;" /></p>
 </div>
 <div id="source-target-visualization-and-data" class="section level1">
 <h1>Source Target Visualization and Data</h1>
@@ -471,9 +471,9 @@ $(document).ready(function () {
 ## `geom_smooth()` using formula &#39;y ~ x&#39;
 ## `geom_smooth()` using formula &#39;y ~ x&#39;
 ## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="visualization_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Not the right lines… Try adjusting axis scales and then mean lines? Try using stat_summary to get means.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>CovidConcern<span class="sc">%&gt;%</span></span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Viz.Fig<span class="ot">&lt;-</span>CovidConcern<span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(end_date, very, somewhat, not_very, not_at_all)<span class="sc">%&gt;%</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(end_date<span class="sc">&gt;</span><span class="st">&quot;2020-03-01&quot;</span>, end_date<span class="sc">&lt;</span><span class="st">&quot;2021-04-01&quot;</span>)<span class="sc">%&gt;%</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>end_date))<span class="sc">+</span></span>
@@ -489,7 +489,6 @@ $(document).ready(function () {
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">y=</span>somewhat),<span class="at">fun=</span><span class="st">&quot;mean&quot;</span>, <span class="at">color=</span><span class="st">&quot;orange&quot;</span>, <span class="at">geom=</span><span class="st">&quot;line&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
 <span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_very),<span class="at">fun=</span><span class="st">&quot;mean&quot;</span>, <span class="at">color=</span><span class="st">&quot;blue&quot;</span>, <span class="at">geom=</span><span class="st">&quot;line&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_at_all),<span class="at">fun=</span><span class="st">&quot;mean&quot;</span>, <span class="at">color=</span><span class="st">&quot;purple&quot;</span>, <span class="at">geom=</span><span class="st">&quot;line&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="visualization_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Close! But still not as clean as the original graphic. Also not clear on how to add a legend for the lines…</p>
 </div>
 </div>
