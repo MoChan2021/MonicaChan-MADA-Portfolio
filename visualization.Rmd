@@ -6,36 +6,25 @@ output:
 ---
 
 # Original Graphic
-```{r,  echo=FALSE, fig.align='center'}
-knitr::include_graphics("docs/InfectionConcernsUSA.PNG")
+![Original Graphic](docs/OrigViz.PNG⁩)
+![Original Graphic](https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/352d0a75e228fed5cbfecfbc5887d6f2b7b614b7/docs/OrigViz.png?raw=TRUE⁩)
 
-knitr::include_graphics("https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/e398e02d90bf6741116cc568fb0df50f42e77b3e/docs/InfectionConcernsUSA.PNG?raw=true")
-```
-Chart is frozen as of April 22, 2021
+![initial try](docs/ReplicatePlot.PNG⁩)
+![initial try](https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/352d0a75e228fed5cbfecfbc5887d6f2b7b614b7/docs/ReplicatePlot.png?raw=TRUE⁩)
 
+UPDATED - Tried adding text
 
-# Replication attempt Graphic
-```{r,  echo=FALSE, fig.align='center'}
-knitr::include_graphics("ReplicatePlot.PNG")
-knitr::include_graphics("https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/e398e02d90bf6741116cc568fb0df50f42e77b3e/docs/ReplicatePlot.png?raw=true")
-```
+![Annotate](P1.PNG⁩)
+![Annotate](https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/352d0a75e228fed5cbfecfbc5887d6f2b7b614b7/docs/P1.png?raw=TRUE)
 
-# Replication attempt 2 with feedback
-
-Using Annotate:
-```{r,  echo=FALSE, fig.align='center'}
-knitr::include_graphics("docs/V2-Annotate.PNG")
-```
-
-Using directlabels 
-```{r,  echo=FALSE, fig.align='center'}
-knitr::include_graphics("docs/V2-DirLabs.PNG")
-```
-
+![DirectLabs](P2.PNG⁩)
+![DirectLabs](https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/352d0a75e228fed5cbfecfbc5887d6f2b7b614b7/docs/P2.png?raw=TRUE⁩)
 
 # Source Target Visualization and Data
 
 FiveThirtyEight's Article: ["How Americans View Biden's Response To The Coronavirus Crisis"](https://projects.fivethirtyeight.com/coronavirus-polls/) 
+
+* Specifically the Covid Infection Concern of the US.
 
 Data accessible from button below the graphic. ["HERE"](https://github.com/fivethirtyeight/covid-19-polls/archive/master.zip)   
 
@@ -96,7 +85,7 @@ Viz.Fig<-CovidConcern%>%
   geom_point(aes(y=somewhat), color="orange", alpha=1/10)+
   geom_point(aes(y=not_very), color="blue", alpha=1/10)+
   geom_point(aes(y=not_at_all), color="purple", alpha=1/10)+
-  labs(title = "How worried are Americans about the Economy?", subtitle = "How concerned Americans say they are about the coronavirus's effect on the U.S. economy")+
+  labs(title = "How worried are Americans about infection?", subtitle = "How concerned Americans say they are that they, someone in their family or someone else \n they know will become infected with the coronavirus")+
   theme(axis.title.x= element_blank(), axis.title.y= element_blank())+
   scale_y_continuous(breaks = c(0,25,50), labels = function(x) paste0(x * 1, '%'))+
   scale_x_date(date_breaks = "1 month", date_labels = "%m/%d")+
@@ -119,6 +108,8 @@ Submitted to the Slack and got feedback by Dr. Handel and Dawson Dobash:
 
 * smoothing lines, try loess curve
 * try for figures with labels on other side, should be able to specify the location.
+* center and break up title and subtitle
+* color match graphic lines.
 
 ###try it out
 ```{r warning=FALSE}
@@ -130,8 +121,8 @@ CovidConcern%>%
   geom_point(aes(y=somewhat), color="coral", alpha=1/10)+
   geom_point(aes(y=not_very), color="plum3", alpha=1/10)+
   geom_point(aes(y=not_at_all), color="purple", alpha=1/10)+
-  labs(title = "How worried are Americans about the Economy?", subtitle = "How concerned Americans say they are about the coronavirus's effect on the U.S. economy")+  
-  theme(axis.title.x= element_blank(), axis.title.y= element_blank())+
+  ggtitle("How worried are Americans about infection?", subtitle = "How concerned Americans say they are that they, someone in their family or someone else \n they know will become infected with the coronavirus")+  
+  theme(axis.title.x= element_blank(), axis.title.y= element_blank(), plot.title = element_text(hjust=0.5), plot.subtitle = element_text(hjust=0.5))+
   scale_y_continuous(breaks = c(0,25,50), labels = function(x) paste0(x * 1, '%'))+
   scale_x_date(date_breaks = "1 month", date_labels = "%m/%d")+
   scale_linetype_manual(name=c("Very", "Somewhat","Not Very", "Not at All")) +
@@ -141,6 +132,7 @@ CovidConcern%>%
   geom_quantile(aes(y=not_at_all), quantiles=0.75, color="purple", size=1 ,method="rqss", lambda=2)
   
 ```
+
 NOTE:
 
 * geom_smooth was too smooth.
@@ -157,6 +149,27 @@ library(grid)
 
 #p<-
 
+CovidConcern%>%
+  select(end_date, very, somewhat, not_very, not_at_all)%>%
+  filter(end_date>"2020-03-01", end_date<"2021-04-01", very<"50")%>%
+  ggplot(aes(x=end_date))+
+  geom_point(aes(y=very), color="red", alpha=1/10)+
+  geom_point(aes(y=somewhat), color="coral", alpha=1/10)+
+  geom_point(aes(y=not_very), color="plum3", alpha=1/10)+
+  geom_point(aes(y=not_at_all), color="purple", alpha=1/10)+
+  ggtitle("How worried are Americans about infection?", subtitle = "How concerned Americans say they are that they, someone in their family or someone else \n they know will become infected with the coronavirus")+  
+  theme(axis.title.x= element_blank(), axis.title.y= element_blank(), plot.title = element_text(hjust=0.5), plot.subtitle = element_text(hjust=0.5))+
+  scale_y_continuous(breaks = c(0,25,50), labels = function(x) paste0(x * 1, '%'))+
+  scale_x_date(date_breaks = "1 month", date_labels = "%m/%d", expand = c(0.001,75))+
+  scale_linetype_manual(name=c("Very", "Somewhat","Not Very", "Not at All")) +
+  geom_quantile(aes(y=very), quantiles=0.75, color="red", size=1 ,method="rqss", lambda=2)+
+  geom_quantile(aes(y=somewhat), quantiles=0.75, color="coral", size=1 ,method="rqss", lambda=2)+
+  geom_quantile(aes(y=not_very), quantiles=0.75, color="plum3", size=1 ,method="rqss", lambda=2)+
+  geom_quantile(aes(y=not_at_all), quantiles=0.75, color="purple", size=1 ,method="rqss", lambda=2)+
+  annotate("text", x=as.Date("2021-04-01"), y=40, label="32.4% Somewhat", color="coral", hjust=0)+
+  annotate("text", x=as.Date("2021-04-01"), y=33, label="26.1% Not very", color="plum3", hjust=0)+
+  annotate("text", x=as.Date("2021-04-01"), y=23, label="16.5% Not at all", color="purple", hjust=0)+
+  annotate("text", x=as.Date("2021-04-01"), y=17, label="24.4% Very", color="red", hjust=0)
 
 # Code to turn off clipping
 #gt <- ggplotGrob(p)
@@ -165,12 +178,14 @@ library(grid)
 
 ```
 tried the grid to extend the x axsis, but could not get grid.draw to run.
+*interesting to note the annotated text doesn't follow the 
 
 ================
 
 Try directlabels
 ```{r warning=FALSE}
 library(directlabels)
+library(tidyquant)
 library(grid)
 
 CovidConcern%>%
@@ -181,20 +196,26 @@ CovidConcern%>%
   geom_point(aes(y=somewhat), color="coral", alpha=1/10)+
   geom_point(aes(y=not_very), color="plum3", alpha=1/10)+
   geom_point(aes(y=not_at_all), color="purple", alpha=1/10)+
-  labs(title = "How worried are Americans about the Economy?", subtitle = "How concerned Americans say they are about the coronavirus's effect on the U.S. economy")+
-  theme(axis.title.x= element_blank(), axis.title.y= element_blank())+
+  ggtitle("How worried are Americans about infection?", subtitle = "How concerned Americans say they are that they, someone in their family or someone else \n they know will become infected with the coronavirus")+  
+  theme(axis.title.x= element_blank(), axis.title.y= element_blank(), plot.title = element_text(hjust=0.5), plot.subtitle = element_text(hjust=0.5))+
   scale_y_continuous(breaks = c(0,25,50), labels = function(x) paste0(x * 1, '%'))+
-  scale_x_date(date_breaks = "1 month", date_labels = "%m/%d", expand = c(0.001,75))+
+  scale_x_date(date_breaks = "1 month", date_labels = "%m/%d", expand = c(0.0001,90))+
   scale_linetype_manual(name=c("Very", "Somewhat","Not Very", "Not at All")) +
   geom_quantile(aes(y=very), quantiles=0.75, color="red", size=1 ,method="rqss", lambda=2)+
   geom_quantile(aes(y=somewhat), quantiles=0.75, color="coral", size=1 ,method="rqss", lambda=2)+
   geom_quantile(aes(y=not_very), quantiles=0.75, color="plum3", size=1 ,method="rqss", lambda=2)+
   geom_quantile(aes(y=not_at_all), quantiles=0.75, color="purple", size=1 ,method="rqss", lambda=2)+
-  geom_dl(aes(y= very,label = "Very", color="red"), method = list(dl.trans(x = x + 0.2), "last.points", cex = 1))+
-  geom_dl(aes(y= somewhat,label = "Somewhat", color="coral"), method = list(dl.trans(x = x + 0.2), "last.points", cex = 1))+
-  geom_dl(aes(y= not_very,label = "Not Very", color="plum3"), method = list(dl.trans(x = x + 0.2), "last.points", cex = 1))+
-  geom_dl(aes(y= not_at_all,label = "Not at All", color="purple"), method = list(dl.trans(x = x + 0.2), "last.points", cex = 1))
-
+  geom_dl(aes(y= somewhat,label = "32.4% Somewhat", color="coral"), method = list(dl.trans(x = x + 0.2), "last.points"))+
+  geom_dl(aes(y= not_very,label = "26.1% Not Very", color="plum3"), method = list(dl.trans(x = x + 0.2), "last.points"))+
+  geom_dl(aes(y= not_at_all,label = "16.5% Not at All", color="purple"), method = list(dl.trans(x = x + 0.2), "last.points"))+
+   geom_dl(aes(y= very,label = "24.4% Very", color="red"), method = list(dl.trans(x = x + 0.2), "last.points"))
 
 ```
 
+Interesting the resulting labels have odd color choices, half of them are correct the other... not so much.
+
+### Concluding thoughts
+
+The data is all there and the dotplot wasn't too difficult. I need more clues on what kind of smoothing was applied to the lines. There are certain trends that are visable from my reproduction but it's not exact.
+
+I enjoyed learning about annotating. I knew there was the capibilities but never tried using it. I've got a bit of ways to go when it comes to really cleaning up the graphcis but I also got to learn about how to utilize dates in ggplot. This will be useful in helping some of my peers when they do persistance studies and can utlize their summarized experimental run data to plug into something.
