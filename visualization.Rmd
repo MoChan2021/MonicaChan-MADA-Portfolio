@@ -20,6 +20,17 @@ knitr::include_graphics("ReplicatePlot.PNG")
 knitr::include_graphics("https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/e398e02d90bf6741116cc568fb0df50f42e77b3e/docs/ReplicatePlot.png?raw=true")
 ```
 
+# Replication attempt 2 with feedback
+
+Using Annotate:
+```{r,  echo=FALSE, fig.align='center'}
+knitr::include_graphics("docs/V2-Annotate.PNG")
+```
+
+Using directlabels 
+```{r,  echo=FALSE, fig.align='center'}
+knitr::include_graphics("docs/V2-DirLabs.PNG")
+```
 
 
 # Source Target Visualization and Data
@@ -99,4 +110,91 @@ print(Viz.Fig)
 
 Close!
 But still not as clean as the original graphic.
-Also not clear on how to add a legend for the lines...
+Also not clear on how to add a legend for the lines...Lines are still a mess and too detailed.
+++++++++++++++++++++++++++++++
+
+## Incorporating Feedback
+
+Submitted to the Slack and got feedback by Dr. Handel and Dawson Dobash:
+
+* smoothing lines, try loess curve
+* try for figures with labels on other side, should be able to specify the location.
+
+###try it out
+```{r warning=FALSE}
+CovidConcern%>%
+  select(end_date, very, somewhat, not_very, not_at_all)%>%
+  filter(end_date>"2020-03-01", end_date<"2021-04-01", very<"50")%>%
+  ggplot(aes(x=end_date))+
+  geom_point(aes(y=very), color="red", alpha=1/10)+
+  geom_point(aes(y=somewhat), color="coral", alpha=1/10)+
+  geom_point(aes(y=not_very), color="plum3", alpha=1/10)+
+  geom_point(aes(y=not_at_all), color="purple", alpha=1/10)+
+  labs(title = "How worried are Americans about the Economy?", subtitle = "How concerned Americans say they are about the coronavirus's effect on the U.S. economy")+  
+  theme(axis.title.x= element_blank(), axis.title.y= element_blank())+
+  scale_y_continuous(breaks = c(0,25,50), labels = function(x) paste0(x * 1, '%'))+
+  scale_x_date(date_breaks = "1 month", date_labels = "%m/%d")+
+  scale_linetype_manual(name=c("Very", "Somewhat","Not Very", "Not at All")) +
+  geom_quantile(aes(y=very), quantiles=0.75, color="red", size=1 ,method="rqss", lambda=2)+
+  geom_quantile(aes(y=somewhat), quantiles=0.75, color="coral", size=1 ,method="rqss", lambda=2)+
+  geom_quantile(aes(y=not_very), quantiles=0.75, color="plum3", size=1 ,method="rqss", lambda=2)+
+  geom_quantile(aes(y=not_at_all), quantiles=0.75, color="purple", size=1 ,method="rqss", lambda=2)
+  
+```
+NOTE:
+
+* geom_smooth was too smooth.
+* utilized geom_quantile and adjusted quantiles to show only 1 line and changed the lambda values.
+* color matched the lines with some ["predefined R colors"](http://sape.inf.usi.ch/quick-reference/ggplot2/colour).
+
+## Adding Lables on the graphic
+
+* Looked at Morgan Taylor's visualization code for example.
+
+```{r warning=FALSE}
+library(directlabels)
+library(grid)
+
+#p<-
+
+
+# Code to turn off clipping
+#gt <- ggplotGrob(p)
+#gt$layout$clip[gt1$layout$name == "panel"] <- "off"
+#grid.draw(gt)
+
+```
+tried the grid to extend the x axsis, but could not get grid.draw to run.
+
+================
+
+Try directlabels
+```{r warning=FALSE}
+library(directlabels)
+library(grid)
+
+CovidConcern%>%
+  select(end_date, very, somewhat, not_very, not_at_all)%>%
+  filter(end_date>"2020-03-01", end_date<"2021-04-01", very<"50")%>%
+  ggplot(aes(x=end_date))+
+  geom_point(aes(y=very), color="red", alpha=1/10)+
+  geom_point(aes(y=somewhat), color="coral", alpha=1/10)+
+  geom_point(aes(y=not_very), color="plum3", alpha=1/10)+
+  geom_point(aes(y=not_at_all), color="purple", alpha=1/10)+
+  labs(title = "How worried are Americans about the Economy?", subtitle = "How concerned Americans say they are about the coronavirus's effect on the U.S. economy")+
+  theme(axis.title.x= element_blank(), axis.title.y= element_blank())+
+  scale_y_continuous(breaks = c(0,25,50), labels = function(x) paste0(x * 1, '%'))+
+  scale_x_date(date_breaks = "1 month", date_labels = "%m/%d", expand = c(0.001,75))+
+  scale_linetype_manual(name=c("Very", "Somewhat","Not Very", "Not at All")) +
+  geom_quantile(aes(y=very), quantiles=0.75, color="red", size=1 ,method="rqss", lambda=2)+
+  geom_quantile(aes(y=somewhat), quantiles=0.75, color="coral", size=1 ,method="rqss", lambda=2)+
+  geom_quantile(aes(y=not_very), quantiles=0.75, color="plum3", size=1 ,method="rqss", lambda=2)+
+  geom_quantile(aes(y=not_at_all), quantiles=0.75, color="purple", size=1 ,method="rqss", lambda=2)+
+  geom_dl(aes(y= very,label = "Very", color="red"), method = list(dl.trans(x = x + 0.2), "last.points", cex = 1))+
+  geom_dl(aes(y= somewhat,label = "Somewhat", color="coral"), method = list(dl.trans(x = x + 0.2), "last.points", cex = 1))+
+  geom_dl(aes(y= not_very,label = "Not Very", color="plum3"), method = list(dl.trans(x = x + 0.2), "last.points", cex = 1))+
+  geom_dl(aes(y= not_at_all,label = "Not at All", color="purple"), method = list(dl.trans(x = x + 0.2), "last.points", cex = 1))
+
+
+```
+

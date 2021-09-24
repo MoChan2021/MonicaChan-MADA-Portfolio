@@ -376,6 +376,11 @@ $(document).ready(function () {
 <h1>Replication attempt Graphic</h1>
 <p><img src="ReplicatePlot.png" width="400" style="display: block; margin: auto;" /><img src="https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/e398e02d90bf6741116cc568fb0df50f42e77b3e/docs/ReplicatePlot.png?raw=true" style="display: block; margin: auto;" /></p>
 </div>
+<div id="replication-attempt-2-with-feedback" class="section level1">
+<h1>Replication attempt 2 with feedback</h1>
+<p>Using Annotate: <img src="docs/V2-Annotate.png" width="400" style="display: block; margin: auto;" /></p>
+<p>Using directlabels <img src="docs/V2-DirLabs.png" width="400" style="display: block; margin: auto;" /></p>
+</div>
 <div id="source-target-visualization-and-data" class="section level1">
 <h1>Source Target Visualization and Data</h1>
 <p>FiveThirtyEight’s Article: <a href="https://projects.fivethirtyeight.com/coronavirus-polls/">“How Americans View Biden’s Response To The Coronavirus Crisis”</a></p>
@@ -471,7 +476,7 @@ $(document).ready(function () {
 ## `geom_smooth()` using formula &#39;y ~ x&#39;
 ## `geom_smooth()` using formula &#39;y ~ x&#39;
 ## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="visualization_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="visualization_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Not the right lines… Try adjusting axis scales and then mean lines? Try using stat_summary to get means.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Viz.Fig<span class="ot">&lt;-</span>CovidConcern<span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(end_date, very, somewhat, not_very, not_at_all)<span class="sc">%&gt;%</span></span>
@@ -491,8 +496,92 @@ $(document).ready(function () {
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_at_all),<span class="at">fun=</span><span class="st">&quot;mean&quot;</span>, <span class="at">color=</span><span class="st">&quot;purple&quot;</span>, <span class="at">geom=</span><span class="st">&quot;line&quot;</span>, <span class="at">size=</span><span class="dv">1</span>)</span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Viz.Fig)</span></code></pre></div>
-<p><img src="visualization_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<p>Close! But still not as clean as the original graphic. Also not clear on how to add a legend for the lines…</p>
+<p><img src="visualization_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Close! But still not as clean as the original graphic. Also not clear on how to add a legend for the lines…Lines are still a mess and too detailed. ++++++++++++++++++++++++++++++</p>
+</div>
+<div id="incorporating-feedback" class="section level2">
+<h2>Incorporating Feedback</h2>
+<p>Submitted to the Slack and got feedback by Dr. Handel and Dawson Dobash:</p>
+<ul>
+<li>smoothing lines, try loess curve</li>
+<li>try for figures with labels on other side, should be able to specify the location.</li>
+</ul>
+<p>###try it out</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>CovidConcern<span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(end_date, very, somewhat, not_very, not_at_all)<span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(end_date<span class="sc">&gt;</span><span class="st">&quot;2020-03-01&quot;</span>, end_date<span class="sc">&lt;</span><span class="st">&quot;2021-04-01&quot;</span>, very<span class="sc">&lt;</span><span class="st">&quot;50&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>end_date))<span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>very), <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>somewhat), <span class="at">color=</span><span class="st">&quot;coral&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_very), <span class="at">color=</span><span class="st">&quot;plum3&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_at_all), <span class="at">color=</span><span class="st">&quot;purple&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;How worried are Americans about the Economy?&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;How concerned Americans say they are about the coronavirus&#39;s effect on the U.S. economy&quot;</span>)<span class="sc">+</span>  </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x=</span> <span class="fu">element_blank</span>(), <span class="at">axis.title.y=</span> <span class="fu">element_blank</span>())<span class="sc">+</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">25</span>,<span class="dv">50</span>), <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(x <span class="sc">*</span> <span class="dv">1</span>, <span class="st">&#39;%&#39;</span>))<span class="sc">+</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">&quot;1 month&quot;</span>, <span class="at">date_labels =</span> <span class="st">&quot;%m/%d&quot;</span>)<span class="sc">+</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">name=</span><span class="fu">c</span>(<span class="st">&quot;Very&quot;</span>, <span class="st">&quot;Somewhat&quot;</span>,<span class="st">&quot;Not Very&quot;</span>, <span class="st">&quot;Not at All&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_quantile</span>(<span class="fu">aes</span>(<span class="at">y=</span>very), <span class="at">quantiles=</span><span class="fl">0.75</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">1</span> ,<span class="at">method=</span><span class="st">&quot;rqss&quot;</span>, <span class="at">lambda=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_quantile</span>(<span class="fu">aes</span>(<span class="at">y=</span>somewhat), <span class="at">quantiles=</span><span class="fl">0.75</span>, <span class="at">color=</span><span class="st">&quot;coral&quot;</span>, <span class="at">size=</span><span class="dv">1</span> ,<span class="at">method=</span><span class="st">&quot;rqss&quot;</span>, <span class="at">lambda=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_quantile</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_very), <span class="at">quantiles=</span><span class="fl">0.75</span>, <span class="at">color=</span><span class="st">&quot;plum3&quot;</span>, <span class="at">size=</span><span class="dv">1</span> ,<span class="at">method=</span><span class="st">&quot;rqss&quot;</span>, <span class="at">lambda=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_quantile</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_at_all), <span class="at">quantiles=</span><span class="fl">0.75</span>, <span class="at">color=</span><span class="st">&quot;purple&quot;</span>, <span class="at">size=</span><span class="dv">1</span> ,<span class="at">method=</span><span class="st">&quot;rqss&quot;</span>, <span class="at">lambda=</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## Smoothing formula not specified. Using: y ~ qss(x, lambda = 2)
+## Smoothing formula not specified. Using: y ~ qss(x, lambda = 2)
+## Smoothing formula not specified. Using: y ~ qss(x, lambda = 2)
+## Smoothing formula not specified. Using: y ~ qss(x, lambda = 2)</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-10-1.png" width="672" /> NOTE:</p>
+<ul>
+<li>geom_smooth was too smooth.</li>
+<li>utilized geom_quantile and adjusted quantiles to show only 1 line and changed the lambda values.</li>
+<li>color matched the lines with some <a href="http://sape.inf.usi.ch/quick-reference/ggplot2/colour">“predefined R colors”</a>.</li>
+</ul>
+</div>
+<div id="adding-lables-on-the-graphic" class="section level2">
+<h2>Adding Lables on the graphic</h2>
+<ul>
+<li>Looked at Morgan Taylor’s visualization code for example.</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(directlabels)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#p&lt;-</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Code to turn off clipping</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">#gt &lt;- ggplotGrob(p)</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">#gt$layout$clip[gt1$layout$name == &quot;panel&quot;] &lt;- &quot;off&quot;</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">#grid.draw(gt)</span></span></code></pre></div>
+<p>tried the grid to extend the x axsis, but could not get grid.draw to run.</p>
+<p>================</p>
+<p>Try directlabels</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(directlabels)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>CovidConcern<span class="sc">%&gt;%</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(end_date, very, somewhat, not_very, not_at_all)<span class="sc">%&gt;%</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(end_date<span class="sc">&gt;</span><span class="st">&quot;2020-03-01&quot;</span>, end_date<span class="sc">&lt;</span><span class="st">&quot;2021-04-01&quot;</span>, very<span class="sc">&lt;</span><span class="st">&quot;50&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>end_date))<span class="sc">+</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>very), <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>somewhat), <span class="at">color=</span><span class="st">&quot;coral&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_very), <span class="at">color=</span><span class="st">&quot;plum3&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_at_all), <span class="at">color=</span><span class="st">&quot;purple&quot;</span>, <span class="at">alpha=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;How worried are Americans about the Economy?&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;How concerned Americans say they are about the coronavirus&#39;s effect on the U.S. economy&quot;</span>)<span class="sc">+</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x=</span> <span class="fu">element_blank</span>(), <span class="at">axis.title.y=</span> <span class="fu">element_blank</span>())<span class="sc">+</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">25</span>,<span class="dv">50</span>), <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">paste0</span>(x <span class="sc">*</span> <span class="dv">1</span>, <span class="st">&#39;%&#39;</span>))<span class="sc">+</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">&quot;1 month&quot;</span>, <span class="at">date_labels =</span> <span class="st">&quot;%m/%d&quot;</span>, <span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.001</span>,<span class="dv">75</span>))<span class="sc">+</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">name=</span><span class="fu">c</span>(<span class="st">&quot;Very&quot;</span>, <span class="st">&quot;Somewhat&quot;</span>,<span class="st">&quot;Not Very&quot;</span>, <span class="st">&quot;Not at All&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_quantile</span>(<span class="fu">aes</span>(<span class="at">y=</span>very), <span class="at">quantiles=</span><span class="fl">0.75</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">1</span> ,<span class="at">method=</span><span class="st">&quot;rqss&quot;</span>, <span class="at">lambda=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_quantile</span>(<span class="fu">aes</span>(<span class="at">y=</span>somewhat), <span class="at">quantiles=</span><span class="fl">0.75</span>, <span class="at">color=</span><span class="st">&quot;coral&quot;</span>, <span class="at">size=</span><span class="dv">1</span> ,<span class="at">method=</span><span class="st">&quot;rqss&quot;</span>, <span class="at">lambda=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_quantile</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_very), <span class="at">quantiles=</span><span class="fl">0.75</span>, <span class="at">color=</span><span class="st">&quot;plum3&quot;</span>, <span class="at">size=</span><span class="dv">1</span> ,<span class="at">method=</span><span class="st">&quot;rqss&quot;</span>, <span class="at">lambda=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_quantile</span>(<span class="fu">aes</span>(<span class="at">y=</span>not_at_all), <span class="at">quantiles=</span><span class="fl">0.75</span>, <span class="at">color=</span><span class="st">&quot;purple&quot;</span>, <span class="at">size=</span><span class="dv">1</span> ,<span class="at">method=</span><span class="st">&quot;rqss&quot;</span>, <span class="at">lambda=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dl</span>(<span class="fu">aes</span>(<span class="at">y=</span> very,<span class="at">label =</span> <span class="st">&quot;Very&quot;</span>, <span class="at">color=</span><span class="st">&quot;red&quot;</span>), <span class="at">method =</span> <span class="fu">list</span>(<span class="fu">dl.trans</span>(<span class="at">x =</span> x <span class="sc">+</span> <span class="fl">0.2</span>), <span class="st">&quot;last.points&quot;</span>, <span class="at">cex =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dl</span>(<span class="fu">aes</span>(<span class="at">y=</span> somewhat,<span class="at">label =</span> <span class="st">&quot;Somewhat&quot;</span>, <span class="at">color=</span><span class="st">&quot;coral&quot;</span>), <span class="at">method =</span> <span class="fu">list</span>(<span class="fu">dl.trans</span>(<span class="at">x =</span> x <span class="sc">+</span> <span class="fl">0.2</span>), <span class="st">&quot;last.points&quot;</span>, <span class="at">cex =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dl</span>(<span class="fu">aes</span>(<span class="at">y=</span> not_very,<span class="at">label =</span> <span class="st">&quot;Not Very&quot;</span>, <span class="at">color=</span><span class="st">&quot;plum3&quot;</span>), <span class="at">method =</span> <span class="fu">list</span>(<span class="fu">dl.trans</span>(<span class="at">x =</span> x <span class="sc">+</span> <span class="fl">0.2</span>), <span class="st">&quot;last.points&quot;</span>, <span class="at">cex =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dl</span>(<span class="fu">aes</span>(<span class="at">y=</span> not_at_all,<span class="at">label =</span> <span class="st">&quot;Not at All&quot;</span>, <span class="at">color=</span><span class="st">&quot;purple&quot;</span>), <span class="at">method =</span> <span class="fu">list</span>(<span class="fu">dl.trans</span>(<span class="at">x =</span> x <span class="sc">+</span> <span class="fl">0.2</span>), <span class="st">&quot;last.points&quot;</span>, <span class="at">cex =</span> <span class="dv">1</span>))</span></code></pre></div>
+<pre><code>## Smoothing formula not specified. Using: y ~ qss(x, lambda = 2)
+## Smoothing formula not specified. Using: y ~ qss(x, lambda = 2)
+## Smoothing formula not specified. Using: y ~ qss(x, lambda = 2)
+## Smoothing formula not specified. Using: y ~ qss(x, lambda = 2)</code></pre>
+<p><img src="visualization_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 </div>
 
