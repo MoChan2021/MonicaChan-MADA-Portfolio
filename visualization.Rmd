@@ -7,7 +7,7 @@ output:
 
 # Original Graphic
 ![Original Graphic](docs/OrigViz.PNG⁩)
-![Original Graphic](https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/352d0a75e228fed5cbfecfbc5887d6f2b7b614b7/docs/OrigViz.png?raw=TRUE⁩)
+![Original Graphic](https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/49be3a10e92fe5470b78c0c8321bedd201e3d8ad/OrigViz.png?raw=TRUE⁩)
 
 ![initial try](docs/ReplicatePlot.PNG⁩)
 ![initial try](https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/352d0a75e228fed5cbfecfbc5887d6f2b7b614b7/docs/ReplicatePlot.png?raw=TRUE⁩)
@@ -218,4 +218,16 @@ Interesting the resulting labels have odd color choices, half of them are correc
 
 The data is all there and the dotplot wasn't too difficult. I need more clues on what kind of smoothing was applied to the lines. There are certain trends that are visable from my reproduction but it's not exact.
 
-I enjoyed learning about annotating. I knew there was the capibilities but never tried using it. I've got a bit of ways to go when it comes to really cleaning up the graphcis but I also got to learn about how to utilize dates in ggplot. This will be useful in helping some of my peers when they do persistance studies and can utlize their summarized experimental run data to plug into something.
+There are some additional quick aesthetic choices I think I could have made, but I wasn't prioritizing them as much as more of the overall look of the graphic. 
+
+I enjoyed learning about annotating and appreciate the direction my peers gave me to look into the annotation ability. I knew there was within R's capabilities but never tried using it as it seemed very complicated. I've got a bit of ways to go when it comes to really cleaning up the graphics but I also got to learn about how to utilize dates in ggplot. This will be useful in helping some of my peers when they do persistence studies and can utilize their summarized experimental run data to plug into something.
+
+### Final comparisons
+
+Below is the Original graphic I am trying to replicate.
+
+![Original Graphic](https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/49be3a10e92fe5470b78c0c8321bedd201e3d8ad/OrigViz.png?raw=TRUE)
+
+Below is the better revised attempt at replication.
+
+![Replication of graphic using ](https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/352d0a75e228fed5cbfecfbc5887d6f2b7b614b7/docs/P1.png?raw=TRUE)
