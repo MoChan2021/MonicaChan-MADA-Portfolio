@@ -5,5 +5,108 @@ output:
     toc: FALSE
 ---
 
-This will contain the future Tidy Tuesday exercise.
+
+#Loading tidyverse and other libraries 
+```{r echo=FALSE}
+library(tidyverse)
+library(broom)
+
+library(here) #try using this to find files easier
+```
+
+
+# 2021 tidytuesday Week 40 Data
+
+Get tidytuesday data. 
+```{r}
+installed.packages("tidytuesdayR")
+library(tidytuesdayR)
+# Get the Data
+
+# Read in with tidytuesdayR package 
+# Install from CRAN via: install.packages("tidytuesdayR")
+# This loads the readme and all the datasets for the week of interest
+
+# Either ISO-8601 date or year/week works!
+
+#tuesdata <- tidytuesdayR::tt_load('2021-09-28')
+#tuesdata <- tidytuesdayR::tt_load(2021, week = 40)
+
+#papers <- tuesdata$papers
+
+# Or read in the data manually
+
+papers <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/papers.csv')
+authors <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/authors.csv')
+programs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/programs.csv')
+paper_authors <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/paper_authors.csv')
+paper_programs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/paper_programs.csv')
+```
+Installing didn't work so I loaded the data in manually.
+
+
+```{r summaries}
+#viewing the data
+
+summary(authors)
+
+summary(paper_authors)
+
+summary(paper_programs)
+
+summary(papers)
+
+summary(programs)
+
+```
+Summaries show that there are 
+
+#Data wrangling
+
+##Merge all of the data together
+```{r}
+
+allthethings<-full_join(papers, paper_programs, by = "paper") %>%
+  full_join(paper_authors, by="paper") %>%
+  full_join(authors, by= "author")%>%
+  full_join(programs, by="program")%>%
+  drop_na() #remove NA data
+
+summary(allthethings)
+
+```
+
+##Shape up the data using dyplr.
+
+```{r}
+data<-allthethings%>%
+  select(year, month,program_category, program, program_desc)%>% #select for points of interests
+  drop_na()%>% #remove rows with NA
+  mutate(program_category=as.factor(program_category), program=as.factor(program), program_desc=as.factor(program_desc)) #turn characters into factors
+
+summary(data)
+```
+##Play with some graphics
+
+Papers published throughout the years
+```{r}
+CountedCats<-data%>%
+  group_by(year,program_category)%>%
+  count(program_category)
+  
+CountedCats%>%
+  filter(year!="2021")%>%
+  ggplot(aes(year,n))+
+  geom_path(aes(group="program_category"))+
+  labs(x="Year", y="Papers Published")
+
+
+```
+
+```{r}
+
+  
+  
+  
+```
 
