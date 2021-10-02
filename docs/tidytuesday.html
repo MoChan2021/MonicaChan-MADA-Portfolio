@@ -539,6 +539,33 @@ $(document).ready(function () {
 <span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="fu">aes</span>(<span class="at">group=</span><span class="st">&quot;program_category&quot;</span>))<span class="sc">+</span></span>
 <span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Year&quot;</span>, <span class="at">y=</span><span class="st">&quot;Papers Published&quot;</span>)</span></code></pre></div>
 <p><img src="tidytuesday_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
+<pre><code>## tibble [82,091 x 5] (S3: tbl_df/tbl/data.frame)
+##  $ year            : num [1:82091] 1975 1975 1976 1976 1976 ...
+##  $ month           : num [1:82091] 5 5 3 3 3 4 10 8 7 1 ...
+##  $ program_category: Factor w/ 3 levels &quot;Finance&quot;,&quot;Macro/International&quot;,..: 2 2 3 2 2 3 3 3 2 3 ...
+##  $ program         : Factor w/ 20 levels &quot;AG&quot;,&quot;AP&quot;,&quot;CF&quot;,..: 12 14 11 12 14 11 16 16 17 18 ...
+##  $ program_desc    : Factor w/ 20 levels &quot;Asset Pricing&quot;,..: 13 14 11 13 14 11 15 15 17 20 ...</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">!=</span><span class="st">&quot;2021&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, program_desc)<span class="sc">%&gt;%</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(program_category)<span class="sc">%&gt;%</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, n, <span class="at">fill=</span>program_category))<span class="sc">+</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;stack&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)<span class="sc">+</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1975</span>, <span class="dv">2020</span>, <span class="dv">25</span> ))<span class="sc">+</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>program_desc)<span class="sc">+</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Year&quot;</span>, <span class="at">y=</span><span class="st">&quot;Papers Published&quot;</span>, <span class="at">title=</span><span class="st">&quot;Published Papers Over the Years&quot;</span>)</span></code></pre></div>
+<p><img src="tidytuesday_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a> data<span class="sc">%&gt;%</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">!=</span><span class="st">&quot;2021&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, program_category)<span class="sc">%&gt;%</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(program_desc)<span class="sc">%&gt;%</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, n, <span class="at">fill=</span>program_desc))<span class="sc">+</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;stack&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)<span class="sc">+</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Year&quot;</span>, <span class="at">y=</span><span class="st">&quot;Papers Published&quot;</span>, <span class="at">title=</span><span class="st">&quot;Published Papers Over the Years&quot;</span>)<span class="sc">+</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1975</span>, <span class="dv">2020</span>, <span class="dv">10</span> ))<span class="sc">+</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>program_category)</span></code></pre></div>
+<p><img src="tidytuesday_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
 </div>
 
 

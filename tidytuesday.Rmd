@@ -105,8 +105,27 @@ CountedCats%>%
 
 ```{r}
 
-  
-  
+str(data)
+
+data%>%
+  filter(year!="2021")%>%
+  group_by(year, program_desc)%>%
+  count(program_category)%>%
+  ggplot(aes(year, n, fill=program_category))+
+  geom_bar(position = "stack", stat = "identity")+
+  scale_x_continuous(breaks = seq(1975, 2020, 25 ))+
+  facet_wrap(~program_desc)+
+  labs(x="Year", y="Papers Published", title="Published Papers Over the Years")
+
+ data%>%
+  filter(year!="2021")%>%
+  group_by(year, program_category)%>%
+  count(program_desc)%>%
+  ggplot(aes(year, n, fill=program_desc))+
+  geom_bar(position = "stack", stat = "identity")+
+  labs(x="Year", y="Papers Published", title="Published Papers Over the Years")+
+  scale_x_continuous(breaks = seq(1975, 2020, 10 ))+
+  facet_wrap(~program_category)
   
 ```
 
