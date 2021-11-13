@@ -4,31 +4,34 @@ output:
   html_document:
     toc: FALSE
 ---
+```{r include=FALSE}
+library(here)
+```
+
 
 Hi there, I'm Monica Chan. I'm a ~~_part-time_~~ 2^nd^ year PhD Environmental Health Science student in the College of Public Health.
 
 When I'm not ~~mentally exhausting myself~~ learning, I'm a research microbiologist at the CDC in Atlanta, GA.  
-![Your ~~weirdo~~ Agency Researchers](https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/main/docs/2021.08.23_Edit_CEMB.PNG?raw=true)
+
+![About Me](Photos/AboutMe.jpg)
 
 ### **Background & Training**
 I've been around for a bit trying a bit of this and that.  
 
 * **B.S.**: _Environmental Health_ (SMITH, BLACK, & NAHER)  
-Animal Modeling, Developmental Tox, Environmental (aquatic) Tox evaluations
+  - Animal Modeling, Developmental Tox, Environmental (aquatic) Tox evaluations
 * **Private Industry**: _Occupational Health and Safety Analyst_
 * **M.S.**: _Environmental Health_ (SMITH, LIPP, & LU)  
-Prevalence of _Cronobacter sakazakii_ in domestic environments in GA.  
+  - Prevalence of _Cronobacter sakazakii_ in domestic environments in GA.  
 Food science, Quality Control, Pregnancy Health, Developmental Tox.
 * **Fellowship**: _ORISE Fellow_   
-Built-environment (healthcare settings), composite sample approaches & swab-to-sequencer workflow development and validation.
-* **Ph.D.**: _Environmental Health_ (GLENN)  
-Environmental Sample enhancement techniques for integration into swab-to-sequencer methods (MinION sequencing)
+  - Built-environment (healthcare settings), composite sample approaches & swab-to-sequencer workflow development and validation.
+* **Ph.D.**: _Environmental Health_ (GLENN, LIPP, OTTESEN, & SANCHEZ)  
+  - Environmental Sample enhancement techniques for integration into swab-to-sequencer methods (MinION sequencing)
 * **Government Agency**: _Microbiologist_
-All of the previous and whatever the Agency's needs are. (COVID Response)
+  - All of the previous and whatever the Agency's needs are. (COVID Response)
+  - Specializing in recovery tool evaluation.
 
-```{r,  echo=FALSE, fig.align='center', out.width='25%'}
-knitr::include_graphics("docs/NENDOJoJo.PNG")
-```
 
 ### **Research Interests**
 
@@ -44,12 +47,7 @@ The FANR class about Experimental Design has probably lasted the most with me. S
 My recent work history has had me playing with ggplot so I can make figures.  
 In the before COVID times I attended several GATech's ABiL training and learned Linux and Python. Now due to COVID and pivot of work I have had zero practice and can't remember a darn thing about them.  
 
-I maybe a bit of a data enthusiast-- I guess something fun I've started playing with is pivot charts in excel and applying them to my random logs I keep. Here's one of them:
-
-```{r,  echo=FALSE, fig.align='center'}
-knitr::include_graphics("docs/2021.08.23_VGDB.Pivot.Line.png")
-```
-![Take away, there was one point in my life I played WAAAAAAY too many games](https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/main/docs/2021.08.23_VGDB.Pivot.Line.PNG?raw=true)
+I maybe a bit of a data enthusiast-- I guess something fun I've started playing with is pivot charts in excel and applying them to my random logs I keep.
 
 ### **Goals for the Course**
 
@@ -62,8 +60,7 @@ knitr::include_graphics("docs/2021.08.23_VGDB.Pivot.Line.png")
 
 I owe a lot to this weird cellulose sponge-on-a-stick sampling device (aptly named, 3M SpongeStick). This tool has been a mainstay of nearly 1/3^rd^ of my life. Though I don't use the cellulose kind, I'm currently seeking macrofoam sticks as replacements to put into a molecular workflow. Alas, I will always hold a soft-spot for this tool, so effective at its job! 
 
-**BONUS FACT** (not work related)  
-When I was an undergrad I had a choice to be an CPH or CASE graduate.
+![Sponge Stick Me](Photos/SpongeMe.jpg)
 
 ### **Link OUT: Predatory Journals**
 
@@ -74,13 +71,3 @@ I present to you all a fascinating paper:
 If you don't know what this paper is about it was "published" in the _Scientific Journal of Research and Reviews_ last year. If you read it, you can see that it is rather unusual.  
 If you haven't had experience yet, this journal is an example of a Predatory journal. These "journals" are a common scam in academic fields. Typically they work by soliciting manuscript submissions, charge authors with a fee, and "publish" skipping the typical quality checks and rigor of peer review. 
 Alas, the publisher has redirected the direct link of the paper to the [publisher's site](http://irispublishers.com/sjrr/pdf/SJRR.MS.ID.000540.pdf) once the message got out.
-
-TLDR?  
-This was published somewhere:  
-![birbs](https://github.com/MoChan2021/MonicaChan-MADA-portfolio/blob/main/docs/2021.08.23_Birbs.PNG?raw=true)
-```{r,  echo=FALSE, fig.align='center'}
-knitr::include_graphics("docs/2021.08.23_Birbs.PNG")
-```
-If this is the quality of work that's coming from that publisher, you want to make sure you don't cite them or publish there.
-
-
