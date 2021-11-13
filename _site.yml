@@ -17,6 +17,8 @@ navbar:
           href: ./rcoding.html
         - text: "Visualization"
           href: ./visualization.html
+        - text: "Analysis Exercise"
+          href: ./AnalysisScriptMod9.html
         - text: "Tidy Tuesday"
           href: ./tidytuesday.html
         - text: "Tidy Tuesday 2"
