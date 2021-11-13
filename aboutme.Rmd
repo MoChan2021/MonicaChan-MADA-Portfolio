@@ -13,7 +13,7 @@ Hi there, I'm Monica Chan. I'm a ~~_part-time_~~ 2^nd^ year PhD Environmental He
 
 When I'm not ~~mentally exhausting myself~~ learning, I'm a research microbiologist at the CDC in Atlanta, GA.  
 
-![About Me](Photos/AboutMe.jpg)
+![About Me](./Photos/AboutMe.jpg)
 
 ### **Background & Training**
 I've been around for a bit trying a bit of this and that.  
@@ -60,7 +60,7 @@ I maybe a bit of a data enthusiast-- I guess something fun I've started playing 
 
 I owe a lot to this weird cellulose sponge-on-a-stick sampling device (aptly named, 3M SpongeStick). This tool has been a mainstay of nearly 1/3^rd^ of my life. Though I don't use the cellulose kind, I'm currently seeking macrofoam sticks as replacements to put into a molecular workflow. Alas, I will always hold a soft-spot for this tool, so effective at its job! 
 
-![Sponge Stick Me](Photos/SpongeMe.jpg)
+![Sponge Stick Me](./Photos/SpongeMe.jpg)
 
 ### **Link OUT: Predatory Journals**
 

@@ -12,7 +12,7 @@ data from dslabs package and gapminder
 ```{r}
 library(dslabs)
 #library(gapminder)
-
+library(tidyverse)
 #summary(data(gapminder))
 ### above is what caused my weird data
 

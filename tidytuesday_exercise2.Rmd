@@ -1,0 +1,36 @@
+---
+title: "Tidy Tuesday Exercise 2"
+output: 
+  html_document:
+    toc: FALSE
+---
+
+# **TO BE FILLED** - 2021.11.12 MYC
+
+
+
+```{r eval=FALSE, include=FALSE}
+library(tidyverse)
+library(broom)
+
+library(here) #try using this to find files easier
+
+
+## Loading tidyverse and other libraries 
+installed.packages("tidytuesdayR")
+library(tidytuesdayR)
+# Get the Data
+
+# Read in with tidytuesdayR package 
+# Install from CRAN via: install.packages("tidytuesdayR")
+# This loads the readme and all the datasets for the week of interest
+
+# Either ISO-8601 date or year/week works!
+
+#tuesdata <- tidytuesdayR::tt_load('2021-09-28')
+#tuesdata <- tidytuesdayR::tt_load(2021, week = 40)
+
+#papers <- tuesdata$papers
+
+# Or read in the data manually
+```
