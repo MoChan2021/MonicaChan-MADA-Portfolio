@@ -4,33 +4,64 @@ output:
   html_document:
     toc: FALSE
 ---
-
-# **TO BE FILLED** - 2021.11.12 MYC
-
-
-
-```{r eval=FALSE, include=FALSE}
-library(tidyverse)
-library(broom)
-
-library(here) #try using this to find files easier
-
-
-## Loading tidyverse and other libraries 
-installed.packages("tidytuesdayR")
-library(tidytuesdayR)
-# Get the Data
-
-# Read in with tidytuesdayR package 
-# Install from CRAN via: install.packages("tidytuesdayR")
-# This loads the readme and all the datasets for the week of interest
-
-# Either ISO-8601 date or year/week works!
-
-#tuesdata <- tidytuesdayR::tt_load('2021-09-28')
-#tuesdata <- tidytuesdayR::tt_load(2021, week = 40)
-
-#papers <- tuesdata$papers
-
-# Or read in the data manually
+```{r Setup, message=FALSE, warning=FALSE}
+library(tidyverse)  # data wrangling suite
+library(tidymodels) # modeling suite (possibly use)
+library(broom)      # Clean up outputs
+library(skimr)      # Data Summary statistics
+library(janitor)    # Cleaning names to make human friendly
+library(here)       # try using this to find files easier
 ```
+
+# Marble Racing
+```{r }
+# Get the data
+marbles <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-06-02/marbles.csv')
+```
+## Data Summary
+```{r View Data}
+skim(marbles)
+```
+```{r Original Data overview}
+summary(marbles) # summary data
+
+# Look at the unique aspects of some variables
+unique(marbles$site) 
+unique(marbles$team_name)
+unique(marbles$marble_name)  
+unique(marbles$pole)  
+unique(marbles$notes)  
+```
+Summary of unique entries is we have 8 sites, 16 teams, and 32 marbles.
+
+Viewed 8 unique notes. Considering removing all filled entries as they have cases that may have affected the race instead of just being marble, and site. Also include possible collisions and I want to eliminate the   
+
+Pole signals the position/competitive situation of an entry, goes from 1-16 with some NAs. Will want to clean up separately for a different analysis potentially.
+
+## General Cleaning
+make some of the character 
+```{r Variable Adjustment}
+marbles%>%
+  filter(notes=="NA")%>%
+  mutate(marble_name=as.factor(marble_name), 
+         team_name=as.factor(team_name), 
+         site=as.factor(site),
+         TotalTrackDistance=((track_length_m)*(number_laps))
+         ) %>%
+  filter(notes=="NA")%>%
+  summary()
+  
+
+
+```
+
+
+After looking at the data and key, notice that there is a notes variable. 
+Operating on the assumption of no issues will likely remove any 
+
+```{r Cleaning Script}
+
+```
+
+
+

@@ -21,6 +21,8 @@ navbar:
           href: ./AnalysisScriptMod9.html
         - text: "Tidy Tuesday"
           href: ./tidytuesday.html
+        - text: "Analysis Exercise"
+          href: ./AnalysisScriptMod9.html
         - text: "Tidy Tuesday 2"
           href: ./tidytuesday_exercise2.html
   right:
