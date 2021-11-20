@@ -17,7 +17,7 @@ library(tidyverse)
 ### above is what caused my weird data
 
 #look at help files for gapminder
-help(gapminder)
+#help(gapminder)
 #overview of data structure
 str(gapminder)
 #summary of data

@@ -10,6 +10,7 @@ library(tidymodels) # modeling suite (possibly use)
 library(broom)      # Clean up outputs
 library(skimr)      # Data Summary statistics
 library(janitor)    # Cleaning names to make human friendly
+library(lubridate)
 library(here)       # try using this to find files easier
 ```
 
@@ -39,26 +40,120 @@ Viewed 8 unique notes. Considering removing all filled entries as they have case
 Pole signals the position/competitive situation of an entry, goes from 1-16 with some NAs. Will want to clean up separately for a different analysis potentially.
 
 ## General Cleaning
-make some of the character 
+Make some of the character data types into factors. 
 ```{r Variable Adjustment}
-marbles%>%
-  filter(notes=="NA")%>%
-  mutate(marble_name=as.factor(marble_name), 
-         team_name=as.factor(team_name), 
-         site=as.factor(site),
-         TotalTrackDistance=((track_length_m)*(number_laps))
-         ) %>%
-  filter(notes=="NA")%>%
-  summary()
+marbles2<- marbles%>%
+  mutate(
+    # use lubridate to change dmy date to ymd date for ease of explorations
+    date=as_date(dmy(date)),
+    # chance into factors
+    marble_name=as.factor(marble_name),
+    team_name=as.factor(team_name),
+    site=as.factor(site),
+    # make new variable of total track distance traveled in race
+    TotalTrackDistance=((track_length_m)*(number_laps)),
+    # make new variable of Speed in m per s for total race
+    Speed=((TotalTrackDistance)/(time_s))
+    ) %>%
+  # Filter out the notes sections with thing in col.
+  filter(is.na(notes))%>%
+  select(date, site, source, marble_name,team_name, time_s, pole, points, track_length_m,number_laps,avg_time_lap,TotalTrackDistance,Speed)
   
-
+marbles2%>%
+  summary()
 
 ```
+### Summary of the racing sites
+```{r}
+marbles2%>%
+  group_by(site, TotalTrackDistance, track_length_m, number_laps)%>%
+  arrange(TotalTrackDistance)%>%
+  summarize()
 
-
+```
 After looking at the data and key, notice that there is a notes variable. 
 Operating on the assumption of no issues will likely remove any 
 
+See that there are repeat info on the site of race and the speed of a single lap versus multiple laps. Will need to focus on either 1 lap or the full race. filter out the single runs
+
+### Look at the marble speeds by the racing sites
+```{r}
+# speed is calculated by the total distance of a race (laps* track length)
+marbles2%>%
+  filter(number_laps!="1")%>% #remove the single laps
+  ggplot(aes(x=site, y=Speed))+
+  geom_boxplot(aes())+
+  geom_jitter(aes(color=team_name))+
+  labs(title = "Average speed of marbles by site",
+       y="Speed (m/s)",
+       x= "Racing Tracks")
+```
+### Points earned by marble
+```{r}
+speedpoints<-marbles2%>%
+  filter(points!="NA")%>%
+# see the team and top marble stats
+  group_by(team_name, marble_name)%>%
+  summarise(
+    n=n(),
+    "Points"=mean(points),
+    "Points SD"=sd(points),
+    "m/s"=mean(Speed),
+    "m/s SD"=sd(Speed)
+  )%>%
+  arrange(desc(Points, Speed))%>%
+#clarify in naming
+    rename("Team Name"=team_name,
+         "Marble Name"= marble_name,
+         "Points Earned"= Points)
+print(speedpoints)
+```
+Top point getters are from Savage Speeders.
+
+Let's graphically see this:
+
+### Plotting the Marble points earned by team w/ insights into  contributing marbles
+```{r}
+speedpoints%>%
+  # reorder the teams by total points earned
+  ggplot(aes(`Points Earned`,y=reorder(`Team Name`,`Points Earned`)))+
+  #add the marble names to show what type of contribution they had per total points earned in the season
+  geom_col(aes(fill=`Marble Name`))+
+  # need to rename the legend
+  guides(fill=guide_legend(title="Marbles"))+
+  labs(title= "Marbula Marble Average Points Earned per site season",
+       x= "Points Earned",
+       y= "Team",
+       caption = " *Two Marbles earned 0 points (Vespa of the Hornets & Mary of Team Primary)."
+       )
+```
+
+Still curious about the sites, let's see how many points we are earning per race site
+```{r}
+marbles2%>%
+  filter(number_laps!="1")%>% #remove the single laps
+  # reorder the teams by total points earned
+  ggplot(aes(points,y=reorder(team_name,points)))+
+  #add the marble names to show what type of contribution they had per total points earned in the season
+  geom_col(aes(fill=marble_name))+
+  # Separate each site to see the individual points for each site
+  facet_wrap(.~site)+
+  labs(title= "Marbula Marble points earned at each race site",
+       x= "Points Earned",
+       y= NULL,
+       caption = " *Two Marbles earned 0 points (Vespa of the Hornets & Mary of Team Primary)."
+       )+
+  # need to rename the legend
+  guides(fill=guide_legend(title="Marbles"))+
+  # Try to adjust the crowded Y axis with teams
+  theme(axis.text.y=element_text(angle=0,size = rel(0.5), 
+                                 margin = margin(-0.5, unit = "cm"),
+                                 vjust =0))
+```
+
+## Additional analysis
+
+### TBD
 ```{r Cleaning Script}
 
 ```
