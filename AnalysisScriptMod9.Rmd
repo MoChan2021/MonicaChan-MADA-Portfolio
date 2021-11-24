@@ -8,6 +8,7 @@ output:
 ---
 
 Loading all the default settings and preliminary programs.
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse) #for data processing and all dplyr related programs
@@ -16,12 +17,16 @@ library(tidymodels)      # for the recipes package, along with the rest of tidym
 library(skimr)           # for variable summaries
 
 ```
+
 Path to Processed Data and loading of cleaned data
+
 ```{r}
 data_location <- here::here("data","processed_data","processeddata.rds")
 data<- readRDS(data_location)
 ```
-__Reminder__: Outcome of interest is __Body Temp__; Categorical outcome is __Nausea__; Predictor= __RunnyNose__
+
+**Reminder**: Outcome of interest is **Body Temp**; Categorical outcome is **Nausea**; Predictor= **RunnyNose**
+
 ```{r}
 Mod9Analysis<-
   data
@@ -29,27 +34,32 @@ glimpse(Mod9Analysis)
 summary(Mod9Analysis)
 
 ```
+
 View proportions of the samples with Nausea
+
 ```{r}
 #making a summary table of proportions
 Mod9Analysis%>%
   count(Nausea)%>%
   mutate(Proportions = n/sum(n)) #sample/sum of sample
 ```
-~34% of samples had a Nausea from this selection of data. The remaining 66% did not expereince Nausea. 
-Most people had normal temperatures in this selection.
+
+\~34% of samples had a Nausea from this selection of data. The remaining 66% did not expereince Nausea. Most people had normal temperatures in this selection.
 
 ```{r}
 Mod9Analysis%>%
   skimr::skim(Nausea, RunnyNose)
 ```
+
 ### Data splitting
+
 Need to split into
 
-1. training set
-2. testing set
+1.  training set
+2.  testing set
 
 Adapting from the tidymodels example using rsample package to create an object that contains info on how to split and 2 more rsample funtions to create the data frames for training and testing
+
 ```{r}
 # Fix the random numbers by setting the seed 
 # This enables the analysis to be reproducible when random numbers are used 
@@ -62,17 +72,23 @@ train_data <- training(data_split)
 test_data  <- testing(data_split)
 
 ```
-##############
+
+############## 
+
 # Data has been split
-##############
-## Create recipies and roles
-__roles are optional in this exercise__
+
+############## 
+
+## Create recipes and roles
+
+**roles are optional in this exercise**
 
 ### Simple Logistic regression model
 
 Use a recipe to create new predictors and conduct pre-processing required by model
 
 #### Initiate a new recipe for Nausea
+
 ```{r}
 Mod9_rec<-
   recipe(Nausea~., data = train_data)%>%
@@ -88,6 +104,7 @@ summary(Mod9_rec) #view variables and their roles
 ```
 
 #### Fit a model with a recipe
+
 ```{r}
 #Use logistic regression to model data.
 #Build model specification using parsnip
@@ -98,11 +115,12 @@ lr_mod<-
 
 Want to use recipe over several steps as training and testing the model.
 
-1. Process the recipe using training set.
-2. Apply recipe to training set.
-3. Apply recipe to the test set.
+1.  Process the recipe using training set.
+2.  Apply recipe to training set.
+3.  Apply recipe to the test set.
 
 To do so use the workflow package from tidymodels
+
 ```{r}
 Mod9_wflow<-
   workflow()%>%
@@ -115,6 +133,7 @@ Mod9_wflow
 #### Creating a fit object
 
 Prepare recipe and train model from resulting predictors
+
 ```{r}
 Mod9_fit<-
   Mod9_wflow%>%
@@ -122,11 +141,13 @@ Mod9_fit<-
 ```
 
 Extracting the model or recipe from workflow. Pull fitted model object and see the model coefficients
+
 ```{r}
 Mod9_fit%>%
   extract_fit_parsnip()%>%
   tidy()
 ```
+
 Fitted object completed, apply the object to test data!
 
 ## Use a trained workflow to predict unseen test data
@@ -135,9 +156,10 @@ Fitted object completed, apply the object to test data!
 predict(Mod9_fit, test_data)
 ```
 
-__Alternatively__
+**Alternatively**
 
-Making augments can 
+Making augments can
+
 ```{r}
 Mod9_aug<-
   augment(Mod9_fit, test_data)
@@ -153,21 +175,22 @@ Mod9_aug%>%
 ```
 
 #### Estimate area under the curve
-In general, ROC-AUC =0.5 means the model is no good.
-The results here are opposite of what is typically expected in the graphics and the ROC_AUC is at 0.37. The value is way under the threshold of 0.7 (considered maybe useful) and 0.5 (no good) so it appears that none of the selected symptoms were a great fit model for predicting Nausea. 
+
+In general, ROC-AUC =0.5 means the model is no good. The results here are opposite of what is typically expected in the graphics and the ROC_AUC is at 0.37. The value is way under the threshold of 0.7 (considered maybe useful) and 0.5 (no good) so it appears that none of the selected symptoms were a great fit model for predicting Nausea.
+
 ```{r}
 Mod9_aug%>%
   roc_auc(truth=Nausea, .pred_Yes)
 ```
 
-
 ## Another predictor model (RunnyNose)
 
-Re-do the fitting but with a model that only fits the main predictor to the categorical outcome: _RunnyNose_.
+Re-do the fitting but with a model that only fits the main predictor to the categorical outcome: *RunnyNose*.
 
 Continue to use the same code as above, but with alternative outcome.
 
 #### A new recipe for the sole outcome and predictor
+
 ```{r}
 ALTMod9_rec<-
   recipe(Nausea~RunnyNose, data = train_data)%>%
@@ -181,11 +204,12 @@ ALTMod9_rec<-
 
 summary(ALTMod9_rec)
 ```
+
 #### Re-Fit a model with NEW recipe and workflow
 
-1. Process the recipe using training set.
-2. Apply recipe to training set.
-3. Apply recipe to the test set.
+1.  Process the recipe using training set.
+2.  Apply recipe to training set.
+3.  Apply recipe to the test set.
 
 ```{r}
 ALTMod9_wflow<-
@@ -195,7 +219,9 @@ ALTMod9_wflow<-
 
 ALTMod9_wflow
 ```
+
 #### Prepare recipe and train model from resulting predictors
+
 ```{r}
 ALTMod9_fit<-
   ALTMod9_wflow%>%
@@ -203,27 +229,33 @@ ALTMod9_fit<-
 ```
 
 Extracting the model or recipe from workflow. Pull fitted model object and see the model coefficients
+
 ```{r}
 ALTMod9_fit%>%
   extract_fit_parsnip()%>%
   tidy()
 ```
+
 ## Use a trained workflow to predict unseen test data
 
 If runny noses predict in nausea
 
 Predict returns predicted class Yes or No
+
 ```{r}
 predict(ALTMod9_fit, test_data)
 ```
+
 Using augment with the model plus test data to save prediction
+
 ```{r}
 ALTMod9_aug<-
   augment(ALTMod9_fit, test_data)
 ALTMod9_aug
 ```
-Generate and ROC curve.
-Uses the probability of Nausea being present with a Runny nose
+
+Generate and ROC curve. Uses the probability of Nausea being present with a Runny nose
+
 ```{r}
 ALTMod9_aug%>%
   roc_curve(truth=Nausea, .pred_Yes)%>%
@@ -234,13 +266,15 @@ ALTMod9_aug%>%
 ALTMod9_aug%>%
   roc_auc(truth=Nausea, .pred_Yes)
 ```
+
 Curve produced here and ROC_AUC results show it is not a great predictor, the value is more than 0.5, but so close it probably isn't a great model to use, thus not a good fit.
 
-###############################################################
+############################################################### 
 
 Please see lines 19 and 27 for the start of code chunks with relevant initial data -MYC
 
-###############################################################
+############################################################### 
+
 # Module 9 part 2 Contributor: Dawson Dobash
 
 ## Body Temperature vs. all predictors
@@ -264,10 +298,10 @@ bodytemp_fit <- bodytemp_wrkflow %>% fit(data = train_data)
 bodytemp_fit %>% extract_fit_parsnip() %>% tidy()
 ```
 
-
-We can see by the tidy table that there are definitely some significant factors within the full prediction list. 
+We can see by the tidy table that there are definitely some significant factors within the full prediction list.
 
 Next we will create our augments for both the test and training data. These augments will be used to find out what the RMSE is.
+
 ```{r Augment and RMSE for full model}
 #Making an augment for both train and test data
 bodytemp_aug_test = augment(bodytemp_fit, test_data)
@@ -311,7 +345,7 @@ bodytemp_aug_test2 %>% rmse(BodyTemp, .pred)
 bodytemp_aug_train2 %>% rmse(BodyTemp, .pred)
 ```
 
-After creating the augments for each train and testing data sets for the model of runny nose only being the predictor, we get a RMSE of 1.13 (Test data) and 1.21 (Train data). By comparing these values to the full models, the RMSE are around the same value. It is hard to say which is better. If we only look at the test data, they are fairly the same but there is a higher RMSE for the train data with only runny nose as the predictor. However I would say overall, the complete model is probably better because the RMSE's for the training and test are similar and on average lower than the simple model. 
+After creating the augments for each train and testing data sets for the model of runny nose only being the predictor, we get a RMSE of 1.13 (Test data) and 1.21 (Train data). By comparing these values to the full models, the RMSE are around the same value. It is hard to say which is better. If we only look at the test data, they are fairly the same but there is a higher RMSE for the train data with only runny nose as the predictor. However I would say overall, the complete model is probably better because the RMSE's for the training and test are similar and on average lower than the simple model.
 
 # Module 11 Contributor: Monica Chan
 
