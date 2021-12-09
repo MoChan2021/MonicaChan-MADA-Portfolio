@@ -3,7 +3,7 @@ output_dir: 'docs'
 output:
   html_document:
     theme: cosmo
-    highlight: zenburn
+    highlight: tango
     toc: false
 navbar:
   type: inverse
@@ -13,22 +13,21 @@ navbar:
       href: ./aboutme.html
     - text: "Projects"
       menu:
+        - text: Basics
         - text: "R Coding"
           href: ./rcoding.html
         - text: "Visualization"
           href: ./visualization.html
+        - text: '---------'
+        - text: TidyTuesday
         - text: "Tidy Tuesday"
           href: ./tidytuesday.html
-        - text: "Analysis Exercise"
-          href: ./AnalysisScriptMod9.html
         - text: "Tidy Tuesday 2"
           href: ./tidytuesday_exercise2.html
-    - text: "Tidy Tuesday"
-      menu:
-        - text: "Tidy Tuesday"
-          href: ./tidytuesday.html
-        - text: "Tidy Tuesday 2"
-          href: ./tidytuesday_exercise2.html          
+        - text: '---------'
+        - text: Example Project
+        - text: "Invluenza Analysis Project"
+          href: ./AnalysisScriptMod9.html         
   right:
     - icon: fa-github fa-lg
       href: https://github.com/MoChan2021/MonicaChan-MADA-portfolio
