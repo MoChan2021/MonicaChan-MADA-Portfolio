@@ -25,9 +25,31 @@ navbar:
         - text: "Tidy Tuesday 2"
           href: ./tidytuesday_exercise2.html
         - text: '---------'
-        - text: Example Project
-        - text: "Invluenza Analysis Project"
-          href: ./AnalysisScriptMod9.html         
+        - text: Machine Learning Models
+        - text: "Influenza Analysis"
+          menu:
+          - text: "Introduction"
+          - href: ./Flu00.html         
+          - text: "Data & Exploration"
+          - href: ./Flu01.html 
+          - text: "TidyModels Analysis I"
+          - href: ./Flu02.html 
+          - text: "TidyModels Analysis II (Mod9)"
+          - href: ./Flu03.html 
+          - text: "Machine Learning Results (Mod11)"
+          - href: ./Flu04.html 
+    - text: "Additional Assessments"
+      menu:
+        - text: Invluenza Analysis Project
+        - text: '---------'
+        - text: "Assessment 11 - Machine Learning Models 1"
+          href: ./AnalysisScriptMod9.html
+        - text: "Assessment 12 - Machine Learning Models 2"
+          href: ./AnalysisScriptMod9.html
+        - text: '---------'
+        - text: "Assessment 13 - Tidy Tuesday 2 (Quick Link)"
+          href: ./tidytuesday_exercise2.html
+
   right:
     - icon: fa-github fa-lg
       href: https://github.com/MoChan2021/MonicaChan-MADA-portfolio

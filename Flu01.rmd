@@ -1,0 +1,54 @@
+---
+title: "Data & Exploration"
+output: 
+  html_document:
+    toc: FALSE
+---
+# 
+
+<br>
+
+# Data Wrangling
+
+```{r}
+
+```
+
+
+## Loading Raw Data
+
+```{r}
+
+```
+
+
+## Processing Data
+
+```{r}
+
+```
+
+
+## Saving Data
+
+```{r}
+
+```
+
+
+<br>
+# Data Exploration
+
+## Data Overview
+
+```{r}
+
+
+```
+
+
+## Interests
+
+### Body Temperature (Continuous Outcome)
+
+### Nausea (Categorical Outcome)

@@ -1,0 +1,40 @@
+---
+title: "Overview & Intro"
+output: 
+  html_document:
+    toc: FALSE
+---
+
+# Machine Learning Models Assessment
+
+# **Influenza Analysis**
+<br>
+
+## Introduction:
+
+This is a multi-week exercise and assessment in implementing Machine Learning techniques with the TidyModels suite.
+
+MADA Assessments contained in this sub-menu:
+
+* Module 08 - **Fitting Basic Statistical Models**
+  * Data wrangling
+  * Practice model fitting  using `TidyModels` 
+* Module 09 - **Evaluating Model Fits**
+  * Evaluating Model Fits
+  * Collaborative coding
+* Module 11 - **Machine Learning Models I**
+  * Implementing some machine learning models
+    1. Decision Tree
+    2. LASSO
+    3. Random Forest
+* Module 12 - **Machine Learning Models II**
+  * Portfolio Presentation of full data analysis
+* Module 13 - **Complete Workflow**
+
+<br>
+
+## Data Source & Background:
+
+Raw data for this assessment can be found here:
+
+* McKay, Brian et al. (2020), _Virulence-mediated infectiousness and activity trade-offs and their impact on transmission potential of patients infected with influenza_, Dryad, Dataset, https://doi.org/10.5061/dryad.51c59zw4v.

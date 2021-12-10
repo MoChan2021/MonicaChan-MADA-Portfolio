@@ -1,0 +1,42 @@
+---
+title: "Machine Learning Results (Mod11)"
+output: 
+  html_document:
+    toc: FALSE
+---
+
+---
+title: "Analysis Script Module 9"
+author: "MYC"
+date: "10/20/2021"
+output: 
+  html_document:
+    toc: FALSE
+---
+
+Loading all the default settings and preliminary programs.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse) #for data processing and all dplyr related programs
+library(here) #to set paths
+library(tidymodels)      # for the recipes package, along with the rest of tidymodels
+library(skimr)           # for variable summaries
+
+```
+
+Path to Processed Data and loading of cleaned data
+
+```{r}
+data_location <- here::here("data","processed_data","processeddata.rds")
+data<- readRDS(data_location)
+```
+
+**Reminder**: Outcome of interest is **Body Temp**; Categorical outcome is **Nausea**; Predictor= **RunnyNose**
+
+
+# Module 11 Contributor: Monica Chan
+
+## Body Temperature vs. all predictors
+
+Below I am creating the new full model recipe for body temperature, making a path to the linear modeling, and combining them into a workflow to create a fitted object.

@@ -766,7 +766,7 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>Mod9_aug<span class="sc">%&gt;%</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">roc_curve</span>(<span class="at">truth=</span>Nausea, .pred_Yes)<span class="sc">%&gt;%</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autoplot</span>()</span></code></pre></div>
-<p><img src="AnalysisScriptMod9_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="Flu03_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <div id="estimate-area-under-the-curve" class="section level4">
 <h4>Estimate area under the curve</h4>
 <p>In general, ROC-AUC =0.5 means the model is no good. The results here are opposite of what is typically expected in the graphics and the ROC_AUC is at 0.37. The value is way under the threshold of 0.7 (considered maybe useful) and 0.5 (no good) so it appears that none of the selected symptoms were a great fit model for predicting Nausea.</p>
@@ -892,7 +892,7 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>ALTMod9_aug<span class="sc">%&gt;%</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">roc_curve</span>(<span class="at">truth=</span>Nausea, .pred_Yes)<span class="sc">%&gt;%</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autoplot</span>()</span></code></pre></div>
-<p><img src="AnalysisScriptMod9_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="Flu03_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>ALTMod9_aug<span class="sc">%&gt;%</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">roc_auc</span>(<span class="at">truth=</span>Nausea, .pred_Yes)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 3
@@ -1000,13 +1000,6 @@ $(document).ready(function () {
 ##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
 ## 1 rmse    standard        1.21</code></pre>
 <p>After creating the augments for each train and testing data sets for the model of runny nose only being the predictor, we get a RMSE of 1.13 (Test data) and 1.21 (Train data). By comparing these values to the full models, the RMSE are around the same value. It is hard to say which is better. If we only look at the test data, they are fairly the same but there is a higher RMSE for the train data with only runny nose as the predictor. However I would say overall, the complete model is probably better because the RMSE’s for the training and test are similar and on average lower than the simple model.</p>
-</div>
-</div>
-<div id="module-11-contributor-monica-chan" class="section level1">
-<h1>Module 11 Contributor: Monica Chan</h1>
-<div id="body-temperature-vs.-all-predictors-1" class="section level2">
-<h2>Body Temperature vs. all predictors</h2>
-<p>Below I am creating the new full model recipe for body temperature, making a path to the linear modeling, and combining them into a workflow to create a fitted object.</p>
 </div>
 </div>
 

@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="MYC" />
 
+<meta name="date" content="2021-10-20" />
 
-<title>About me</title>
+<title>Analysis Script Module 9</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -43,6 +45,100 @@
     </style>
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -323,88 +419,24 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">About me</h1>
+<h1 class="title toc-ignore">Analysis Script Module 9</h1>
+<h4 class="author">MYC</h4>
+<h4 class="date">10/20/2021</h4>
 
 </div>
 
 
-<p>Hi there, I’m Monica Chan. I’m a <del><em>part-time</em></del> 2<sup>nd</sup> year PhD Environmental Health Science student in the College of Public Health.</p>
-<p>When I’m not <del>mentally exhausting myself</del> learning, I’m a research microbiologist at the CDC in Atlanta, GA.</p>
-<div class="figure">
-<img src="Photos/AboutMe.jpg" alt="" />
-<p class="caption">About Me</p>
+<p>Loading all the default settings and preliminary programs.</p>
+<p>Path to Processed Data and loading of cleaned data</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data_location <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;processed_data&quot;</span>,<span class="st">&quot;processeddata.rds&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span> <span class="fu">readRDS</span>(data_location)</span></code></pre></div>
+<p><strong>Reminder</strong>: Outcome of interest is <strong>Body Temp</strong>; Categorical outcome is <strong>Nausea</strong>; Predictor= <strong>RunnyNose</strong></p>
+<div id="module-11-contributor-monica-chan" class="section level1">
+<h1>Module 11 Contributor: Monica Chan</h1>
+<div id="body-temperature-vs.-all-predictors" class="section level2">
+<h2>Body Temperature vs. all predictors</h2>
+<p>Below I am creating the new full model recipe for body temperature, making a path to the linear modeling, and combining them into a workflow to create a fitted object.</p>
 </div>
-<div id="background-training" class="section level3">
-<h3><strong>Background &amp; Training</strong></h3>
-<p>I’ve been around for a bit trying a bit of this and that.</p>
-<ul>
-<li><strong>B.S.</strong>: <em>Environmental Health</em> (SMITH, BLACK, &amp; NAHER)
-<ul>
-<li>Animal Modeling, Developmental Tox, Environmental (aquatic) Tox evaluations</li>
-</ul></li>
-<li><strong>Private Industry</strong>: <em>Occupational Health and Safety Analyst</em></li>
-<li><strong>M.S.</strong>: <em>Environmental Health</em> (SMITH, LIPP, &amp; LU)
-<ul>
-<li>Prevalence of <em>Cronobacter sakazakii</em> in domestic environments in GA.<br />
-Food science, Quality Control, Pregnancy Health, Developmental Tox.</li>
-</ul></li>
-<li><strong>Fellowship</strong>: <em>ORISE Fellow</em>
-<ul>
-<li>Built-environment (healthcare settings), composite sample approaches &amp; swab-to-sequencer workflow development and validation.</li>
-</ul></li>
-<li><strong>Ph.D.</strong>: <em>Environmental Health</em> (GLENN, LIPP, OTTESEN, &amp; SANCHEZ)
-<ul>
-<li>Environmental Sample enhancement techniques for integration into swab-to-sequencer methods (MinION sequencing)</li>
-</ul></li>
-<li><strong>Government Agency</strong>: <em>Microbiologist</em>
-<ul>
-<li>All of the previous and whatever the Agency’s needs are. (COVID Response)</li>
-<li>Specializing in recovery tool evaluation.</li>
-</ul></li>
-</ul>
-</div>
-<div id="research-interests" class="section level3">
-<h3><strong>Research Interests</strong></h3>
-<ul>
-<li>Improving environmental sampling methods</li>
-<li>Developing a work process for field sampling directly going into molecular workflows, including sequencing and identification</li>
-<li>Developing approaches to enhance low-quality samples</li>
-<li>Equating recovered gnomic copies to CFU.</li>
-</ul>
-</div>
-<div id="statistics-programming-data-analysis-exp" class="section level3">
-<h3><strong>Statistics, Programming, Data Analysis Exp</strong></h3>
-<p>I have the basics that come with my academic history–STAT, BIOS, &amp; EPID.<br />
-The FANR class about Experimental Design has probably lasted the most with me. So I am familiar with the basics of R.<br />
-My recent work history has had me playing with ggplot so I can make figures.<br />
-In the before COVID times I attended several GATech’s ABiL training and learned Linux and Python. Now due to COVID and pivot of work I have had zero practice and can’t remember a darn thing about them.</p>
-<p>I maybe a bit of a data enthusiast– I guess something fun I’ve started playing with is pivot charts in excel and applying them to my random logs I keep.</p>
-</div>
-<div id="goals-for-the-course" class="section level3">
-<h3><strong>Goals for the Course</strong></h3>
-<ol style="list-style-type: decimal">
-<li>How to use modern coding and analysis tools to obtain, organize and process data for detailed analysis.</li>
-<li>Further develop skills to critically assess data and data analyses. (For self and others)</li>
-<li>Utilize the developed skills and update/upgrade how microbiologists can present their data.</li>
-</ol>
-<ul>
-<li><strong>BONUS:</strong> Code a little more elegantly and force myself to get in some quality practice with programming and data analysis</li>
-</ul>
-</div>
-<div id="fun-fact" class="section level3">
-<h3><strong>Fun Fact</strong></h3>
-<p>I owe a lot to this weird cellulose sponge-on-a-stick sampling device (aptly named, 3M SpongeStick). This tool has been a mainstay of nearly 1/3<sup>rd</sup> of my life. Though I don’t use the cellulose kind, I’m currently seeking macrofoam sticks as replacements to put into a molecular workflow. Alas, I will always hold a soft-spot for this tool, so effective at its job!</p>
-<div class="figure">
-<img src="Photos/SpongeMe.jpg" alt="" />
-<p class="caption">Sponge Stick Me</p>
-</div>
-</div>
-<div id="link-out-predatory-journals" class="section level3">
-<h3><strong>Link OUT: Predatory Journals</strong></h3>
-<p>I present to you all a fascinating paper:</p>
-<p><a href="http://www.chm.bris.ac.uk/sillymolecules/birds.pdf">What’s the Deal With Birds?</a></p>
-<p>If you don’t know what this paper is about it was “published” in the <em>Scientific Journal of Research and Reviews</em> last year. If you read it, you can see that it is rather unusual.<br />
-If you haven’t had experience yet, this journal is an example of a Predatory journal. These “journals” are a common scam in academic fields. Typically they work by soliciting manuscript submissions, charge authors with a fee, and “publish” skipping the typical quality checks and rigor of peer review. Alas, the publisher has redirected the direct link of the paper to the <a href="http://irispublishers.com/sjrr/pdf/SJRR.MS.ID.000540.pdf">publisher’s site</a> once the message got out.</p>
 </div>
 
 

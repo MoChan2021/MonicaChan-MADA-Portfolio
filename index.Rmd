@@ -1,14 +1,17 @@
 ---
-title: "MYC's website and data analysis portfolio"
+title: "My Data Analysis Portfolio"
 output: 
   html_document:
     toc: FALSE
 ---
 
-### _Please excuse the mess_.
+# Welcome to my **2021 MADA Data Analysis Portfolio**
 
-Welcome to **my first website** and _data analysis portfolio_. 
-
+### This website has been created as a data analysis portfolio for the Fall 2021 Modern Applied Data Analysis (MADA) Course.
 
 * Please use the `Menu Bar` above to look around.
-* I look forward to learning with you all.
+  * `About Me` contains a blurb about myself and exists as a way to test out using the language of R.
+  * `Projects` includes exercises completed as part of the MADA course and requirements.
+  * `Additional Assessments` contains assessments and links to assessments for re-assessment purposes.
+
+I look forward to learning and developing this site with you all!
