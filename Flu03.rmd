@@ -5,14 +5,8 @@ output:
     toc: FALSE
 ---
 
----
-title: "Analysis Script Module 9"
-author: "MYC"
-date: "10/20/2021"
-output: 
-  html_document:
-    toc: FALSE
----
+# Analysis Script Module 9
+
 
 Loading all the default settings and preliminary programs.
 

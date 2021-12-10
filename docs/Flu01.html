@@ -30,6 +30,7 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/table1-1.0/table1_defaults.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -43,6 +44,100 @@
     </style>
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -257,52 +352,21 @@ $(document).ready(function () {
       <a href="./tidytuesday_exercise2.html">Tidy Tuesday 2</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Machine Learning Models</li>
-    <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Influenza Analysis</a>
-      <ul class="dropdown-menu" role="menu">
-        <li class="dropdown-header">Introduction</li>
-        <li>
-          <a href="./Flu00.html"></a>
-        </li>
-        <li class="dropdown-header">Data &amp; Exploration</li>
-        <li>
-          <a href="./Flu01.html"></a>
-        </li>
-        <li class="dropdown-header">TidyModels Analysis I</li>
-        <li>
-          <a href="./Flu02.html"></a>
-        </li>
-        <li class="dropdown-header">TidyModels Analysis II (Mod9)</li>
-        <li>
-          <a href="./Flu03.html"></a>
-        </li>
-        <li class="dropdown-header">Machine Learning Results (Mod11)</li>
-        <li>
-          <a href="./Flu04.html"></a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Additional Assessments
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Invluenza Analysis Project</li>
-    <li class="divider"></li>
+    <li class="dropdown-header">Influenza Analysis</li>
     <li>
-      <a href="./AnalysisScriptMod9.html">Assessment 11 - Machine Learning Models 1</a>
+      <a href="./Flu00.html">Introduction and Background</a>
     </li>
     <li>
-      <a href="./AnalysisScriptMod9.html">Assessment 12 - Machine Learning Models 2</a>
+      <a href="./Flu01.html">Data &amp; Exploration</a>
     </li>
-    <li class="divider"></li>
     <li>
-      <a href="./tidytuesday_exercise2.html">Assessment 13 - Tidy Tuesday 2 (Quick Link)</a>
+      <a href="./Flu02.html">TidyModels Analysis I</a>
+    </li>
+    <li>
+      <a href="./Flu03.html">TidyModels Analysis II</a>
+    </li>
+    <li>
+      <a href="./Flu04.html">Machine Learning Models</a>
     </li>
   </ul>
 </li>
@@ -328,33 +392,1015 @@ $(document).ready(function () {
 </div>
 
 
-<div id="section" class="section level1">
-<h1></h1>
+<div id="data-and-data-exploration" class="section level1">
+<h1>Data and Data Exploration:</h1>
+<p>The following excerpt are the processing and data exploration steps completed for the <code>Influenza Analysis</code>.</p>
 <p><br></p>
 </div>
 <div id="data-wrangling" class="section level1">
 <h1>Data Wrangling</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load needed packages. make sure they are installed.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="co">#for loading Excel files</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co">#for data processing</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here) <span class="co">#to set paths</span></span></code></pre></div>
 <div id="loading-raw-data" class="section level2">
 <h2>Loading Raw Data</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#path to data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>data_location <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;raw_data&quot;</span>,<span class="st">&quot;SympAct_Any_Pos.Rds&quot;</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#load data. </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>rawdata <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(data_location)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#take a look at the data</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(rawdata)</span></code></pre></div>
+<pre><code>## Rows: 735
+## Columns: 63
+## $ DxName1           &lt;fct&gt; &quot;Influenza like illness - Clinical Dx&quot;, &quot;Acute tonsi~
+## $ DxName2           &lt;fct&gt; NA, &quot;Influenza like illness - Clinical Dx&quot;, &quot;Acute p~
+## $ DxName3           &lt;fct&gt; NA, NA, NA, NA, NA, NA, NA, NA, &quot;Fever, unspecified&quot;~
+## $ DxName4           &lt;fct&gt; NA, NA, NA, NA, NA, NA, NA, NA, &quot;Other fatigue&quot;, NA,~
+## $ DxName5           &lt;fct&gt; NA, NA, NA, NA, NA, NA, NA, NA, &quot;Headache&quot;, NA, NA, ~
+## $ Unique.Visit      &lt;chr&gt; &quot;340_17632125&quot;, &quot;340_17794836&quot;, &quot;342_17737773&quot;, &quot;342~
+## $ ActivityLevel     &lt;int&gt; 10, 6, 2, 2, 5, 3, 4, 0, 0, 5, 9, 1, 3, 6, 5, 2, 2, ~
+## $ ActivityLevelF    &lt;fct&gt; 10, 6, 2, 2, 5, 3, 4, 0, 0, 5, 9, 1, 3, 6, 5, 2, 2, ~
+## $ SwollenLymphNodes &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, No, No, No, Yes, No, Yes, Y~
+## $ ChestCongestion   &lt;fct&gt; No, Yes, Yes, Yes, No, No, No, Yes, Yes, Yes, Yes, Y~
+## $ ChillsSweats      &lt;fct&gt; No, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, ~
+## $ NasalCongestion   &lt;fct&gt; No, Yes, Yes, Yes, No, No, No, Yes, Yes, Yes, Yes, Y~
+## $ CoughYN           &lt;fct&gt; Yes, Yes, No, Yes, No, Yes, Yes, Yes, Yes, Yes, No, ~
+## $ Sneeze            &lt;fct&gt; No, No, Yes, Yes, No, Yes, No, Yes, No, No, No, No, ~
+## $ Fatigue           &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ SubjectiveFever   &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes~
+## $ Headache          &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes~
+## $ Weakness          &lt;fct&gt; Mild, Severe, Severe, Severe, Moderate, Moderate, Mi~
+## $ WeaknessYN        &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ CoughIntensity    &lt;fct&gt; Severe, Severe, Mild, Moderate, None, Moderate, Seve~
+## $ CoughYN2          &lt;fct&gt; Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes, Yes, Yes~
+## $ Myalgia           &lt;fct&gt; Mild, Severe, Severe, Severe, Mild, Moderate, Mild, ~
+## $ MyalgiaYN         &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ RunnyNose         &lt;fct&gt; No, No, Yes, Yes, No, No, Yes, Yes, Yes, Yes, No, No~
+## $ AbPain            &lt;fct&gt; No, No, Yes, No, No, No, No, No, No, No, Yes, Yes, N~
+## $ ChestPain         &lt;fct&gt; No, No, Yes, No, No, Yes, Yes, No, No, No, No, Yes, ~
+## $ Diarrhea          &lt;fct&gt; No, No, No, No, No, Yes, No, No, No, No, No, No, No,~
+## $ EyePn             &lt;fct&gt; No, No, No, No, Yes, No, No, No, No, No, Yes, No, Ye~
+## $ Insomnia          &lt;fct&gt; No, No, Yes, Yes, Yes, No, No, Yes, Yes, Yes, Yes, Y~
+## $ ItchyEye          &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, Yes,~
+## $ Nausea            &lt;fct&gt; No, No, Yes, Yes, Yes, Yes, No, No, Yes, Yes, Yes, Y~
+## $ EarPn             &lt;fct&gt; No, Yes, No, Yes, No, No, No, No, No, No, No, Yes, Y~
+## $ Hearing           &lt;fct&gt; No, Yes, No, No, No, No, No, No, No, No, No, No, No,~
+## $ Pharyngitis       &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, No, No, Yes, ~
+## $ Breathless        &lt;fct&gt; No, No, Yes, No, No, Yes, No, No, No, Yes, No, Yes, ~
+## $ ToothPn           &lt;fct&gt; No, No, Yes, No, No, No, No, No, Yes, No, No, Yes, N~
+## $ Vision            &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, No, ~
+## $ Vomit             &lt;fct&gt; No, No, No, No, No, No, Yes, No, No, No, Yes, Yes, N~
+## $ Wheeze            &lt;fct&gt; No, No, No, Yes, No, Yes, No, No, No, No, No, Yes, N~
+## $ BodyTemp          &lt;dbl&gt; 98.3, 100.4, 100.8, 98.8, 100.5, 98.4, 102.5, 98.4, ~
+## $ RapidFluA         &lt;fct&gt; Presumptive Negative For Influenza A, NA, Presumptiv~
+## $ RapidFluB         &lt;fct&gt; Presumptive Negative For Influenza B, NA, Presumptiv~
+## $ PCRFluA           &lt;fct&gt; NA, NA, NA, NA, NA, NA,  Influenza A Not Detected, N~
+## $ PCRFluB           &lt;fct&gt; NA, NA, NA, NA, NA, NA,  Influenza B Not Detected, N~
+## $ TransScore1       &lt;dbl&gt; 1, 3, 4, 5, 0, 2, 2, 5, 4, 4, 2, 3, 2, 5, 3, 5, 1, 5~
+## $ TransScore1F      &lt;fct&gt; 1, 3, 4, 5, 0, 2, 2, 5, 4, 4, 2, 3, 2, 5, 3, 5, 1, 5~
+## $ TransScore2       &lt;dbl&gt; 1, 2, 3, 4, 0, 2, 2, 4, 3, 3, 1, 2, 2, 4, 2, 4, 1, 4~
+## $ TransScore2F      &lt;fct&gt; 1, 2, 3, 4, 0, 2, 2, 4, 3, 3, 1, 2, 2, 4, 2, 4, 1, 4~
+## $ TransScore3       &lt;dbl&gt; 1, 1, 2, 3, 0, 2, 2, 3, 2, 2, 0, 1, 1, 3, 1, 3, 1, 3~
+## $ TransScore3F      &lt;fct&gt; 1, 1, 2, 3, 0, 2, 2, 3, 2, 2, 0, 1, 1, 3, 1, 3, 1, 3~
+## $ TransScore4       &lt;dbl&gt; 0, 2, 4, 4, 0, 1, 1, 4, 3, 3, 2, 2, 2, 4, 3, 4, 0, 4~
+## $ TransScore4F      &lt;fct&gt; 0, 2, 4, 4, 0, 1, 1, 4, 3, 3, 2, 2, 2, 4, 3, 4, 0, 4~
+## $ ImpactScore       &lt;int&gt; 7, 8, 14, 12, 11, 12, 8, 7, 10, 7, 13, 17, 11, 13, 9~
+## $ ImpactScore2      &lt;int&gt; 6, 7, 13, 11, 10, 11, 7, 6, 9, 6, 12, 16, 10, 12, 8,~
+## $ ImpactScore3      &lt;int&gt; 3, 4, 9, 7, 6, 7, 3, 3, 6, 4, 7, 11, 6, 8, 4, 4, 5, ~
+## $ ImpactScoreF      &lt;fct&gt; 7, 8, 14, 12, 11, 12, 8, 7, 10, 7, 13, 17, 11, 13, 9~
+## $ ImpactScore2F     &lt;fct&gt; 6, 7, 13, 11, 10, 11, 7, 6, 9, 6, 12, 16, 10, 12, 8,~
+## $ ImpactScore3F     &lt;fct&gt; 3, 4, 9, 7, 6, 7, 3, 3, 6, 4, 7, 11, 6, 8, 4, 4, 5, ~
+## $ ImpactScoreFD     &lt;fct&gt; 7, 8, 14, 12, 11, 12, 8, 7, 10, 7, 13, 17, 11, 13, 9~
+## $ TotalSymp1        &lt;dbl&gt; 8, 11, 18, 17, 11, 14, 10, 12, 14, 11, 15, 20, 13, 1~
+## $ TotalSymp1F       &lt;fct&gt; 8, 11, 18, 17, 11, 14, 10, 12, 14, 11, 15, 20, 13, 1~
+## $ TotalSymp2        &lt;dbl&gt; 8, 10, 17, 16, 11, 14, 10, 11, 13, 10, 14, 19, 13, 1~
+## $ TotalSymp3        &lt;dbl&gt; 8, 9, 16, 15, 11, 14, 10, 10, 12, 9, 13, 18, 12, 16,~</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(rawdata)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    735 obs. of  63 variables:
+##  $ DxName1          : Factor w/ 92 levels &quot;Acute bronchitis, unspecified&quot;,..: 57 16 57 57 9 57 39 17 57 57 ...
+##  $ DxName2          : Factor w/ 142 levels &quot;14 weeks gestation of pregnancy&quot;,..: NA 69 11 129 69 NA 69 60 12 NA ...
+##  $ DxName3          : Factor w/ 92 levels &quot;Abnormal weight loss&quot;,..: NA NA NA NA NA NA NA NA 38 NA ...
+##  $ DxName4          : Factor w/ 41 levels &quot;Acute bronchitis, unspecified&quot;,..: NA NA NA NA NA NA NA NA 30 NA ...
+##  $ DxName5          : Factor w/ 5 levels &quot;Acute suppurative otitis media without spontaneous rupture of ear drum, right ear&quot;,..: NA NA NA NA NA NA NA NA 3 NA ...
+##  $ Unique.Visit     : chr  &quot;340_17632125&quot; &quot;340_17794836&quot; &quot;342_17737773&quot; &quot;342_17806002&quot; ...
+##  $ ActivityLevel    : int  10 6 2 2 5 3 4 0 0 5 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Activity Level&quot;
+##  $ ActivityLevelF   : Factor w/ 11 levels &quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,..: 11 7 3 3 6 4 5 1 1 6 ...
+##  $ SwollenLymphNodes: Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 1 1 1 2 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Swollen Lymph Nodes&quot;
+##  $ ChestCongestion  : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 2 2 1 1 1 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Chest Congestion&quot;
+##  $ ChillsSweats     : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 2 2 2 2 2 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Chills/Sweats&quot;
+##  $ NasalCongestion  : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 2 2 1 1 1 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Nasal Congestion&quot;
+##  $ CoughYN          : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 1 2 1 2 2 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Cough&quot;
+##  $ Sneeze           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 1 2 1 2 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Sneeze&quot;
+##  $ Fatigue          : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Fatigue&quot;
+##  $ SubjectiveFever  : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Subjective Fever&quot;
+##  $ Headache         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 1 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Headache&quot;
+##  $ Weakness         : Factor w/ 4 levels &quot;None&quot;,&quot;Mild&quot;,..: 2 4 4 4 3 3 2 4 3 3 ...
+##  $ WeaknessYN       : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Weakness&quot;
+##  $ CoughIntensity   : Factor w/ 4 levels &quot;None&quot;,&quot;Mild&quot;,..: 4 4 2 3 1 3 4 3 3 3 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Cough Severity&quot;
+##  $ CoughYN2         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 1 2 2 2 2 2 ...
+##  $ Myalgia          : Factor w/ 4 levels &quot;None&quot;,&quot;Mild&quot;,..: 2 4 4 4 2 3 2 4 3 2 ...
+##  $ MyalgiaYN        : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Myalgia&quot;
+##  $ RunnyNose        : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 1 1 2 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Runny Nose&quot;
+##  $ AbPain           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 1 1 1 1 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Abdominal Pain&quot;
+##  $ ChestPain        : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 1 1 2 2 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Chest Pain&quot;
+##  $ Diarrhea         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 2 1 1 1 1 ...
+##  $ EyePn            : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 2 1 1 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Eye Pain&quot;
+##  $ Insomnia         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 2 1 1 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Sleeplessness&quot;
+##  $ ItchyEye         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Itchy Eyes&quot;
+##  $ Nausea           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 2 2 1 1 2 2 ...
+##  $ EarPn            : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 1 2 1 1 1 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Ear Pain&quot;
+##  $ Hearing          : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 1 1 1 1 1 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Loss of Hearing&quot;
+##  $ Pharyngitis      : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Sore Throat&quot;
+##  $ Breathless       : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 1 1 2 1 1 1 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Breathlessness&quot;
+##  $ ToothPn          : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 1 1 1 1 1 2 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Tooth Pain&quot;
+##  $ Vision           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Blurred Vision&quot;
+##  $ Vomit            : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 2 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Vomiting&quot;
+##  $ Wheeze           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 2 1 2 1 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Wheezing&quot;
+##  $ BodyTemp         : num  98.3 100.4 100.8 98.8 100.5 ...
+##  $ RapidFluA        : Factor w/ 2 levels &quot;Positive for Influenza A&quot;,..: 2 NA 2 2 NA NA NA 1 2 2 ...
+##  $ RapidFluB        : Factor w/ 2 levels &quot;Positive for Influenza B&quot;,..: 2 NA 2 2 NA NA NA 2 2 2 ...
+##  $ PCRFluA          : Factor w/ 4 levels &quot; Influenza A Detected&quot;,..: NA NA NA NA NA NA 2 NA NA NA ...
+##  $ PCRFluB          : Factor w/ 3 levels &quot; Influenza B Detected&quot;,..: NA NA NA NA NA NA 2 NA NA NA ...
+##  $ TransScore1      : num  1 3 4 5 0 2 2 5 4 4 ...
+##  $ TransScore1F     : Factor w/ 6 levels &quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,..: 2 4 5 6 1 3 3 6 5 5 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Infectiousness Score&quot;
+##  $ TransScore2      : num  1 2 3 4 0 2 2 4 3 3 ...
+##  $ TransScore2F     : Factor w/ 5 levels &quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,..: 2 3 4 5 1 3 3 5 4 4 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Infectiousness Score&quot;
+##  $ TransScore3      : num  1 1 2 3 0 2 2 3 2 2 ...
+##  $ TransScore3F     : Factor w/ 4 levels &quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;: 2 2 3 4 1 3 3 4 3 3 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Infectiousness Score&quot;
+##  $ TransScore4      : num  0 2 4 4 0 1 1 4 3 3 ...
+##  $ TransScore4F     : Factor w/ 5 levels &quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,..: 1 3 5 5 1 2 2 5 4 4 ...
+##  $ ImpactScore      : int  7 8 14 12 11 12 8 7 10 7 ...
+##  $ ImpactScore2     : int  6 7 13 11 10 11 7 6 9 6 ...
+##  $ ImpactScore3     : int  3 4 9 7 6 7 3 3 6 4 ...
+##  $ ImpactScoreF     : Factor w/ 21 levels &quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,..: 8 9 15 13 12 13 9 8 11 8 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Morbidity Score&quot;
+##  $ ImpactScore2F    : Factor w/ 19 levels &quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,..: 7 8 14 12 11 12 8 7 10 7 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Morbidity Score&quot;
+##  $ ImpactScore3F    : Factor w/ 15 levels &quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,..: 4 5 10 8 7 8 4 4 7 5 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Morbidity Score&quot;
+##  $ ImpactScoreFD    : Factor w/ 17 levels &quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,..: 6 7 13 11 10 11 7 6 9 6 ...
+##  $ TotalSymp1       : num  8 11 18 17 11 14 10 12 14 11 ...
+##  $ TotalSymp1F      : Factor w/ 19 levels &quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,..: 4 7 14 13 7 10 6 8 10 7 ...
+##  $ TotalSymp2       : num  8 10 17 16 11 14 10 11 13 10 ...
+##  $ TotalSymp3       : num  8 9 16 15 11 14 10 10 12 9 ...</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rawdata)</span></code></pre></div>
+<pre><code>##                                            DxName1   
+##  Influenza like illness - Clinical Dx          :328  
+##  Influenza - Virus Identified                  :131  
+##  Fever, unspecified                            :101  
+##  Cough                                         : 66  
+##  Acute pharyngitis, unspecified                : 50  
+##  Acute upper respiratory infection, unspecified: 22  
+##  (Other)                                       : 37  
+##                                  DxName2   
+##  Influenza - Virus Identified        :126  
+##  Influenza like illness - Clinical Dx:115  
+##  Fever, unspecified                  : 45  
+##  Cough                               : 41  
+##  Acute pharyngitis, unspecified      : 31  
+##  (Other)                             : 97  
+##  NA&#39;s                                :280  
+##                                  DxName3   
+##  Influenza - Virus Identified        : 23  
+##  Influenza like illness - Clinical Dx: 14  
+##  Cough                               : 10  
+##  Fever, unspecified                  :  6  
+##  Acute pharyngitis, unspecified      :  4  
+##  (Other)                             : 52  
+##  NA&#39;s                                :626  
+##                                            DxName4   
+##  Influenza - Virus Identified                  :  3  
+##  Acute upper respiratory infection, unspecified:  2  
+##  Encounter for immunization                    :  2  
+##  Influenza like illness - Clinical Dx          :  2  
+##  Acute pharyngitis, unspecified                :  1  
+##  (Other)                                       :  9  
+##  NA&#39;s                                          :716  
+##                                                                                                DxName5   
+##  Acute suppurative otitis media without spontaneous rupture of ear drum, right ear                 :  0  
+##  Encounter for immunization                                                                        :  0  
+##  Headache                                                                                          :  1  
+##  Other infectious mononucleosis without complication                                               :  0  
+##  Strain of other flexor muscle, fascia and tendon at forearm level, right arm, subsequent encounter:  0  
+##  NA&#39;s                                                                                              :734  
+##                                                                                                          
+##  Unique.Visit       ActivityLevel    ActivityLevelF SwollenLymphNodes
+##  Length:735         Min.   : 0.000   3      :125    No :421          
+##  Class :character   1st Qu.: 3.000   5      : 97    Yes:314          
+##  Mode  :character   Median : 4.000   4      : 95                     
+##                     Mean   : 4.463   2      : 80                     
+##                     3rd Qu.: 6.000   7      : 68                     
+##                     Max.   :10.000   6      : 66                     
+##                                      (Other):204                     
+##  ChestCongestion ChillsSweats NasalCongestion CoughYN   Sneeze    Fatigue  
+##  No :326         No :131      No :170         No : 75   No :340   No : 64  
+##  Yes:409         Yes:604      Yes:565         Yes:660   Yes:395   Yes:671  
+##                                                                            
+##                                                                            
+##                                                                            
+##                                                                            
+##                                                                            
+##  SubjectiveFever Headache      Weakness   WeaknessYN  CoughIntensity CoughYN2 
+##  No :230         No :115   None    : 49   No : 49    None    : 47    No : 47  
+##  Yes:505         Yes:620   Mild    :224   Yes:686    Mild    :156    Yes:688  
+##                            Moderate:341              Moderate:360             
+##                            Severe  :121              Severe  :172             
+##                                                                               
+##                                                                               
+##                                                                               
+##      Myalgia    MyalgiaYN RunnyNose AbPain    ChestPain Diarrhea  EyePn    
+##  None    : 79   No : 79   No :211   No :642   No :501   No :636   No :622  
+##  Mild    :214   Yes:656   Yes:524   Yes: 93   Yes:234   Yes: 99   Yes:113  
+##  Moderate:327                                                              
+##  Severe  :115                                                              
+##                                                                            
+##                                                                            
+##                                                                            
+##  Insomnia  ItchyEye  Nausea    EarPn     Hearing   Pharyngitis Breathless
+##  No :316   No :553   No :477   No :573   No :705   No :121     No :438   
+##  Yes:419   Yes:182   Yes:258   Yes:162   Yes: 30   Yes:614     Yes:297   
+##                                                                          
+##                                                                          
+##                                                                          
+##                                                                          
+##                                                                          
+##  ToothPn   Vision    Vomit     Wheeze       BodyTemp     
+##  No :569   No :716   No :656   No :514   Min.   : 97.20  
+##  Yes:166   Yes: 19   Yes: 79   Yes:221   1st Qu.: 98.20  
+##                                          Median : 98.50  
+##                                          Mean   : 98.94  
+##                                          3rd Qu.: 99.30  
+##                                          Max.   :103.10  
+##                                          NA&#39;s   :5       
+##                                 RapidFluA  
+##  Positive for Influenza A            :169  
+##  Presumptive Negative For Influenza A:159  
+##  NA&#39;s                                :407  
+##                                            
+##                                            
+##                                            
+##                                            
+##                                 RapidFluB                        PCRFluA   
+##  Positive for Influenza B            : 26    Influenza A Detected    :120  
+##  Presumptive Negative For Influenza B:302    Influenza A Not Detected: 33  
+##  NA&#39;s                                :407   Assay Invalid            :  0  
+##                                             Indeterminate            :  1  
+##                                             NA&#39;s                     :581  
+##                                                                            
+##                                                                            
+##                       PCRFluB     TransScore1    TransScore1F  TransScore2   
+##   Influenza B Detected    :  9   Min.   :0.000   0: 13        Min.   :0.000  
+##   Influenza B Not Detected:145   1st Qu.:3.000   1: 53        1st Qu.:2.000  
+##  Assay Invalid            :  0   Median :4.000   2:107        Median :3.000  
+##  NA&#39;s                     :581   Mean   :3.473   3:157        Mean   :2.917  
+##                                  3rd Qu.:5.000   4:210        3rd Qu.:4.000  
+##                                  Max.   :5.000   5:195        Max.   :4.000  
+##                                                                              
+##  TransScore2F  TransScore3    TransScore3F  TransScore4    TransScore4F
+##  0: 13        Min.   :0.000   0: 24        Min.   :0.000   0: 50       
+##  1: 89        1st Qu.:1.000   1:166        1st Qu.:2.000   1:103       
+##  2:138        Median :2.000   2:222        Median :3.000   2:154       
+##  3:201        Mean   :2.148   3:323        Mean   :2.576   3:230       
+##  4:294        3rd Qu.:3.000                3rd Qu.:4.000   4:198       
+##               Max.   :3.000                Max.   :4.000               
+##                                                                        
+##   ImpactScore      ImpactScore2     ImpactScore3    ImpactScoreF ImpactScore2F
+##  Min.   : 2.000   Min.   : 2.000   Min.   : 0.00   8      :105   7      :107  
+##  1st Qu.: 8.000   1st Qu.: 7.000   1st Qu.: 3.00   9      :104   8      :102  
+##  Median : 9.000   Median : 8.000   Median : 5.00   10     : 88   9      : 90  
+##  Mean   : 9.514   Mean   : 8.581   Mean   : 5.06   7      : 84   10     : 86  
+##  3rd Qu.:11.000   3rd Qu.:10.000   3rd Qu.: 7.00   11     : 82   6      : 85  
+##  Max.   :18.000   Max.   :17.000   Max.   :13.00   12     : 58   11     : 59  
+##                                                    (Other):214   (Other):206  
+##  ImpactScore3F ImpactScoreFD   TotalSymp1     TotalSymp1F    TotalSymp2   
+##  4      :134   8      :105   Min.   : 5.00   12     : 86   Min.   : 4.00  
+##  5      :112   9      :104   1st Qu.:11.00   13     : 84   1st Qu.:10.00  
+##  3      :108   10     : 88   Median :13.00   14     : 80   Median :12.00  
+##  6      :102   7      : 84   Mean   :12.99   11     : 72   Mean   :12.43  
+##  7      : 66   11     : 82   3rd Qu.:15.00   10     : 62   3rd Qu.:15.00  
+##  2      : 64   12     : 58   Max.   :23.00   15     : 61   Max.   :22.00  
+##  (Other):149   (Other):214                   (Other):290                  
+##    TotalSymp3   
+##  Min.   : 3.00  
+##  1st Qu.:10.00  
+##  Median :12.00  
+##  Mean   :11.66  
+##  3rd Qu.:14.00  
+##  Max.   :21.00  
+## </code></pre>
 </div>
 <div id="processing-data" class="section level2">
 <h2>Processing Data</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#remove variable Score, Total, FluA, FluB, Dxname, or activity in name</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#chose to use direct pipes since the actions were so similar and I didn&#39;t wnat to repeat myself too much in the comments</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="do">##select(-contains(&quot;&quot;)) == removes columns with the whatever is inside the &quot;quotes&quot;.</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>rawdata1<span class="ot">&lt;-</span>rawdata<span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">contains</span>(<span class="st">&quot;Score&quot;</span>))<span class="sc">%&gt;%</span> <span class="co">#removed cols containing Score</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">contains</span>(<span class="st">&quot;Total&quot;</span>))<span class="sc">%&gt;%</span> <span class="co">#removed cols containing Total</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">contains</span>(<span class="st">&quot;FluA&quot;</span>))<span class="sc">%&gt;%</span> <span class="co">#removed cols containing FluA</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">contains</span>(<span class="st">&quot;FluB&quot;</span>))<span class="sc">%&gt;%</span> <span class="co">#removed cols containing FluB</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">contains</span>(<span class="st">&quot;DxName&quot;</span>))<span class="sc">%&gt;%</span> <span class="co">#removed cols containing DxName</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">contains</span>(<span class="st">&quot;Activity&quot;</span>))<span class="sc">%&gt;%</span> <span class="co">#removed cols containing Activity</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Unique.Visit)) <span class="co"># -c removes exactly named cols, remove col Unique.Visit</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#take a look at  cleaned data  removed cols directed by assessment page</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(rawdata1)  </span></code></pre></div>
+<pre><code>## Rows: 735
+## Columns: 32
+## $ SwollenLymphNodes &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, No, No, No, Yes, No, Yes, Y~
+## $ ChestCongestion   &lt;fct&gt; No, Yes, Yes, Yes, No, No, No, Yes, Yes, Yes, Yes, Y~
+## $ ChillsSweats      &lt;fct&gt; No, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, ~
+## $ NasalCongestion   &lt;fct&gt; No, Yes, Yes, Yes, No, No, No, Yes, Yes, Yes, Yes, Y~
+## $ CoughYN           &lt;fct&gt; Yes, Yes, No, Yes, No, Yes, Yes, Yes, Yes, Yes, No, ~
+## $ Sneeze            &lt;fct&gt; No, No, Yes, Yes, No, Yes, No, Yes, No, No, No, No, ~
+## $ Fatigue           &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ SubjectiveFever   &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes~
+## $ Headache          &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes~
+## $ Weakness          &lt;fct&gt; Mild, Severe, Severe, Severe, Moderate, Moderate, Mi~
+## $ WeaknessYN        &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ CoughIntensity    &lt;fct&gt; Severe, Severe, Mild, Moderate, None, Moderate, Seve~
+## $ CoughYN2          &lt;fct&gt; Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes, Yes, Yes~
+## $ Myalgia           &lt;fct&gt; Mild, Severe, Severe, Severe, Mild, Moderate, Mild, ~
+## $ MyalgiaYN         &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ RunnyNose         &lt;fct&gt; No, No, Yes, Yes, No, No, Yes, Yes, Yes, Yes, No, No~
+## $ AbPain            &lt;fct&gt; No, No, Yes, No, No, No, No, No, No, No, Yes, Yes, N~
+## $ ChestPain         &lt;fct&gt; No, No, Yes, No, No, Yes, Yes, No, No, No, No, Yes, ~
+## $ Diarrhea          &lt;fct&gt; No, No, No, No, No, Yes, No, No, No, No, No, No, No,~
+## $ EyePn             &lt;fct&gt; No, No, No, No, Yes, No, No, No, No, No, Yes, No, Ye~
+## $ Insomnia          &lt;fct&gt; No, No, Yes, Yes, Yes, No, No, Yes, Yes, Yes, Yes, Y~
+## $ ItchyEye          &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, Yes,~
+## $ Nausea            &lt;fct&gt; No, No, Yes, Yes, Yes, Yes, No, No, Yes, Yes, Yes, Y~
+## $ EarPn             &lt;fct&gt; No, Yes, No, Yes, No, No, No, No, No, No, No, Yes, Y~
+## $ Hearing           &lt;fct&gt; No, Yes, No, No, No, No, No, No, No, No, No, No, No,~
+## $ Pharyngitis       &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, No, No, Yes, ~
+## $ Breathless        &lt;fct&gt; No, No, Yes, No, No, Yes, No, No, No, Yes, No, Yes, ~
+## $ ToothPn           &lt;fct&gt; No, No, Yes, No, No, No, No, No, Yes, No, No, Yes, N~
+## $ Vision            &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, No, ~
+## $ Vomit             &lt;fct&gt; No, No, No, No, No, No, Yes, No, No, No, Yes, Yes, N~
+## $ Wheeze            &lt;fct&gt; No, No, No, Yes, No, Yes, No, No, No, No, No, Yes, N~
+## $ BodyTemp          &lt;dbl&gt; 98.3, 100.4, 100.8, 98.8, 100.5, 98.4, 102.5, 98.4, ~</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(rawdata1)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    735 obs. of  32 variables:
+##  $ SwollenLymphNodes: Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 1 1 1 2 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Swollen Lymph Nodes&quot;
+##  $ ChestCongestion  : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 2 2 1 1 1 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Chest Congestion&quot;
+##  $ ChillsSweats     : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 2 2 2 2 2 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Chills/Sweats&quot;
+##  $ NasalCongestion  : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 2 2 1 1 1 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Nasal Congestion&quot;
+##  $ CoughYN          : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 1 2 1 2 2 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Cough&quot;
+##  $ Sneeze           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 1 2 1 2 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Sneeze&quot;
+##  $ Fatigue          : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Fatigue&quot;
+##  $ SubjectiveFever  : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Subjective Fever&quot;
+##  $ Headache         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 1 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Headache&quot;
+##  $ Weakness         : Factor w/ 4 levels &quot;None&quot;,&quot;Mild&quot;,..: 2 4 4 4 3 3 2 4 3 3 ...
+##  $ WeaknessYN       : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Weakness&quot;
+##  $ CoughIntensity   : Factor w/ 4 levels &quot;None&quot;,&quot;Mild&quot;,..: 4 4 2 3 1 3 4 3 3 3 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Cough Severity&quot;
+##  $ CoughYN2         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 1 2 2 2 2 2 ...
+##  $ Myalgia          : Factor w/ 4 levels &quot;None&quot;,&quot;Mild&quot;,..: 2 4 4 4 2 3 2 4 3 2 ...
+##  $ MyalgiaYN        : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Myalgia&quot;
+##  $ RunnyNose        : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 1 1 2 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Runny Nose&quot;
+##  $ AbPain           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 1 1 1 1 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Abdominal Pain&quot;
+##  $ ChestPain        : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 1 1 2 2 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Chest Pain&quot;
+##  $ Diarrhea         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 2 1 1 1 1 ...
+##  $ EyePn            : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 2 1 1 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Eye Pain&quot;
+##  $ Insomnia         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 2 1 1 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Sleeplessness&quot;
+##  $ ItchyEye         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Itchy Eyes&quot;
+##  $ Nausea           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 2 2 1 1 2 2 ...
+##  $ EarPn            : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 1 2 1 1 1 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Ear Pain&quot;
+##  $ Hearing          : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 1 1 1 1 1 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Loss of Hearing&quot;
+##  $ Pharyngitis      : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Sore Throat&quot;
+##  $ Breathless       : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 1 1 2 1 1 1 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Breathlessness&quot;
+##  $ ToothPn          : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 1 1 1 1 1 2 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Tooth Pain&quot;
+##  $ Vision           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Blurred Vision&quot;
+##  $ Vomit            : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 2 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Vomiting&quot;
+##  $ Wheeze           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 2 1 2 1 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Wheezing&quot;
+##  $ BodyTemp         : num  98.3 100.4 100.8 98.8 100.5 ...</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rawdata1)</span></code></pre></div>
+<pre><code>##  SwollenLymphNodes ChestCongestion ChillsSweats NasalCongestion CoughYN  
+##  No :421           No :326         No :131      No :170         No : 75  
+##  Yes:314           Yes:409         Yes:604      Yes:565         Yes:660  
+##                                                                          
+##                                                                          
+##                                                                          
+##                                                                          
+##                                                                          
+##  Sneeze    Fatigue   SubjectiveFever Headache      Weakness   WeaknessYN
+##  No :340   No : 64   No :230         No :115   None    : 49   No : 49   
+##  Yes:395   Yes:671   Yes:505         Yes:620   Mild    :224   Yes:686   
+##                                                Moderate:341             
+##                                                Severe  :121             
+##                                                                         
+##                                                                         
+##                                                                         
+##   CoughIntensity CoughYN2      Myalgia    MyalgiaYN RunnyNose AbPain   
+##  None    : 47    No : 47   None    : 79   No : 79   No :211   No :642  
+##  Mild    :156    Yes:688   Mild    :214   Yes:656   Yes:524   Yes: 93  
+##  Moderate:360              Moderate:327                                
+##  Severe  :172              Severe  :115                                
+##                                                                        
+##                                                                        
+##                                                                        
+##  ChestPain Diarrhea  EyePn     Insomnia  ItchyEye  Nausea    EarPn    
+##  No :501   No :636   No :622   No :316   No :553   No :477   No :573  
+##  Yes:234   Yes: 99   Yes:113   Yes:419   Yes:182   Yes:258   Yes:162  
+##                                                                       
+##                                                                       
+##                                                                       
+##                                                                       
+##                                                                       
+##  Hearing   Pharyngitis Breathless ToothPn   Vision    Vomit     Wheeze   
+##  No :705   No :121     No :438    No :569   No :716   No :656   No :514  
+##  Yes: 30   Yes:614     Yes:297    Yes:166   Yes: 19   Yes: 79   Yes:221  
+##                                                                          
+##                                                                          
+##                                                                          
+##                                                                          
+##                                                                          
+##     BodyTemp     
+##  Min.   : 97.20  
+##  1st Qu.: 98.20  
+##  Median : 98.50  
+##  Mean   : 98.94  
+##  3rd Qu.: 99.30  
+##  Max.   :103.10  
+##  NA&#39;s   :5</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#the data set is not quite like the assignment I am 5 over in observations</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#noted that BodyTemp has 5 NA&#39;s, need to remove</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>rawdata2<span class="ot">&lt;-</span>rawdata1<span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="co"># omit NAs in the data set</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#take a look at  cleaned data to assignment specs (760 obv. of 32 variables)</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(rawdata2)  </span></code></pre></div>
+<pre><code>## Rows: 730
+## Columns: 32
+## $ SwollenLymphNodes &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, No, No, No, Yes, No, Yes, Y~
+## $ ChestCongestion   &lt;fct&gt; No, Yes, Yes, Yes, No, No, No, Yes, Yes, Yes, Yes, Y~
+## $ ChillsSweats      &lt;fct&gt; No, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, ~
+## $ NasalCongestion   &lt;fct&gt; No, Yes, Yes, Yes, No, No, No, Yes, Yes, Yes, Yes, Y~
+## $ CoughYN           &lt;fct&gt; Yes, Yes, No, Yes, No, Yes, Yes, Yes, Yes, Yes, No, ~
+## $ Sneeze            &lt;fct&gt; No, No, Yes, Yes, No, Yes, No, Yes, No, No, No, No, ~
+## $ Fatigue           &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ SubjectiveFever   &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes~
+## $ Headache          &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes~
+## $ Weakness          &lt;fct&gt; Mild, Severe, Severe, Severe, Moderate, Moderate, Mi~
+## $ WeaknessYN        &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ CoughIntensity    &lt;fct&gt; Severe, Severe, Mild, Moderate, None, Moderate, Seve~
+## $ CoughYN2          &lt;fct&gt; Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes, Yes, Yes~
+## $ Myalgia           &lt;fct&gt; Mild, Severe, Severe, Severe, Mild, Moderate, Mild, ~
+## $ MyalgiaYN         &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ RunnyNose         &lt;fct&gt; No, No, Yes, Yes, No, No, Yes, Yes, Yes, Yes, No, No~
+## $ AbPain            &lt;fct&gt; No, No, Yes, No, No, No, No, No, No, No, Yes, Yes, N~
+## $ ChestPain         &lt;fct&gt; No, No, Yes, No, No, Yes, Yes, No, No, No, No, Yes, ~
+## $ Diarrhea          &lt;fct&gt; No, No, No, No, No, Yes, No, No, No, No, No, No, No,~
+## $ EyePn             &lt;fct&gt; No, No, No, No, Yes, No, No, No, No, No, Yes, No, Ye~
+## $ Insomnia          &lt;fct&gt; No, No, Yes, Yes, Yes, No, No, Yes, Yes, Yes, Yes, Y~
+## $ ItchyEye          &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, Yes,~
+## $ Nausea            &lt;fct&gt; No, No, Yes, Yes, Yes, Yes, No, No, Yes, Yes, Yes, Y~
+## $ EarPn             &lt;fct&gt; No, Yes, No, Yes, No, No, No, No, No, No, No, Yes, Y~
+## $ Hearing           &lt;fct&gt; No, Yes, No, No, No, No, No, No, No, No, No, No, No,~
+## $ Pharyngitis       &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, No, No, Yes, ~
+## $ Breathless        &lt;fct&gt; No, No, Yes, No, No, Yes, No, No, No, Yes, No, Yes, ~
+## $ ToothPn           &lt;fct&gt; No, No, Yes, No, No, No, No, No, Yes, No, No, Yes, N~
+## $ Vision            &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, No, ~
+## $ Vomit             &lt;fct&gt; No, No, No, No, No, No, Yes, No, No, No, Yes, Yes, N~
+## $ Wheeze            &lt;fct&gt; No, No, No, Yes, No, Yes, No, No, No, No, No, Yes, N~
+## $ BodyTemp          &lt;dbl&gt; 98.3, 100.4, 100.8, 98.8, 100.5, 98.4, 102.5, 98.4, ~</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(rawdata2)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    730 obs. of  32 variables:
+##  $ SwollenLymphNodes: Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 1 1 1 2 1 ...
+##  $ ChestCongestion  : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 2 2 1 1 1 2 2 2 ...
+##  $ ChillsSweats     : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 2 2 2 2 2 1 ...
+##  $ NasalCongestion  : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 2 2 1 1 1 2 2 2 ...
+##  $ CoughYN          : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 1 2 1 2 2 2 2 2 ...
+##  $ Sneeze           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 1 2 1 2 1 1 ...
+##  $ Fatigue          : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ SubjectiveFever  : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 1 ...
+##  $ Headache         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 1 2 2 2 ...
+##  $ Weakness         : Factor w/ 4 levels &quot;None&quot;,&quot;Mild&quot;,..: 2 4 4 4 3 3 2 4 3 3 ...
+##  $ WeaknessYN       : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ CoughIntensity   : Factor w/ 4 levels &quot;None&quot;,&quot;Mild&quot;,..: 4 4 2 3 1 3 4 3 3 3 ...
+##  $ CoughYN2         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 1 2 2 2 2 2 ...
+##  $ Myalgia          : Factor w/ 4 levels &quot;None&quot;,&quot;Mild&quot;,..: 2 4 4 4 2 3 2 4 3 2 ...
+##  $ MyalgiaYN        : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ RunnyNose        : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 1 1 2 2 2 2 ...
+##  $ AbPain           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 1 1 1 1 1 1 1 ...
+##  $ ChestPain        : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 1 1 2 2 1 1 1 ...
+##  $ Diarrhea         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 2 1 1 1 1 ...
+##  $ EyePn            : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 2 1 1 1 1 1 ...
+##  $ Insomnia         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 2 1 1 2 2 2 ...
+##  $ ItchyEye         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Nausea           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 2 2 1 1 2 2 ...
+##  $ EarPn            : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 1 2 1 1 1 1 1 1 ...
+##  $ Hearing          : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 1 1 1 1 1 1 1 1 ...
+##  $ Pharyngitis      : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 1 1 1 ...
+##  $ Breathless       : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 1 1 2 1 1 1 2 ...
+##  $ ToothPn          : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 1 1 1 1 1 2 1 ...
+##  $ Vision           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Vomit            : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 2 1 1 1 ...
+##  $ Wheeze           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 2 1 2 1 1 1 1 ...
+##  $ BodyTemp         : num  98.3 100.4 100.8 98.8 100.5 ...
+##  - attr(*, &quot;na.action&quot;)= &#39;omit&#39; Named int [1:5] 133 243 363 577 585
+##   ..- attr(*, &quot;names&quot;)= chr [1:5] &quot;133&quot; &quot;243&quot; &quot;363&quot; &quot;577&quot; ...</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rawdata2)</span></code></pre></div>
+<pre><code>##  SwollenLymphNodes ChestCongestion ChillsSweats NasalCongestion CoughYN  
+##  No :418           No :323         No :130      No :167         No : 75  
+##  Yes:312           Yes:407         Yes:600      Yes:563         Yes:655  
+##                                                                          
+##                                                                          
+##                                                                          
+##                                                                          
+##  Sneeze    Fatigue   SubjectiveFever Headache      Weakness   WeaknessYN
+##  No :339   No : 64   No :230         No :115   None    : 49   No : 49   
+##  Yes:391   Yes:666   Yes:500         Yes:615   Mild    :223   Yes:681   
+##                                                Moderate:338             
+##                                                Severe  :120             
+##                                                                         
+##                                                                         
+##   CoughIntensity CoughYN2      Myalgia    MyalgiaYN RunnyNose AbPain   
+##  None    : 47    No : 47   None    : 79   No : 79   No :211   No :639  
+##  Mild    :154    Yes:683   Mild    :213   Yes:651   Yes:519   Yes: 91  
+##  Moderate:357              Moderate:325                                
+##  Severe  :172              Severe  :113                                
+##                                                                        
+##                                                                        
+##  ChestPain Diarrhea  EyePn     Insomnia  ItchyEye  Nausea    EarPn    
+##  No :497   No :631   No :617   No :315   No :551   No :475   No :568  
+##  Yes:233   Yes: 99   Yes:113   Yes:415   Yes:179   Yes:255   Yes:162  
+##                                                                       
+##                                                                       
+##                                                                       
+##                                                                       
+##  Hearing   Pharyngitis Breathless ToothPn   Vision    Vomit     Wheeze   
+##  No :700   No :119     No :436    No :565   No :711   No :652   No :510  
+##  Yes: 30   Yes:611     Yes:294    Yes:165   Yes: 19   Yes: 78   Yes:220  
+##                                                                          
+##                                                                          
+##                                                                          
+##                                                                          
+##     BodyTemp     
+##  Min.   : 97.20  
+##  1st Qu.: 98.20  
+##  Median : 98.50  
+##  Mean   : 98.94  
+##  3rd Qu.: 99.30  
+##  Max.   :103.10</code></pre>
 </div>
 <div id="saving-data" class="section level2">
 <h2>Saving Data</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># location to save file</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>save_data_location <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;processed_data&quot;</span>,<span class="st">&quot;processeddata.rds&quot;</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(rawdata2, <span class="at">file =</span> save_data_location)</span></code></pre></div>
 <p><br> # Data Exploration</p>
+<hr />
+<p>First loading all the default settings and preliminary programs.</p>
+<p>Path to Processed Data and loading</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>data_location <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;processed_data&quot;</span>,<span class="st">&quot;processeddata.rds&quot;</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span> <span class="fu">readRDS</span>(data_location)</span></code></pre></div>
+<p>View Summary of new Data, subsetted from the original raw data.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data) <span class="co">#check structure of R object</span></span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    730 obs. of  32 variables:
+##  $ SwollenLymphNodes: Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 1 1 1 2 1 ...
+##  $ ChestCongestion  : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 2 2 1 1 1 2 2 2 ...
+##  $ ChillsSweats     : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 2 2 2 2 2 1 ...
+##  $ NasalCongestion  : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 2 2 1 1 1 2 2 2 ...
+##  $ CoughYN          : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 1 2 1 2 2 2 2 2 ...
+##  $ Sneeze           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 1 2 1 2 1 1 ...
+##  $ Fatigue          : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ SubjectiveFever  : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 1 ...
+##  $ Headache         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 1 2 2 2 ...
+##  $ Weakness         : Factor w/ 4 levels &quot;None&quot;,&quot;Mild&quot;,..: 2 4 4 4 3 3 2 4 3 3 ...
+##  $ WeaknessYN       : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ CoughIntensity   : Factor w/ 4 levels &quot;None&quot;,&quot;Mild&quot;,..: 4 4 2 3 1 3 4 3 3 3 ...
+##  $ CoughYN2         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 1 2 2 2 2 2 ...
+##  $ Myalgia          : Factor w/ 4 levels &quot;None&quot;,&quot;Mild&quot;,..: 2 4 4 4 2 3 2 4 3 2 ...
+##  $ MyalgiaYN        : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ RunnyNose        : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 1 1 2 2 2 2 ...
+##  $ AbPain           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 1 1 1 1 1 1 1 ...
+##  $ ChestPain        : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 1 1 2 2 1 1 1 ...
+##  $ Diarrhea         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 2 1 1 1 1 ...
+##  $ EyePn            : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 2 1 1 1 1 1 ...
+##  $ Insomnia         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 2 1 1 2 2 2 ...
+##  $ ItchyEye         : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Nausea           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 2 2 2 1 1 2 2 ...
+##  $ EarPn            : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 1 2 1 1 1 1 1 1 ...
+##  $ Hearing          : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 1 1 1 1 1 1 1 1 ...
+##  $ Pharyngitis      : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 1 1 1 ...
+##  $ Breathless       : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 1 1 2 1 1 1 2 ...
+##  $ ToothPn          : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 2 1 1 1 1 1 2 1 ...
+##  $ Vision           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Vomit            : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 2 1 1 1 ...
+##  $ Wheeze           : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 2 1 2 1 1 1 1 ...
+##  $ BodyTemp         : num  98.3 100.4 100.8 98.8 100.5 ...
+##  - attr(*, &quot;na.action&quot;)= &#39;omit&#39; Named int [1:5] 133 243 363 577 585
+##   ..- attr(*, &quot;names&quot;)= chr [1:5] &quot;133&quot; &quot;243&quot; &quot;363&quot; &quot;577&quot; ...</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data) <span class="co">#details of the data up to 4 levels, empty values = &quot;&quot; </span></span></code></pre></div>
+<pre><code>## Rows: 730
+## Columns: 32
+## $ SwollenLymphNodes &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, No, No, No, Yes, No, Yes, Y~
+## $ ChestCongestion   &lt;fct&gt; No, Yes, Yes, Yes, No, No, No, Yes, Yes, Yes, Yes, Y~
+## $ ChillsSweats      &lt;fct&gt; No, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, ~
+## $ NasalCongestion   &lt;fct&gt; No, Yes, Yes, Yes, No, No, No, Yes, Yes, Yes, Yes, Y~
+## $ CoughYN           &lt;fct&gt; Yes, Yes, No, Yes, No, Yes, Yes, Yes, Yes, Yes, No, ~
+## $ Sneeze            &lt;fct&gt; No, No, Yes, Yes, No, Yes, No, Yes, No, No, No, No, ~
+## $ Fatigue           &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ SubjectiveFever   &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes~
+## $ Headache          &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes~
+## $ Weakness          &lt;fct&gt; Mild, Severe, Severe, Severe, Moderate, Moderate, Mi~
+## $ WeaknessYN        &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ CoughIntensity    &lt;fct&gt; Severe, Severe, Mild, Moderate, None, Moderate, Seve~
+## $ CoughYN2          &lt;fct&gt; Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes, Yes, Yes~
+## $ Myalgia           &lt;fct&gt; Mild, Severe, Severe, Severe, Mild, Moderate, Mild, ~
+## $ MyalgiaYN         &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ RunnyNose         &lt;fct&gt; No, No, Yes, Yes, No, No, Yes, Yes, Yes, Yes, No, No~
+## $ AbPain            &lt;fct&gt; No, No, Yes, No, No, No, No, No, No, No, Yes, Yes, N~
+## $ ChestPain         &lt;fct&gt; No, No, Yes, No, No, Yes, Yes, No, No, No, No, Yes, ~
+## $ Diarrhea          &lt;fct&gt; No, No, No, No, No, Yes, No, No, No, No, No, No, No,~
+## $ EyePn             &lt;fct&gt; No, No, No, No, Yes, No, No, No, No, No, Yes, No, Ye~
+## $ Insomnia          &lt;fct&gt; No, No, Yes, Yes, Yes, No, No, Yes, Yes, Yes, Yes, Y~
+## $ ItchyEye          &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, Yes,~
+## $ Nausea            &lt;fct&gt; No, No, Yes, Yes, Yes, Yes, No, No, Yes, Yes, Yes, Y~
+## $ EarPn             &lt;fct&gt; No, Yes, No, Yes, No, No, No, No, No, No, No, Yes, Y~
+## $ Hearing           &lt;fct&gt; No, Yes, No, No, No, No, No, No, No, No, No, No, No,~
+## $ Pharyngitis       &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, No, No, Yes, ~
+## $ Breathless        &lt;fct&gt; No, No, Yes, No, No, Yes, No, No, No, Yes, No, Yes, ~
+## $ ToothPn           &lt;fct&gt; No, No, Yes, No, No, No, No, No, Yes, No, No, Yes, N~
+## $ Vision            &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, No, ~
+## $ Vomit             &lt;fct&gt; No, No, No, No, No, No, Yes, No, No, No, Yes, Yes, N~
+## $ Wheeze            &lt;fct&gt; No, No, No, Yes, No, Yes, No, No, No, No, No, Yes, N~
+## $ BodyTemp          &lt;dbl&gt; 98.3, 100.4, 100.8, 98.8, 100.5, 98.4, 102.5, 98.4, ~</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code></pre></div>
+<pre><code>##  SwollenLymphNodes ChestCongestion ChillsSweats NasalCongestion CoughYN  
+##  No :418           No :323         No :130      No :167         No : 75  
+##  Yes:312           Yes:407         Yes:600      Yes:563         Yes:655  
+##                                                                          
+##                                                                          
+##                                                                          
+##                                                                          
+##  Sneeze    Fatigue   SubjectiveFever Headache      Weakness   WeaknessYN
+##  No :339   No : 64   No :230         No :115   None    : 49   No : 49   
+##  Yes:391   Yes:666   Yes:500         Yes:615   Mild    :223   Yes:681   
+##                                                Moderate:338             
+##                                                Severe  :120             
+##                                                                         
+##                                                                         
+##   CoughIntensity CoughYN2      Myalgia    MyalgiaYN RunnyNose AbPain   
+##  None    : 47    No : 47   None    : 79   No : 79   No :211   No :639  
+##  Mild    :154    Yes:683   Mild    :213   Yes:651   Yes:519   Yes: 91  
+##  Moderate:357              Moderate:325                                
+##  Severe  :172              Severe  :113                                
+##                                                                        
+##                                                                        
+##  ChestPain Diarrhea  EyePn     Insomnia  ItchyEye  Nausea    EarPn    
+##  No :497   No :631   No :617   No :315   No :551   No :475   No :568  
+##  Yes:233   Yes: 99   Yes:113   Yes:415   Yes:179   Yes:255   Yes:162  
+##                                                                       
+##                                                                       
+##                                                                       
+##                                                                       
+##  Hearing   Pharyngitis Breathless ToothPn   Vision    Vomit     Wheeze   
+##  No :700   No :119     No :436    No :565   No :711   No :652   No :510  
+##  Yes: 30   Yes:611     Yes:294    Yes:165   Yes: 19   Yes: 78   Yes:220  
+##                                                                          
+##                                                                          
+##                                                                          
+##                                                                          
+##     BodyTemp     
+##  Min.   : 97.20  
+##  1st Qu.: 98.20  
+##  Median : 98.50  
+##  Mean   : 98.94  
+##  3rd Qu.: 99.30  
+##  Max.   :103.10</code></pre>
+<p>Important variables: Outcome= Body temperature and our main categorical outcome is Nausea. We want to see if the other symptoms are correlated with (predict) those outcomes.</p>
+<p>Limited selection of other symptoms (Selection of 5, based on vaugely off of the PeptoBismol jingle ):</p>
+<ol style="list-style-type: decimal">
+<li>Nausea</li>
+<li>CoughYN</li>
+<li>Pharyngitis</li>
+<li>Vomit</li>
+<li>Diarrhea</li>
+</ol>
+<p>Reduce data to limited variables and BodyTemp. Preview to confirm</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>SelectData<span class="ot">&lt;-</span>data<span class="sc">%&gt;%</span> <span class="co">#make into a new data frame</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#select limited variables and BodyTemp</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Nausea, </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>         CoughYN,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>         Pharyngitis,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>         Vomit,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>         Diarrhea,</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>         BodyTemp)<span class="sc">%&gt;%</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#filter for only positive Nausea data, per instruction of prompt as it being the main categorical outcome</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Nausea<span class="sc">==</span><span class="st">&quot;Yes&quot;</span>)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(SelectData)</span></code></pre></div>
+<pre><code>##  Nausea    CoughYN   Pharyngitis Vomit     Diarrhea     BodyTemp     
+##  No :  0   No : 29   No : 39     No :191   No :196   Min.   : 97.40  
+##  Yes:255   Yes:226   Yes:216     Yes: 64   Yes: 59   1st Qu.: 98.20  
+##                                                      Median : 98.60  
+##                                                      Mean   : 98.99  
+##                                                      3rd Qu.: 99.30  
+##                                                      Max.   :103.00</code></pre>
+<p>##Summary Table</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>SelectData<span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#grouping by Nausea, the main categorical outcome</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Nausea,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>           CoughYN, </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>           Pharyngitis, </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>           Vomit, </span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>           Diarrhea)<span class="sc">%&gt;%</span>  </span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summarise the data, get observances and mean temp, calculate the standard deviation</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">n=</span><span class="fu">n</span>(), <span class="co">#to count the number of observances</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean=</span><span class="fu">mean</span>(BodyTemp),<span class="co">#calculate mean body temp</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd=</span><span class="fu">sd</span>(BodyTemp) <span class="co">#calculate sd (Standard Deviation) of Body temp</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">%&gt;%</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#arrange by highest number of n</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;Nausea&#39;, &#39;CoughYN&#39;, &#39;Pharyngitis&#39;, &#39;Vomit&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 13 x 8
+## # Groups:   Nausea, CoughYN, Pharyngitis, Vomit [8]
+##    Nausea CoughYN Pharyngitis Vomit Diarrhea     n  mean     sd
+##    &lt;fct&gt;  &lt;fct&gt;   &lt;fct&gt;       &lt;fct&gt; &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Yes    Yes     Yes         No    No         109  99.1  1.33 
+##  2 Yes    Yes     Yes         Yes   No          37  99.1  1.05 
+##  3 Yes    Yes     Yes         No    Yes         32  98.8  1.24 
+##  4 Yes    Yes     No          No    No          22  98.5  0.615
+##  5 Yes    No      Yes         No    No          21  98.9  1.18 
+##  6 Yes    Yes     Yes         Yes   Yes         14  99.1  1.45 
+##  7 Yes    Yes     No          Yes   Yes          5  99.1  1.46 
+##  8 Yes    Yes     No          No    Yes          4  98.7  0.492
+##  9 Yes    No      Yes         Yes   No           3  99.6  1.95 
+## 10 Yes    Yes     No          Yes   No           3  98.4  0.436
+## 11 Yes    No      No          No    Yes          2  98.7  0    
+## 12 Yes    No      No          Yes   Yes          2  98.2  0.212
+## 13 Yes    No      No          No    No           1  98.7 NA</code></pre>
+<p>Most cases with observed experience Nausea, Cough, Pharyngitis with a mean Body temperature of 99.1. Only once case where it was just Nausea and none of the other selected variables.</p>
+<p>Save of temp and positive for nausea</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>save_data_location <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;processed_data&quot;</span>,<span class="st">&quot;SelectData.rds&quot;</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(SelectData, <span class="at">file =</span> save_data_location)</span></code></pre></div>
+<p>Not satisfied with my version of summary table… so looking at other examples to see how to do this better. Found someone using this table1 program. Let’s see how it goes.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(table1)<span class="co"># saw this used in someone else&#39;s code, trying it out</span></span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;table1&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     units, units&lt;-</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table1</span>(<span class="sc">~</span>   BodyTemp<span class="sc">+</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>           CoughYN<span class="sc">+</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>           Pharyngitis<span class="sc">+</span> </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>           Vomit<span class="sc">+</span> </span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>         <span class="co"># the | splits it to be factor&#39;s col variables-- this case of Nausea-.</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>           Diarrhea <span class="sc">|</span> Nausea, </span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>       <span class="co">#use prior data since selecteddata only shows the positive nausea hits</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">data=</span>data, </span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">overall=</span><span class="st">&quot;Total&quot;</span>)</span></code></pre></div>
+<div class="Rtable1"><table class="Rtable1">
+<thead>
+<tr>
+<th class='rowlabel firstrow lastrow'></th>
+<th class='firstrow lastrow'><span class='stratlabel'>No<br><span class='stratn'>(N=475)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>Yes<br><span class='stratn'>(N=255)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>Total<br><span class='stratn'>(N=730)</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='rowlabel firstrow'>BodyTemp</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>98.9 (1.19)</td>
+<td>99.0 (1.21)</td>
+<td>98.9 (1.20)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Median [Min, Max]</td>
+<td class='lastrow'>98.5 [97.2, 103]</td>
+<td class='lastrow'>98.6 [97.4, 103]</td>
+<td class='lastrow'>98.5 [97.2, 103]</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>CoughYN</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>No</td>
+<td>46 (9.7%)</td>
+<td>29 (11.4%)</td>
+<td>75 (10.3%)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Yes</td>
+<td class='lastrow'>429 (90.3%)</td>
+<td class='lastrow'>226 (88.6%)</td>
+<td class='lastrow'>655 (89.7%)</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>Pharyngitis</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>No</td>
+<td>80 (16.8%)</td>
+<td>39 (15.3%)</td>
+<td>119 (16.3%)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Yes</td>
+<td class='lastrow'>395 (83.2%)</td>
+<td class='lastrow'>216 (84.7%)</td>
+<td class='lastrow'>611 (83.7%)</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>Vomit</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>No</td>
+<td>461 (97.1%)</td>
+<td>191 (74.9%)</td>
+<td>652 (89.3%)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Yes</td>
+<td class='lastrow'>14 (2.9%)</td>
+<td class='lastrow'>64 (25.1%)</td>
+<td class='lastrow'>78 (10.7%)</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>Diarrhea</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>No</td>
+<td>435 (91.6%)</td>
+<td>196 (76.9%)</td>
+<td>631 (86.4%)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Yes</td>
+<td class='lastrow'>40 (8.4%)</td>
+<td class='lastrow'>59 (23.1%)</td>
+<td class='lastrow'>99 (13.6%)</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="data-overview" class="section level2">
-<h2>Data Overview</h2>
-</div>
-<div id="interests" class="section level2">
-<h2>Interests</h2>
-<div id="body-temperature-continuous-outcome" class="section level3">
-<h3>Body Temperature (Continuous Outcome)</h3>
-</div>
-<div id="nausea-categorical-outcome" class="section level3">
-<h3>Nausea (Categorical Outcome)</h3>
-</div>
+<p>This is a very nice table, Need to look into about putting in BodyTemp as the factors in this and not just Nausea</p>
+<p>##Histogram/Density plot</p>
+<p>Code here is copy pasted and changes in the data source and fill aspects are based on the different comparisons.</p>
+<p>By Nausea</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">%&gt;%</span> <span class="co">#using original data to show Yes and No for Nausea</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>BodyTemp, <span class="at">fill=</span>Nausea)) <span class="sc">+</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">adjust=</span><span class="fl">1.5</span>,</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">alpha=</span>.<span class="dv">5</span>)<span class="sc">+</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span> <span class="st">&quot;Body temperature of people experencing nausea&quot;</span>)</span></code></pre></div>
+<p><img src="Flu01_files/figure-html/unnamed-chunk-12-1.png" width="672" /> By Vomit</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>SelectData<span class="sc">%&gt;%</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>BodyTemp, <span class="at">fill=</span>CoughYN)) <span class="sc">+</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">adjust=</span><span class="fl">1.5</span>,</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">alpha=</span>.<span class="dv">5</span>)<span class="sc">+</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title=</span> <span class="st">&quot;Body temperature of people experiencing nausea with a cough&quot;</span>)</span></code></pre></div>
+<p><img src="Flu01_files/figure-html/unnamed-chunk-13-1.png" width="672" /> By Cough</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>SelectData<span class="sc">%&gt;%</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>BodyTemp, <span class="at">fill=</span>Pharyngitis)) <span class="sc">+</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">adjust=</span><span class="fl">1.5</span>,</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">alpha=</span>.<span class="dv">5</span>)<span class="sc">+</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title=</span> <span class="st">&quot;Body temperature of people experiencing nausea with pharyngitis&quot;</span>)</span></code></pre></div>
+<p><img src="Flu01_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>SelectData<span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>BodyTemp, <span class="at">fill=</span>Vomit)) <span class="sc">+</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">adjust=</span><span class="fl">1.5</span>,</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">alpha=</span>.<span class="dv">5</span>)<span class="sc">+</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title=</span> <span class="st">&quot;Body temperature of people experiencing nausea and vomitted&quot;</span>)</span></code></pre></div>
+<p><img src="Flu01_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>SelectData<span class="sc">%&gt;%</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>BodyTemp, <span class="at">fill=</span>Diarrhea)) <span class="sc">+</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">adjust=</span><span class="fl">1.5</span>,</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">alpha=</span>.<span class="dv">5</span>)<span class="sc">+</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title=</span> <span class="st">&quot;Body temperature of people experiencing nausea with diarrhea&quot;</span>)</span></code></pre></div>
+<p><img src="Flu01_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>##Scatterplots and Boxplots</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Nausea positive</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>SelectData<span class="sc">%&gt;%</span> <span class="co">#only positive with Nausea</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>BodyTemp))<span class="sc">+</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">x=</span>Pharyngitis, <span class="at">color=</span><span class="st">&quot;Pharyngitis&quot;</span>, <span class="at">alpha=</span>.<span class="dv">5</span>))<span class="sc">+</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">x=</span>Vomit, <span class="at">color=</span><span class="st">&quot;Vomit&quot;</span>, <span class="at">alpha=</span>.<span class="dv">5</span>))<span class="sc">+</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">x=</span>Diarrhea, <span class="at">color=</span><span class="st">&quot;Diarrhea&quot;</span>, <span class="at">alpha=</span>.<span class="dv">5</span>))<span class="sc">+</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">x=</span>Pharyngitis, <span class="at">color=</span><span class="st">&quot;Pharyngitis&quot;</span>))<span class="sc">+</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">x=</span>Vomit, <span class="at">color=</span><span class="st">&quot;Vomit&quot;</span>))<span class="sc">+</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">x=</span>Diarrhea, <span class="at">color=</span><span class="st">&quot;Diarrhea&quot;</span>))<span class="sc">+</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Body temperature Violin graph of symptoms that occured with Nausea&quot;</span>)<span class="sc">+</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Symptom experienced with Nausea&quot;</span>)</span></code></pre></div>
+<p><img src="Flu01_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Need to reshape data to get the right output in ggplot I think I need to rotate the table to long form?</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Pivot Select Data</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>PSData<span class="ot">&lt;-</span>SelectData<span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(CoughYN, </span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>           Pharyngitis, </span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>           Vomit, </span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>           Diarrhea)<span class="sc">%&gt;%</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>( </span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Temp=</span><span class="fu">mean</span>(BodyTemp),<span class="co">#calculate mean body temp</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd=</span><span class="fu">sd</span>(BodyTemp))<span class="sc">%&gt;%</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="co">#really unsure if this was correct</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(CoughYN, Pharyngitis,Vomit,Diarrhea),</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;Symptoms&quot;</span>,</span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;Presence&quot;</span> )</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;CoughYN&#39;, &#39;Pharyngitis&#39;, &#39;Vomit&#39;. You can override using the `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(PSData)</span></code></pre></div>
+<pre><code>## Rows: 52
+## Columns: 4
+## $ Temp     &lt;dbl&gt; 98.70000, 98.70000, 98.70000, 98.70000, 98.70000, 98.70000, 9~
+## $ sd       &lt;dbl&gt; NA, NA, NA, NA, 0.0000000, 0.0000000, 0.0000000, 0.0000000, 0~
+## $ Symptoms &lt;chr&gt; &quot;CoughYN&quot;, &quot;Pharyngitis&quot;, &quot;Vomit&quot;, &quot;Diarrhea&quot;, &quot;CoughYN&quot;, &quot;Ph~
+## $ Presence &lt;fct&gt; No, No, No, No, No, No, No, Yes, No, No, Yes, Yes, No, Yes, N~</code></pre>
+<p>Save Pivoted Data of mean temp and positive for nausea</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>save_data_location <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;processed_data&quot;</span>,<span class="st">&quot;PivotSelect.rds&quot;</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(PSData, <span class="at">file =</span> save_data_location)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>PSData<span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Symptoms, <span class="at">y=</span>Temp))<span class="sc">+</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">color=</span>Presence))<span class="sc">+</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Body temperature boxplot of symptoms that occured with Nausea&quot;</span>)<span class="sc">+</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Symptom experienced with Nausea&quot;</span>)</span></code></pre></div>
+<p><img src="Flu01_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 </div>
 </div>
 

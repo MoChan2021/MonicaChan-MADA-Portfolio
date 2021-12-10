@@ -5,15 +5,7 @@ output:
     toc: FALSE
 ---
 
----
-title: "Analysis Script Module 9"
-author: "MYC"
-date: "10/20/2021"
-output: 
-  html_document:
-    toc: FALSE
----
-
+# Machine Learning Results
 Loading all the default settings and preliminary programs.
 
 ```{r setup, include=FALSE}
@@ -33,8 +25,39 @@ data<- readRDS(data_location)
 ```
 
 **Reminder**: Outcome of interest is **Body Temp**; Categorical outcome is **Nausea**; Predictor= **RunnyNose**
+```{r}
+glimpse(data)
+```
+Feature / Variable removal
 
+* Remove severity score data
+```{r}
+OrderedData<-data%>%
+  #remove YN variables for those variables with severity factors
+  select(-WeaknessYN,-CoughYN,-MyalgiaYN,-CoughYN2)%>%
+  #code symptom severity factors as ordinal
+  mutate(Weakness=as.ordered(Weakness), CoughIntensity=as.ordered(CoughIntensity), Myalgia=as.ordered(Myalgia))%>%
+  #Order severity in ordered factors: None<mild<Moderate<Severee
+ mutate_at(vars(Weakness, CoughIntensity, Myalgia),
+           list(~factor(.,levels = c("None","Mild","Moderate","Severe"),ordered = TRUE)))
 
+summary(OrderedData)
+```
+Low variance predictors
+view summary of Ordered Data <50 entries
+```{r}
+Mod11Data<-OrderedData%>%
+  select(-Hearing, -Vision)
+
+glimpse(Mod11Data)  
+```
+
+location to save file
+```{r}
+save_data_location <- here::here("data","processed_data","Mod11Data.rds")
+
+saveRDS(Mod11Data, file = save_data_location)
+```
 # Module 11 Contributor: Monica Chan
 
 ## Body Temperature vs. all predictors

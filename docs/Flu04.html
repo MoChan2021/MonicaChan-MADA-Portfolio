@@ -9,11 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="MYC" />
 
-<meta name="date" content="2021-10-20" />
 
-<title>Analysis Script Module 9</title>
+<title>Machine Learning Results (Mod11)</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -353,52 +351,21 @@ $(document).ready(function () {
       <a href="./tidytuesday_exercise2.html">Tidy Tuesday 2</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Machine Learning Models</li>
-    <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Influenza Analysis</a>
-      <ul class="dropdown-menu" role="menu">
-        <li class="dropdown-header">Introduction</li>
-        <li>
-          <a href="./Flu00.html"></a>
-        </li>
-        <li class="dropdown-header">Data &amp; Exploration</li>
-        <li>
-          <a href="./Flu01.html"></a>
-        </li>
-        <li class="dropdown-header">TidyModels Analysis I</li>
-        <li>
-          <a href="./Flu02.html"></a>
-        </li>
-        <li class="dropdown-header">TidyModels Analysis II (Mod9)</li>
-        <li>
-          <a href="./Flu03.html"></a>
-        </li>
-        <li class="dropdown-header">Machine Learning Results (Mod11)</li>
-        <li>
-          <a href="./Flu04.html"></a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Additional Assessments
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Invluenza Analysis Project</li>
-    <li class="divider"></li>
+    <li class="dropdown-header">Influenza Analysis</li>
     <li>
-      <a href="./AnalysisScriptMod9.html">Assessment 11 - Machine Learning Models 1</a>
+      <a href="./Flu00.html">Introduction and Background</a>
     </li>
     <li>
-      <a href="./AnalysisScriptMod9.html">Assessment 12 - Machine Learning Models 2</a>
+      <a href="./Flu01.html">Data &amp; Exploration</a>
     </li>
-    <li class="divider"></li>
     <li>
-      <a href="./tidytuesday_exercise2.html">Assessment 13 - Tidy Tuesday 2 (Quick Link)</a>
+      <a href="./Flu02.html">TidyModels Analysis I</a>
+    </li>
+    <li>
+      <a href="./Flu03.html">TidyModels Analysis II</a>
+    </li>
+    <li>
+      <a href="./Flu04.html">Machine Learning Models</a>
     </li>
   </ul>
 </li>
@@ -419,18 +386,140 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Analysis Script Module 9</h1>
-<h4 class="author">MYC</h4>
-<h4 class="date">10/20/2021</h4>
+<h1 class="title toc-ignore">Machine Learning Results (Mod11)</h1>
 
 </div>
 
 
+<div id="machine-learning-results" class="section level1">
+<h1>Machine Learning Results</h1>
 <p>Loading all the default settings and preliminary programs.</p>
 <p>Path to Processed Data and loading of cleaned data</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data_location <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;processed_data&quot;</span>,<span class="st">&quot;processeddata.rds&quot;</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span> <span class="fu">readRDS</span>(data_location)</span></code></pre></div>
 <p><strong>Reminder</strong>: Outcome of interest is <strong>Body Temp</strong>; Categorical outcome is <strong>Nausea</strong>; Predictor= <strong>RunnyNose</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data)</span></code></pre></div>
+<pre><code>## Rows: 730
+## Columns: 32
+## $ SwollenLymphNodes &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, No, No, No, Yes, No, Yes, Y~
+## $ ChestCongestion   &lt;fct&gt; No, Yes, Yes, Yes, No, No, No, Yes, Yes, Yes, Yes, Y~
+## $ ChillsSweats      &lt;fct&gt; No, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, ~
+## $ NasalCongestion   &lt;fct&gt; No, Yes, Yes, Yes, No, No, No, Yes, Yes, Yes, Yes, Y~
+## $ CoughYN           &lt;fct&gt; Yes, Yes, No, Yes, No, Yes, Yes, Yes, Yes, Yes, No, ~
+## $ Sneeze            &lt;fct&gt; No, No, Yes, Yes, No, Yes, No, Yes, No, No, No, No, ~
+## $ Fatigue           &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ SubjectiveFever   &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes~
+## $ Headache          &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes~
+## $ Weakness          &lt;fct&gt; Mild, Severe, Severe, Severe, Moderate, Moderate, Mi~
+## $ WeaknessYN        &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ CoughIntensity    &lt;fct&gt; Severe, Severe, Mild, Moderate, None, Moderate, Seve~
+## $ CoughYN2          &lt;fct&gt; Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes, Yes, Yes~
+## $ Myalgia           &lt;fct&gt; Mild, Severe, Severe, Severe, Mild, Moderate, Mild, ~
+## $ MyalgiaYN         &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ RunnyNose         &lt;fct&gt; No, No, Yes, Yes, No, No, Yes, Yes, Yes, Yes, No, No~
+## $ AbPain            &lt;fct&gt; No, No, Yes, No, No, No, No, No, No, No, Yes, Yes, N~
+## $ ChestPain         &lt;fct&gt; No, No, Yes, No, No, Yes, Yes, No, No, No, No, Yes, ~
+## $ Diarrhea          &lt;fct&gt; No, No, No, No, No, Yes, No, No, No, No, No, No, No,~
+## $ EyePn             &lt;fct&gt; No, No, No, No, Yes, No, No, No, No, No, Yes, No, Ye~
+## $ Insomnia          &lt;fct&gt; No, No, Yes, Yes, Yes, No, No, Yes, Yes, Yes, Yes, Y~
+## $ ItchyEye          &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, Yes,~
+## $ Nausea            &lt;fct&gt; No, No, Yes, Yes, Yes, Yes, No, No, Yes, Yes, Yes, Y~
+## $ EarPn             &lt;fct&gt; No, Yes, No, Yes, No, No, No, No, No, No, No, Yes, Y~
+## $ Hearing           &lt;fct&gt; No, Yes, No, No, No, No, No, No, No, No, No, No, No,~
+## $ Pharyngitis       &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, No, No, Yes, ~
+## $ Breathless        &lt;fct&gt; No, No, Yes, No, No, Yes, No, No, No, Yes, No, Yes, ~
+## $ ToothPn           &lt;fct&gt; No, No, Yes, No, No, No, No, No, Yes, No, No, Yes, N~
+## $ Vision            &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, No, ~
+## $ Vomit             &lt;fct&gt; No, No, No, No, No, No, Yes, No, No, No, Yes, Yes, N~
+## $ Wheeze            &lt;fct&gt; No, No, No, Yes, No, Yes, No, No, No, No, No, Yes, N~
+## $ BodyTemp          &lt;dbl&gt; 98.3, 100.4, 100.8, 98.8, 100.5, 98.4, 102.5, 98.4, ~</code></pre>
+<p>Feature / Variable removal</p>
+<ul>
+<li>Remove severity score data</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>OrderedData<span class="ot">&lt;-</span>data<span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#remove YN variables for those variables with severity factors</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>WeaknessYN,<span class="sc">-</span>CoughYN,<span class="sc">-</span>MyalgiaYN,<span class="sc">-</span>CoughYN2)<span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#code symptom severity factors as ordinal</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Weakness=</span><span class="fu">as.ordered</span>(Weakness), <span class="at">CoughIntensity=</span><span class="fu">as.ordered</span>(CoughIntensity), <span class="at">Myalgia=</span><span class="fu">as.ordered</span>(Myalgia))<span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Order severity in ordered factors: None&lt;mild&lt;Moderate&lt;Severee</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate_at</span>(<span class="fu">vars</span>(Weakness, CoughIntensity, Myalgia),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>           <span class="fu">list</span>(<span class="sc">~</span><span class="fu">factor</span>(.,<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;None&quot;</span>,<span class="st">&quot;Mild&quot;</span>,<span class="st">&quot;Moderate&quot;</span>,<span class="st">&quot;Severe&quot;</span>),<span class="at">ordered =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(OrderedData)</span></code></pre></div>
+<pre><code>##  SwollenLymphNodes ChestCongestion ChillsSweats NasalCongestion Sneeze   
+##  No :418           No :323         No :130      No :167         No :339  
+##  Yes:312           Yes:407         Yes:600      Yes:563         Yes:391  
+##                                                                          
+##                                                                          
+##                                                                          
+##                                                                          
+##  Fatigue   SubjectiveFever Headache      Weakness    CoughIntensity
+##  No : 64   No :230         No :115   None    : 49   None    : 47   
+##  Yes:666   Yes:500         Yes:615   Mild    :223   Mild    :154   
+##                                      Moderate:338   Moderate:357   
+##                                      Severe  :120   Severe  :172   
+##                                                                    
+##                                                                    
+##      Myalgia    RunnyNose AbPain    ChestPain Diarrhea  EyePn     Insomnia 
+##  None    : 79   No :211   No :639   No :497   No :631   No :617   No :315  
+##  Mild    :213   Yes:519   Yes: 91   Yes:233   Yes: 99   Yes:113   Yes:415  
+##  Moderate:325                                                              
+##  Severe  :113                                                              
+##                                                                            
+##                                                                            
+##  ItchyEye  Nausea    EarPn     Hearing   Pharyngitis Breathless ToothPn  
+##  No :551   No :475   No :568   No :700   No :119     No :436    No :565  
+##  Yes:179   Yes:255   Yes:162   Yes: 30   Yes:611     Yes:294    Yes:165  
+##                                                                          
+##                                                                          
+##                                                                          
+##                                                                          
+##  Vision    Vomit     Wheeze       BodyTemp     
+##  No :711   No :652   No :510   Min.   : 97.20  
+##  Yes: 19   Yes: 78   Yes:220   1st Qu.: 98.20  
+##                                Median : 98.50  
+##                                Mean   : 98.94  
+##                                3rd Qu.: 99.30  
+##                                Max.   :103.10</code></pre>
+<p>Low variance predictors view summary of Ordered Data &lt;50 entries</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Mod11Data<span class="ot">&lt;-</span>OrderedData<span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Hearing, <span class="sc">-</span>Vision)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(Mod11Data)  </span></code></pre></div>
+<pre><code>## Rows: 730
+## Columns: 26
+## $ SwollenLymphNodes &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, No, No, No, Yes, No, Yes, Y~
+## $ ChestCongestion   &lt;fct&gt; No, Yes, Yes, Yes, No, No, No, Yes, Yes, Yes, Yes, Y~
+## $ ChillsSweats      &lt;fct&gt; No, No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, ~
+## $ NasalCongestion   &lt;fct&gt; No, Yes, Yes, Yes, No, No, No, Yes, Yes, Yes, Yes, Y~
+## $ Sneeze            &lt;fct&gt; No, No, Yes, Yes, No, Yes, No, Yes, No, No, No, No, ~
+## $ Fatigue           &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Ye~
+## $ SubjectiveFever   &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes~
+## $ Headache          &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes, Yes, Yes~
+## $ Weakness          &lt;ord&gt; Mild, Severe, Severe, Severe, Moderate, Moderate, Mi~
+## $ CoughIntensity    &lt;ord&gt; Severe, Severe, Mild, Moderate, None, Moderate, Seve~
+## $ Myalgia           &lt;ord&gt; Mild, Severe, Severe, Severe, Mild, Moderate, Mild, ~
+## $ RunnyNose         &lt;fct&gt; No, No, Yes, Yes, No, No, Yes, Yes, Yes, Yes, No, No~
+## $ AbPain            &lt;fct&gt; No, No, Yes, No, No, No, No, No, No, No, Yes, Yes, N~
+## $ ChestPain         &lt;fct&gt; No, No, Yes, No, No, Yes, Yes, No, No, No, No, Yes, ~
+## $ Diarrhea          &lt;fct&gt; No, No, No, No, No, Yes, No, No, No, No, No, No, No,~
+## $ EyePn             &lt;fct&gt; No, No, No, No, Yes, No, No, No, No, No, Yes, No, Ye~
+## $ Insomnia          &lt;fct&gt; No, No, Yes, Yes, Yes, No, No, Yes, Yes, Yes, Yes, Y~
+## $ ItchyEye          &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, Yes,~
+## $ Nausea            &lt;fct&gt; No, No, Yes, Yes, Yes, Yes, No, No, Yes, Yes, Yes, Y~
+## $ EarPn             &lt;fct&gt; No, Yes, No, Yes, No, No, No, No, No, No, No, Yes, Y~
+## $ Pharyngitis       &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, No, No, Yes, ~
+## $ Breathless        &lt;fct&gt; No, No, Yes, No, No, Yes, No, No, No, Yes, No, Yes, ~
+## $ ToothPn           &lt;fct&gt; No, No, Yes, No, No, No, No, No, Yes, No, No, Yes, N~
+## $ Vomit             &lt;fct&gt; No, No, No, No, No, No, Yes, No, No, No, Yes, Yes, N~
+## $ Wheeze            &lt;fct&gt; No, No, No, Yes, No, Yes, No, No, No, No, No, Yes, N~
+## $ BodyTemp          &lt;dbl&gt; 98.3, 100.4, 100.8, 98.8, 100.5, 98.4, 102.5, 98.4, ~</code></pre>
+<p>location to save file</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>save_data_location <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;processed_data&quot;</span>,<span class="st">&quot;Mod11Data.rds&quot;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(Mod11Data, <span class="at">file =</span> save_data_location)</span></code></pre></div>
+</div>
 <div id="module-11-contributor-monica-chan" class="section level1">
 <h1>Module 11 Contributor: Monica Chan</h1>
 <div id="body-temperature-vs.-all-predictors" class="section level2">
