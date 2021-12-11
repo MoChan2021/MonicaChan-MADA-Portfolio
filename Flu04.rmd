@@ -4,17 +4,31 @@ output:
   html_document:
     toc: FALSE
 ---
+# Fitting three machine learning models using the `TidyModel` Framework.
 
-# Machine Learning Results
+_NOTE_: Original code for exercise was divided into separate scripts in respective repo.
+<br>
+## **OBJECTIVE**
+
+
+# **Data**
+
+## Loading Data
+
 Loading all the default settings and preliminary programs.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse) #for data processing and all dplyr related programs
 library(here) #to set paths
-library(tidymodels)      # for the recipes package, along with the rest of tidymodels
-library(skimr)           # for variable summaries
-
+library(tidymodels) # for the recipes package, along with the rest of tidymodels
+library(skimr) # for variable summaries
+library(broom.mixed) #  for converting bayesian models to tidy tibbles
+library(rpart.plot) # for visualizing a decision tree
+library(vip) # for variable importance plots
+library(glmnet) # for lasso models
+library(doParallel) #: for parallel backend for tuning processes
+library(ranger) # for random forest models
 ```
 
 Path to Processed Data and loading of cleaned data
@@ -58,8 +72,602 @@ save_data_location <- here::here("data","processed_data","Mod11Data.rds")
 
 saveRDS(Mod11Data, file = save_data_location)
 ```
-# Module 11 Contributor: Monica Chan
+
+Summary of data
+```{r}
+skim(Mod11Data) # use skimmer to summarize data
+```
+
+## Set Seed
+```{r}
+#set random seed to 123 for reproducibility
+set.seed(123)
+```
+
+## Training and Testing Split
+```{r}
+#split dataset into 70% training, 30% testing
+#use BodyTemp as stratification
+data_split <- initial_split(Mod11Data, 
+                            prop = 7/10,
+                            strata = BodyTemp)
+
+#create dataframes for the split data
+train_data <- training(data_split)
+test_data <- testing(data_split)
+
+```
+
+## 5-fold Cross Validation
+```{r}
+folds <- 
+  vfold_cv(train_data,
+           v = 5,
+           repeats = 5,
+           strata = BodyTemp)
+```
 
 ## Body Temperature vs. all predictors
 
-Below I am creating the new full model recipe for body temperature, making a path to the linear modeling, and combining them into a workflow to create a fitted object.
+Below I am creating the new full model recipe for body temperature against all predictors, We have the recipe program add dummy values for all nominal predictors-- BodyTemp
+```{r Recipe 1}
+Mod11_rec<-
+  recipe(BodyTemp~., train_data)%>%
+  step_dummy(all_nominal_predictors())
+
+```
+
+# **Null Model Perfomance**
+
+A null model is one with out any predictors. In this case, this predicts the mean of the outcome.
+We will compute the RMSE for this and compare with the final model.
+
+## Create Null Model
+```{r}
+#create null model
+null_mod <- 
+  null_model() %>%
+  set_engine("parsnip") %>%
+  set_mode("regression")
+
+#add recipe and model into workflow
+null_wflow <- 
+  workflow() %>%
+  add_recipe(Mod11_rec) %>%
+  add_model(null_mod)
+```
+## Fitting the null model to training data
+```{r}
+null_train <- 
+  null_wflow %>%
+  fit(data = train_data)
+
+#summary of null model with training data to get mean (which in this case is the RMSE)
+tidy(null_train)
+```
+## Fitting the null model to test data
+```{r}
+null_test <- 
+  null_wflow %>%
+  fit(data = test_data)
+
+#summary of null model with test data to get mean (which in this case is the RMSE)
+tidy(null_train)
+```
+## Null RMSE values
+```{r}
+#RMSE for training data
+null_RMSE_train <- 
+  tibble(
+    rmse = rmse_vec(
+      truth = train_data$BodyTemp,
+      estimate = rep(mean(train_data$BodyTemp), 
+                     nrow(train_data))),
+    SE = 0,
+    model = "Null - Train")
+
+null_RMSE_train
+```
+```{r}
+#RMSE for testing data
+null_RMSE_test <- 
+  tibble(
+    rmse = rmse_vec(
+      truth = test_data$BodyTemp,
+      estimate = rep(mean(test_data$BodyTemp), 
+                     nrow(test_data))),
+    SE = 0,
+    model = "Null - Test")
+
+null_RMSE_test
+```
+
+<br><br><br>
+
+# **Decision Tree Model**
+AKA, **Tree Model**, it is a non-parametric supervised learning method used for classification and regression. The goal is to create a model that predicts the value of a target variable by learning simple decision rules inferred from the data features. A tree can be seen as a piecewise constant approximation. 
+
+Structure of this code is biased from [TidyModels Tutorial for Tuning](https://www.tidymodels.org/start/tuning/).
+
+## Model Evaluation
+
+### Defining the tree model.
+```{r}
+tree_mod<-
+  #parsnip package - tuning hyperparameters-- with set engine and mode
+  decision_tree(
+    # tune() is a placeholder for parsnip to ID
+    cost_complexity = tune(),
+    tree_depth = tune(),
+    min_n = tune())%>%
+  set_engine("rpart")%>%
+  set_mode("regression") #use regression instead of classification
+
+tree_mod
+```
+### Tuning  grid specification
+```{r}
+tree_grid<-
+  # grid_regular- chooses sensible values for each hyper parameter
+  grid_regular(
+    cost_complexity(),
+    tree_depth(),
+    min_n(), #add to increase 25x
+    levels = 5
+  )
+
+tree_grid
+
+# view the tree depth
+tree_grid%>%
+  count(tree_depth)
+```
+#### Define workflow 
+```{r}
+tree_WF<-
+  workflow()%>%
+  add_model(tree_mod)%>% # Preprocessor, decision tree and added dummy
+  add_recipe(Mod11_rec) # Model- recipe from `Recipe 1` chunk, features BodyTemp and all other predictors
+
+tree_WF
+```
+
+### Cross-Validation and tune_grid() for additional tuning
+```{r warning=FALSE}
+#tune the model with previously specified CV and RMSE
+tree_res <- 
+  tree_WF %>%
+  tune_grid(
+    resamples=folds,
+    grid= tree_grid,
+    metric_set(rmse))
+    
+
+```
+## Decision Tree Metrics and Plotting - Model Evaluation
+
+
+### autoplot
+
+creates a defaulted visualization
+
+```{r}
+tree_res%>%
+  autoplot()
+```
+
+### Finding the Best Tree Model
+
+```{r}
+best_tree <- 
+  tree_res %>%
+  select_best("rmse") #function to pull out the single set of hyperparameter values for best decision tree model
+
+best_tree
+# results for tree depth and cost complexity that max the accuracy in the dataset of cell images.
+```
+## Finalize Decision Tree 
+### Final Workflow
+```{r}
+final_WF <- 
+  tree_WF %>% 
+  finalize_workflow(best_tree) # already pulled best "RMSE" tree
+
+final_WF
+```
+### Last Fit
+
+Fitting with fit()
+```{r}
+final_fit<-
+  final_WF%>%
+  fit(train_data)
+```
+Predicting outcomes for final model (training data)
+```{r}
+tree_pred<- 
+  predict(final_fit,
+          train_data) #testing fit with the training split
+```
+Plotting final tree
+```{r}
+rpart.plot(extract_fit_parsnip(final_fit)$fit)
+```
+
+## Plotting 
+
+### Predictions and Interval Fit
+```{r}
+#predicted versus observed
+plot(tree_pred$.pred,train_data$BodyTemp)
+abline(a=0,b=1, col = 'red') #45 degree line, along which the results should fall
+```
+### Residuals
+```{r}
+plot(tree_pred$.pred-train_data$BodyTemp)
+abline(a=0,b=0, col = 'red') #straight line, along which the results should fall
+```
+
+### Tree Performance
+```{r}
+tree_perfomance <- tree_res %>% show_best(n = 5)
+
+print(tree_perfomance)
+```
+Compare model performance to null model
+```{r}
+tree_RMSE<-
+  tree_res%>% #CV and tuned grid recipe
+  show_best(n=1)%>%
+  transmute( # row names in the performance output
+    rmse=round(mean,2),
+    SE=round(std_err,2),
+    model="Tree")
+
+tree_RMSE
+```
+
+*Comments*:
+
+The best performing tree model predicts two values.
+
+
+<br><br><br>
+
+# **LASSO for Linear Regression**
+
+Type of linear  regression that uses shrinkage (data values shrunk towards a central point, mean).
+
+*NOTE*: Aspects from the `Decision Tree Model` will be used to perform a `LASSO Linear Regression`. Code for this section may be taken from (TidyModels Tutorial Case Study)[https://www.tidymodels.org/start/case-study/].
+
+## LASSO Setup
+
+Building/define the LASSO model
+```{r}
+lasso_model <- linear_reg() %>%
+  set_mode("regression") %>%           
+  set_engine("glmnet") %>% #glmnet engine to specify a penelized logistic regression model
+  set_args(penalty = tune(), 
+           mixture = 1) #mixture 1 => means we use the LASSO model
+```
+
+## LASSO WorkFlow
+```{r}
+lasso_WF<-
+  workflow()%>%
+  add_model(lasso_model)%>%
+  add_recipe(Mod11_rec)
+```
+
+## LASSO Tuning
+```{r}
+#specifics for tuning grid = add penalties
+lasso_grid <- 
+  tibble(penalty = 10^seq(-3, 0, length.out = 30))
+```
+
+```{r}
+#tune model
+lasso_tune_rec <- 
+  lasso_WF %>% 
+  tune_grid(resamples = folds, #tune with CV value pre designated
+            grid = lasso_grid,
+            control = control_grid(
+              save_pred = TRUE
+              ),
+            metrics = metric_set(rmse) #RMSE as target metric
+            )
+```
+```{r}
+lasso_tune_rec%>%
+  autoplot()
+```
+```{r}
+#View top 15 models with lowest RMSEs
+lasso_top_models<-
+  lasso_tune_rec%>%
+  show_best("rmse", n=15)%>%
+  arrange(penalty)
+
+lasso_top_models
+```
+```{r}
+#Best tuned LASSO model
+lasso_best<-
+  lasso_tune_rec%>%
+  select_best(metric="rmse")
+
+# finalize workflow with best model
+lasso_best_WF <- 
+  lasso_WF %>% 
+  finalize_workflow(lasso_best)
+# fitting best performing model
+lasso_best_fit <- 
+  lasso_best_WF %>% 
+  fit(data = train_data)
+
+lasso_pred <- 
+  predict(lasso_best_fit, train_data)
+
+```
+
+## LASSO Evaluation
+Tuning parameters plot in LASSO
+```{r}
+# extract models from the final fit
+x<-
+  lasso_best_fit$fit$fit$fit
+
+# plotting the number of predictors and thier changes with the tuning parameter
+plot(x, "lambda")
+```
+```{r}
+lasso_best_fit%>%
+  extract_fit_parsnip()%>%
+  tidy()%>%
+  filter(estimate!="0") #several estimates are at 0, ignore.
+```
+```{r}
+#predicted versus observed from tuned model
+plot(lasso_pred$.pred,train_data$BodyTemp, 
+     xlim =c(97,104), 
+     ylim=c(97,104))
+abline(a=0,b=1, col = 'red') #45 degree line, along which the results should fall
+```
+```{r}
+#residuals
+plot(lasso_pred$.pred-train_data$BodyTemp)
+abline(a=0,b=0, col = 'red') 
+```
+
+Ideally, good results should fall along the red line. 
+
+```{r}
+#LASSO  Model Performance
+lasso_perfomance <- 
+  lasso_tune_res %>% 
+  show_best(n = 1)%>%
+  print()
+```
+```{r}
+#View RMSE comparison with nulls
+lasso_RMSE<-
+  lasso_tune_rec%>%
+  show_best(n=1)%>%
+  transmute(
+    rmse= round(mean,2),
+    SE= round(std_err,2),
+    model="LASSO"
+  )
+
+```
+
+LASSO RMSE mean is lower, just a little, from null train and test values.
+
+
+<br><br><br>
+
+# **Random Forest** (RF)
+
+*NOTE*: Aspects from the `Decision Tree` Model and `LASSO Linear Regression`will be used to create a `Random Forest` Model. Code for this section may be taken from [TidyModels Tutorial Case Study](https://www.tidymodels.org/start/case-study/).
+
+## RF Setup
+```{r}
+RF_model <- 
+  rand_forest() %>%
+  set_args(mtry = tune(),     
+    trees = tune(),
+    min_n = tune()
+  ) %>%
+  # select the engine/package that underlies the model
+  set_engine("ranger",
+             num.threads = 18, 
+             #for some reason for RF, we need to set this in the engine too
+             importance = "permutation") %>%
+  # choose either the continuous regression or binary classification mode
+  set_mode("regression")
+
+#view identified parameters to be tuned
+RF_model%>%
+  parameters()
+```
+
+## RF WorkFlow
+```{r}
+# regression workflow
+RF_WF <- 
+  workflow() %>%
+  add_model(RF_model) %>% 
+  add_recipe(Mod11_rec)
+
+print(RF_WF)
+```
+
+## RF Tuning
+```{r}
+#tuning grid
+RF_grid<-
+  expand.grid(mtry = c(3, 4, 5, 6),
+              min_n = c(40, 50, 60),
+              trees = c(500,1000))
+```
+```{r}
+RF_tune_rec<-
+  RF_WF%>%
+  tune_grid(resamples = folds, #tune with CV value pre designated
+            grid = RF_grid, #just created grid of values
+            control = control_grid(
+              save_pred = TRUE
+              ),
+            metrics = metric_set(rmse) #RMSE as target metric
+            )
+```
+
+
+
+## RF Evaluation
+
+Autoplot
+```{r}
+RF_tune_rec%>%
+  autoplot()
+```
+
+```{r}
+# get the tuned model that performs best 
+RF_best <- 
+  RF_tune_rec %>%  
+  select_best(metric = "rmse")
+# finalize workflow with best model
+RF_best_WF <- 
+  RF_WF %>% 
+  finalize_workflow(RF_best)
+# fitting best performing model
+RF_best_fit <- 
+  RF_best_WF %>% 
+  fit(data = train_data)
+RF_pred <- 
+  predict(RF_best_fit, 
+          train_data)
+```
+Unfortunately, there's not an easy way to look at a random forest model. Below are examples at looking at the data.
+<br>
+View **importance predictors** by using `vip`.
+```{r}
+#pull out the fit object
+RF_x <- RF_best_fit$fit$fit$fit
+#plot variable importance
+vip(RF_x, num_features = 20) #can specify features, default is 10.
+```
+This makes perfect sense that a fever would indicate a difference in BodyTemp-- Body Temperature
+<br>
+Plots:
+
+**Predicted vs Observed**
+```{r}
+plot(RF_pred$.pred,
+     train_data$BodyTemp, 
+     xlim =c(97,103), #x= Actual Body Temp,
+     ylim=c(97,103)) # y= predicted body temp
+abline(a=0,b=1, col = 'red') 
+#45 degree line, along which the results should fall
+```
+
+**Model fit vs Residuals**
+```{r}
+#residuals
+plot(RF_pred$.pred-train_data$BodyTemp) # Index= Observation Number
+#straight line, along which the results should fall
+abline(a=0,b=0, col = 'red') 
+```
+
+**Model Performance**
+```{r}
+RF_perfomance <- 
+  RF_tune_rec %>% 
+  show_best(n = 1)
+
+print(RF_perfomance) 
+```
+```{r}
+#View RMSE comparison with nulls
+RF_RMSE<-
+  RF_tune_rec%>%
+  show_best(n=1)%>%
+  transmute(
+    rmse= round(mean,2),
+    SE= round(std_err,2),
+    model="RF"
+  )
+```
+Compared with the nulls this is really no better than the null rmse
+
+<br><br><br>
+
+# **Final Model Selection and Evaluation**
+
+## Compare all RMSE(s) from the models to the Nulls
+```{r}
+CompareRMSE<-
+  bind_rows(tree_RMSE)%>%
+  bind_rows(lasso_RMSE)%>%
+  bind_rows(RF_RMSE)%>%
+  bind_rows(null_RMSE_train)%>%
+  mutate(rmse=round(rmse,2))%>%
+  arrange(rmse)%>% #arrange RMSE that is the smallest
+  print()
+```
+
+_None_ of the models fit the data well. This suggests that the predictor variables in the data set may _not be useful_ in predicting the body temperature of a suspect flu case (outcome). 
+
+`LASSO` model is the best model based on RMSE value being the lowest.
+
+As such, the `Lasso` model will be evaluated by fitting the LASSO model to the `training_data` set and evaluate on the `test_data`.
+
+## Performance Check
+```{r}
+Fit_Test<-
+  lasso_best_WF%>% # wf of the best fit from the training data
+  last_fit(split=data_split)
+           
+```
+Compare test against training
+```{r}
+final_fit <- 
+  lasso_best_WF%>% 
+  last_fit(data_split)
+
+Final_performance<- 
+  final_fit%>% 
+  collect_metrics()%>%
+  print()
+
+```
+
+```{r}
+test_predictions <- 
+  final_fit %>% 
+  collect_predictions()
+```
+**Predicted vs Observed**
+```{r}
+plot(test_predictions$.pred,
+     test_data$BodyTemp, #changeed to test data, previously used training 
+     xlim =c(97,103), #x= Actual Body Temp,
+     ylim=c(97,103)) # y= predicted body temp
+abline(a=0,b=1, col = 'red') 
+#45 degree line, along which the results should fall
+```
+
+**Model fit vs Residuals**
+```{r}
+#residuals
+plot(test_predictions$.pred-test_data$BodyTemp) # Index= Observation Number
+#straight line, along which the results should fall
+abline(a=0,b=0, col = 'red') 
+```
+# **Comments**
+
+LASSO was the best selection from the model types used in this assessment. But it still isn't great. 
+This suggests that the predictors are not great at predicting the outcome.
+From the importance predictors the most related to body temp is fever, which makes sense, but in terms of predicting flu-- it still has some uncertainty. As there are people who may be positive for flu but may not have severe enough symptoms to warrant getting treated and thus by passing the collection of symptoms.

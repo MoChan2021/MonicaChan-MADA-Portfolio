@@ -25,6 +25,8 @@ navbar:
         - text: "Tidy Tuesday 2"
           href: ./tidytuesday_exercise2.html
         - text: '---------'
+    - text: "Analysis Project"
+      menu:
         - text: Influenza Analysis
         - text: "Introduction and Background"
           href: ./Flu00.html
@@ -35,7 +37,8 @@ navbar:
         - text: "TidyModels Analysis II"
           href: ./Flu03.html
         - text: "Machine Learning Models"
-          href: ./Flu04.html      
+          href: ./Flu04.html
+
   right:
     - icon: fa-github fa-lg
       href: https://github.com/MoChan2021/MonicaChan-MADA-portfolio
