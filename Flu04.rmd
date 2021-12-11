@@ -445,7 +445,7 @@ Ideally, good results should fall along the red line.
 ```{r}
 #LASSO  Model Performance
 lasso_perfomance <- 
-  lasso_tune_rec %>% 
+  lasso_tune_res %>% 
   show_best(n = 1)%>%
   print()
 ```
