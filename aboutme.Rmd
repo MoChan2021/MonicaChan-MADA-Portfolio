@@ -8,7 +8,6 @@ output:
 library(here)
 ```
 
-
 Hi there, I'm Monica Chan. I'm a ~~_part-time_~~ 2^nd^ year PhD Environmental Health Science student in the College of Public Health.
 
 When I'm not ~~mentally exhausting myself~~ learning, I'm a research microbiologist at the CDC in Atlanta, GA.  
@@ -16,29 +15,31 @@ When I'm not ~~mentally exhausting myself~~ learning, I'm a research microbiolog
 ![About Me](./Photos/AboutMe.jpg)
 
 ### **Background & Training**
-I've been around for a bit trying a bit of this and that.  
+I've been around for a bit trying a bit of this and that. If I complete this final go around with education that would make me a _triple dawg_.. 
 
 * **B.S.**: _Environmental Health_ (SMITH, BLACK, & NAHER)  
   - Animal Modeling, Developmental Tox, Environmental (aquatic) Tox evaluations
 * **Private Industry**: _Occupational Health and Safety Analyst_
 * **M.S.**: _Environmental Health_ (SMITH, LIPP, & LU)  
-  - Prevalence of _Cronobacter sakazakii_ in domestic environments in GA.  
-Food science, Quality Control, Pregnancy Health, Developmental Tox.
+  - _Prevalence of _Cronobacter sakazakii_ in domestic environments in GA_.
+  - Food science, Quality Control, Pregnancy Health, Developmental Tox.
 * **Fellowship**: _ORISE Fellow_   
-  - Built-environment (healthcare settings), composite sample approaches & swab-to-sequencer workflow development and validation.
-* **Ph.D.**: _Environmental Health_ (GLENN, LIPP, OTTESEN, & SANCHEZ)  
+  - Built-environment (healthcare), composite sample approaches & swab-to-sequencer workflow development and validation.
+* **Ph.D.** _(student)_: _Environmental Health_ (GLENN, LIPP, OTTESEN, & SANCHEZ)  
   - Environmental Sample enhancement techniques for integration into swab-to-sequencer methods (MinION sequencing)
-* **Government Agency**: _Microbiologist_
+* **Federal Agency**: _Microbiologist_
   - All of the previous and whatever the Agency's needs are. (COVID Response)
   - Specializing in recovery tool evaluation.
+  - Evaluating and standardizing new tools and processes for guidance in  field sampling and sample preservation.
 
 
 ### **Research Interests**
 
-* Improving environmental sampling methods 
-* Developing a work process for field sampling directly going into molecular workflows, including sequencing and identification
-* Developing approaches to enhance low-quality samples
+* Improving/standardizing environmental sampling methods. 
+* Developing a work process for field sampling directly going into molecular workflows, including sequencing and identification.
+* Developing approaches to enhance low-quality samples.
 * Equating recovered gnomic copies to CFU.
+
 
 ### **Statistics, Programming, Data Analysis Exp**
 
@@ -47,7 +48,7 @@ The FANR class about Experimental Design has probably lasted the most with me. S
 My recent work history has had me playing with ggplot so I can make figures.  
 In the before COVID times I attended several GATech's ABiL training and learned Linux and Python. Now due to COVID and pivot of work I have had zero practice and can't remember a darn thing about them.  
 
-I maybe a bit of a data enthusiast-- I guess something fun I've started playing with is pivot charts in excel and applying them to my random logs I keep.
+I don't get too much exposure to different methods or types ways people use data in my day-to-day life. Generally if I know what I'm trying to do I can find a way to produce a product that is decent. Yet, with my limited exposure my imagination on what could be hinders my ability to search for possibilities. 
 
 ### **Goals for the Course**
 
@@ -56,18 +57,22 @@ I maybe a bit of a data enthusiast-- I guess something fun I've started playing 
 3. Utilize the developed skills and update/upgrade how microbiologists can present their data.
 * **BONUS:** Code a little more elegantly and force myself to get in some quality practice with programming and data analysis
 
+
 ### **Fun Fact**
 
 I owe a lot to this weird cellulose sponge-on-a-stick sampling device (aptly named, 3M SpongeStick). This tool has been a mainstay of nearly 1/3^rd^ of my life. Though I don't use the cellulose kind, I'm currently seeking macrofoam sticks as replacements to put into a molecular workflow. Alas, I will always hold a soft-spot for this tool, so effective at its job! 
 
 ![Sponge Stick Me](./Photos/SpongeMe.jpg)
 
-### **Link OUT: Predatory Journals**
 
-I present to you all a fascinating paper:
+### **Link OUT: Predatory Journals**
 
 [What's the Deal With Birds?](http://www.chm.bris.ac.uk/sillymolecules/birds.pdf) 
 
 If you don't know what this paper is about it was "published" in the _Scientific Journal of Research and Reviews_ last year. If you read it, you can see that it is rather unusual.  
 If you haven't had experience yet, this journal is an example of a Predatory journal. These "journals" are a common scam in academic fields. Typically they work by soliciting manuscript submissions, charge authors with a fee, and "publish" skipping the typical quality checks and rigor of peer review. 
 Alas, the publisher has redirected the direct link of the paper to the [publisher's site](http://irispublishers.com/sjrr/pdf/SJRR.MS.ID.000540.pdf) once the message got out.
+<br>
+
+
+## **See ya 'round sometimes!**

@@ -30,10 +30,8 @@ navbar:
         - text: Influenza Analysis
         - text: "Introduction and Background"
           href: ./Flu00.html
-        - text: "Data & Exploration"
-          href: ./Flu01.html                  
         - text: "TidyModels Analysis I"
-          href: ./Flu02.html            
+          href: ./Flu01.html                  
         - text: "TidyModels Analysis II"
           href: ./Flu03.html
         - text: "Machine Learning Models"

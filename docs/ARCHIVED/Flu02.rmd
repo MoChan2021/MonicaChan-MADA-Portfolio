@@ -1,0 +1,55 @@
+---
+title: "TidyModels Analysis I"
+output: 
+  html_document:
+    toc: FALSE
+---
+# TidyModels Analysis I
+Applying TidyModels framework to the cleaned data.
+
+<br>
+
+## Load Processed Data
+
+```{r}
+
+```
+
+
+## Linear Model for Body Temperature with single predictor (Runny Nose)
+
+```{r}
+
+```
+
+
+## Linear Model for Body Temperature with All Predictors
+
+```{r}
+
+```
+
+
+## Saving Data
+
+```{r}
+
+```
+
+
+<br>
+# Data Exploration
+
+## Data Overview
+
+```{r}
+
+
+```
+
+
+## Interests
+
+### Body Temperature (Continuous Outcome)
+
+### Nausea (Categorical Outcome)

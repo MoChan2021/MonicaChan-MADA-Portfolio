@@ -10,7 +10,7 @@ output:
 ### This website has been created as a data analysis portfolio for the Fall 2021 Modern Applied Data Analysis (MADA) Course.
 
 * Please use the `Menu Bar` above to look around.
-  * `About Me` contains a blurb about myself and exists as a way to test out using the language of R.
+  * `About Me` contains a blurb about myself and my background/fun facts.
   * `Projects` includes exercises completed as part of the MADA course and requirements.
   * `Additional Assessments` contains assessments and links to assessments for re-assessment purposes.
 
